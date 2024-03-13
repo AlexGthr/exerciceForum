@@ -1,0 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    color: rgb(0, 122, 156);
+}
+
+.img_category {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.img_category img {
+    height: 100px;
+    width: 100px;
+}
