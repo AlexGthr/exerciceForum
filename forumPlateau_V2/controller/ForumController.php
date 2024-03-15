@@ -6,6 +6,8 @@ use App\AbstractController;
 use App\ControllerInterface;
 use Model\Managers\CategoryManager;
 use Model\Managers\TopicManager;
+use Model\Managers\PostManager;
+use Model\Managers\UserManager;
 
 class ForumController extends AbstractController implements ControllerInterface{
 
@@ -39,6 +41,27 @@ class ForumController extends AbstractController implements ControllerInterface{
             "data" => [
                 "category" => $category,
                 "topics" => $topics
+            ]
+        ];
+    }
+
+    public function findPostsByTopic($id) {
+
+        $topicManager = new TopicManager();
+        $userManager = new UserManager();
+        $postManager = new PostManager();
+
+        $topics = $topicManager->findOneById($id);
+        $users = $userManager->findOneById($id);
+        $posts = $postManager->findPostsByTopic($id);
+
+        return [
+            "view" => VIEW_DIR."forum/postsTopic.php",
+            "meta_description" => "Posts du topic",
+            "data" => [
+                "posts" => $posts,
+                "topics" => $topics,
+                "users" => $users
             ]
         ];
     }

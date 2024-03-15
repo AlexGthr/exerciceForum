@@ -11,6 +11,11 @@ final class User extends Entity{
 
     private $id;
     private $nickName;
+    private $avatar;
+    private $password;
+    private $role;
+    private $dateRegistration;
+    private $ban;
 
     public function __construct($data){         
         $this->hydrate($data);        
@@ -47,6 +52,106 @@ final class User extends Entity{
      */ 
     public function setNickName($nickName){
         $this->nickName = $nickName;
+        
+        return $this;
+    }
+    
+    /**
+     * Get the value of avatar
+     */ 
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
+
+    /**
+     * Set the value of avatar
+     *
+     * @return  self
+     */ 
+    public function setAvatar($avatar)
+    {
+        $this->avatar = $avatar;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of password
+     */ 
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * Set the value of password
+     *
+     * @return  self
+     */ 
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of role
+     */ 
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * Set the value of role
+     *
+     * @return  self
+     */ 
+    public function setRole($role)
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of dateRegistration
+     */ 
+    public function getDateRegistration()
+    {
+        return $this->dateRegistration;
+    }
+
+    /**
+     * Set the value of dateRegistration
+     *
+     * @return  self
+     */ 
+    public function setDateRegistration($dateRegistration)
+    {
+        $this->dateRegistration = new \DateTime($dateRegistration);
+
+        return $this;
+    }
+
+    /**
+     * Get the value of ban
+     */ 
+    public function getBan()
+    {
+        return $this->ban;
+    }
+
+    /**
+     * Set the value of ban
+     *
+     * @return  self
+     */ 
+    public function setBan($ban)
+    {
+        $this->ban = $ban;
 
         return $this;
     }
@@ -54,4 +159,5 @@ final class User extends Entity{
     public function __toString() {
         return $this->nickName;
     }
+
 }
