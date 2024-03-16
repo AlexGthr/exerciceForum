@@ -145,6 +145,64 @@ class SecurityController extends AbstractController{
     }
 
 
-    public function login () {}
-    public function logout () {}
+    public function login () {
+
+        return [
+            "view" => VIEW_DIR."forum/login.php",
+            "meta_description" => "Login form"
+        ]; 
+
+    }
+
+    public function addLogin () {
+
+        if($_POST["submit"]) { 
+
+            // Je crée un nouvel objet UserManager qui servira plus bas
+            $userManager = new UserManager;
+
+            // Filtrage de la saisie du formulaire (faille XSS)
+            $nickName = filter_input(INPUT_POST, "nickName", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            
+            if ($nickName && $password) { 
+                // Une fois le filtre vérifié, je check dans la BDD si un utilisateur avec ce pseudo existe
+                $user = $userManager->findByNickName($nickName);
+
+                if ($user) {
+
+                    $checkPassword = $user->getPassword();
+                    
+                    if (password_verify($password, $checkPassword)) {
+                        Session::setUser($user);
+
+                        $this->redirectTo("index", "home");
+                    }
+
+                    Session::addFlash("message", "Password is not correct.");
+                    $this->redirectTo("security", "login");
+
+                }
+
+                Session::addFlash("message", "This pseudo doesn't exist.");
+                $this->redirectTo("security", "login");
+
+            }
+
+            Session::addFlash("message", "Problem with something. Try again.");
+            $this->redirectTo("security", "login");
+
+        }
+
+        $this->redirectTo("security", "login");
+
+    }
+
+    public function logout () {
+
+        unset($_SESSION["user"]);
+
+        $this->redirectTo("index", "home");
+    }
 }

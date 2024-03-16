@@ -23,7 +23,7 @@ echo $session->getFlash("message");
     <label for="file"> Avatar (Format : jpg, png, jpeg, webp - 1MO max): *</label>
         <input type="file" name="file"><br>
         
-    <input type="submit" name="submit" value="S'enrengistrer">
+    <input type="submit" name="submit" value="Sign Up !">
 
 </form>
 <p> * : Not required </p>

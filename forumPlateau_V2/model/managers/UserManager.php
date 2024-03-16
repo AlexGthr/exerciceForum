@@ -21,8 +21,8 @@ class UserManager extends Manager{
         WHERE u.nickName = :nickName";
 
         // la requête renvoie plusieurs enregistrements --> getMultipleResults
-        return  $this->getMultipleResults(
-        DAO::select($sql, ['nickName' => $nickName]), 
+        return $this->getOneOrNullResult(
+        DAO::select($sql, ['nickName' => $nickName], false), 
         $this->className
 );
     }
