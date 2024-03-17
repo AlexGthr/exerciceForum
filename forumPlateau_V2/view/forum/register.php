@@ -2,6 +2,11 @@
 
 use App\Session; ?>
 
+<?php if(App\Session::getUser()) { 
+        header("Location: index.php"); exit;
+
+} else { ?>
+
 <?php 
 $session = new Session();
 echo $session->getFlash("message");
@@ -27,3 +32,5 @@ echo $session->getFlash("message");
 
 </form>
 <p> * : Not required </p>
+
+<?php } ?>

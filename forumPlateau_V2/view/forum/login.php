@@ -2,6 +2,11 @@
 
 use App\Session; ?>
 
+<?php if(App\Session::getUser()) { 
+        header("Location: index.php"); exit;
+
+} else { ?>
+
 <?php 
 $session = new Session();
 echo $session->getFlash("message");
@@ -20,3 +25,5 @@ echo $session->getFlash("message");
     <input type="submit" name="submit" value="Login">
 
 </form>
+
+<?php } ?>

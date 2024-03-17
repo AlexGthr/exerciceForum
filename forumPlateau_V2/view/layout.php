@@ -18,32 +18,57 @@
                 <h3 class="message" style="color: green"><?= App\Session::getFlash("success") ?></h3>
                 <header>
                     <nav>
-                        <div id="nav-left">
-                            <a href="index.php">Accueil</a>
-                            <?php
-                            if(App\Session::isAdmin()){
-                                ?>
-                                <a href="index.php?ctrl=home&action=users">Voir la liste des gens</a>
-                            <?php } ?>
+                        <div class="nav_mobile">
+
+                        <div class="nav_burger">
+                            <ul class="nav_liste">
+
+                                 <!-- Si l'utilisateur est connecté, on affiche ce menu -->
+                                <?php if(App\Session::getUser()) { ?>
+
+                                    <li><a href="index.php">Home</a></li>
+                                    <li><a href="index.php?ctrl=security&action=profile">My profile</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="index.php?ctrl=security&action=logout">Logout</a></li>
+                                
+                                 <!-- Si l'utilisateur n'est pas connecté, on affiche ce menu -->
+                                <?php } else { ?>
+
+                                    <li><a href="index.php">Home</a></li>
+                                    <li><a href="index.php?ctrl=security&action=register">Sign Up</a></li>
+                                    <li><a href="index.php?ctrl=security&action=login">Login</a></li>
+                                    <li><a href="#">Contact</a></li>
+
+                                <?php } ?>
+
+                                 <!-- Si l'utilisateur est un Admin, on ajoute ces pages  -->
+                                <?php if(App\Session::isAdmin()) { ?>
+
+                                    <li><a href="index.php?ctrl=security&action=users">List Users</a></li>
+                                
+                                <?php } ?>
+
+                                <li><img class="nav_logo" src="./public/img/gamepad.svg" title="logo menu"></li>
+                            </ul>                        
+                            <div id="icons"></div>
                         </div>
-                        <div id="nav-right">
-                        <?php
-                            // si l'utilisateur est connecté 
-                            if(App\Session::getUser()){
-                                ?>
-                                <a href="index.php?ctrl=security&action=profile"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></a>
-                                <p> Role : <?= App\Session::getUser()->getRole() ?></p>
-                                <a href="index.php?ctrl=security&action=logout">Déconnexion</a>
-                                <?php
-                            }
-                            else{
-                                ?>
-                                <a href="index.php?ctrl=security&action=login">Connexion</a>
-                                <a href="index.php?ctrl=security&action=register">Inscription</a>
-                                <a href="index.php?ctrl=forum&action=index">Liste des catégories</a>
-                            <?php
-                            }
-                        ?>
+
+                            <div class="nav_title">
+                                <a href="index.php">
+                                    <img src="./public/img/gamepad.svg" title="gamepad title">
+                                    <h1> Forum </h1>
+                                </a>
+                            </div>
+
+                            <?php if(App\Session::getUser()) { ?>
+
+                                <img class="nav_avatar" src="<?= App\Session::getUser()->getAvatar(); ?>" title="avatar user">
+                            
+                            <?php } else { ?>
+
+                                <i class="fa-regular fa-right-to-bracket"></i>
+
+                            <?php } ?>
                         </div>
                     </nav>
                 </header>

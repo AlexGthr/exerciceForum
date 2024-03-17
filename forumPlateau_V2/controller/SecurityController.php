@@ -122,7 +122,7 @@ class SecurityController extends AbstractController{
 
                         // Je crée ensuite un message personnalisé en Session, pour confirmer l'inscription et je redirige vers le login
                         Session::addFlash("message", "Sign Up success !");
-                        $this->redirectTo("security", "register");
+                        $this->redirectTo("security", "login");
                         exit;
                     } elseif ($pass1 !== $pass2) {
 

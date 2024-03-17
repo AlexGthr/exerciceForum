@@ -1,8 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Lexend", sans-serif;;
 }
+
+
+/* ******************************
+        Variable CSS
+   ****************************** */
+
+:root {
+
+    --first-color: hsl(0, 0%, 100%);
+    --first-color-rose: hsl(306, 59%, 63%);
+    --second-color-rose: hsl(306, 58%, 69%);
+    --first-color-yellow: hsl(47, 100%, 49%);
+    --second-color-yellow: hsl(47, 100%, 52%);
+    --bg-border: hsl(291, 16%, 31%);
+    --bg-header-footer: hsl(269, 89%, 10%);
+    --bg-navBar: hsl(269, 92%, 10%, 0.75);
+    --bg-form: hsl(291, 60%, 13%);
+
+}
+
+@media only screen and (min-width: 320px) {
+
+.nav_mobile {
+    background-color: var(--bg-header-footer);
+    width: 100%;
+    height: 65px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.nav_title a {
+    display: flex;
+    align-items: end;
+    gap: 5px;
+    text-decoration: none;
+}
+
+nav h1 {
+    color: var(--first-color);
+    font-weight: 300;
+}
+
+.nav_avatar {
+    height: 50px;
+    width: 50px;
+}
+
+.nav_burger {
+    display: flex;
+    flex-direction: column;
+    width: 30px;
+}
+
+.nav_liste {
+    position: absolute;
+    left: -100%;
+    top: 0px;
+    height: 100vh;
+    width: 75%;
+    background-color: var(--bg-navBar);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: 0.5s;
+}
+
+.nav_liste li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    font-size: 36px;
+    font-weight: bold;
+    z-index: 1;
+}
+
+.nav_liste li a {
+    color: var(--first-color);
+    text-decoration: none;
+}
+
+
+#icons {
+    display: block;
+    font-size: 2em;
+    font-weight: bold;
+    z-index: 5;
+}
+#icons:before {
+    content: "\2630";
+    color: var(--first-color);
+    font-size: 1em;
+}
+
+.nav_burger.active .nav_liste{
+    left: 0;
+    z-index: 2;
+}
+
+.nav_burger.active #icons:before {
+    content: "\2715";
+}
+
+.nav_logo {
+    height: 20vh;
+    width: 40vw;
+}
+
 
 h1 {
     color: rgb(0, 122, 156);
@@ -17,4 +133,6 @@ h1 {
 .img_category img {
     height: 100px;
     width: 100px;
+}
+
 }
