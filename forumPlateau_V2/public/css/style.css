@@ -53,6 +53,7 @@ nav h1 {
 .nav_avatar {
     height: 50px;
     width: 50px;
+    border-radius: 14px;
 }
 
 .nav_burger {
@@ -133,6 +134,42 @@ h1 {
 .img_category img {
     height: 100px;
     width: 100px;
+}
+
+.form_newTopic {
+    display: flex;
+    flex-direction: column;
+}
+
+.show_boxPost {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.show_boxPost p {
+    color: var(--first-color);
+    background-color: var(--bg-border);
+    padding: 10px 50px;
+    border-radius: 50px;
+    border: solid 2px var(--second-color-yellow);
+    -webkit-box-shadow: 5px 5px 0px 0px var(--bg-border); 
+    box-shadow: 5px 5px 0px 0px var(--second-color-yellow);
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.boxPost {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.active.show_boxPost p {
+    box-shadow: none;
+    transform: translate(5px, 5px);
 }
 
 }
