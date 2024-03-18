@@ -74,4 +74,64 @@ final class Topic extends Entity{
     public function __toString(){
         return $this->title;
     }
+
+    /**
+     * Get the value of closed
+     */ 
+    public function getClosed()
+    {
+        return $this->closed;
+    }
+
+    /**
+     * Set the value of closed
+     *
+     * @return  self
+     */ 
+    public function setClosed($closed)
+    {
+        $this->closed = $closed;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of creationDate
+     */ 
+    public function getCreationDate()
+    {
+        return $this->creationDate;
+    }
+
+    /**
+     * Set the value of creationDate
+     *
+     * @return  self
+     */ 
+    public function setCreationDate($creationDate)
+    {
+        $this->creationDate = $creationDate;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of category
+     */ 
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set the value of category
+     *
+     * @return  self
+     */ 
+    public function setCategory($category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
 }

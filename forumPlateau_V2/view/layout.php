@@ -60,17 +60,32 @@
                                 </a>
                             </div>
 
+                            <div class="avatar_user">
+
+                                    <!-- Si l'utilisateur est connecté, on affiche son avatar -->
                             <?php if(App\Session::getUser()) { ?>
 
-                                <img class="nav_avatar" src="<?= App\Session::getUser()->getAvatar(); ?>" title="avatar user">
-                            
+                                <a href="index.php?ctrl=security&action=login">
+                                    <img class="nav_avatar" src="<?= App\Session::getUser()->getAvatar(); ?>" title="avatar user">
+                                </a>
+
+                                    <!-- Si l'utilisateur n'est pas connecté, on affiche un avatar par default -->                           
                             <?php } else { ?>
-
-                                <i class="fa-regular fa-right-to-bracket"></i>
-
+                                
+                                <a href="index.php?ctrl=security&action=login">
+                                    <img class="nav_avatar" src="./public/img/avatar/default.webp" title="avatar visitor">
+                                </a>
+                                
                             <?php } ?>
+                            </div>
                         </div>
                     </nav>
+
+                    <!-- Image en dessous de la nav -->
+                    <figure class="img_topMobile">
+                        <img src="./public/img/img-top-mobile.svg" title="image top mobile">
+                    </figure>
+
                 </header>
                 
                 <main id="forum">

@@ -4,9 +4,12 @@
 
 <h1>Liste des catégories</h1>
 
+<!-- Lien pour crée un topic -->
 <a href="index.php?ctrl=forum&action=newTopic"> Create topic </a>
 
 <?php
+
+// Affichage de la liste des categories
 foreach($categories as $category ){?>
 
     <div class="img_category">

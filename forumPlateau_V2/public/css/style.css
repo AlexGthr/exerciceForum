@@ -54,6 +54,13 @@ nav h1 {
     height: 50px;
     width: 50px;
     border-radius: 14px;
+    color: var(--first-color);
+}
+
+.avatar_user a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .nav_burger {
@@ -99,6 +106,7 @@ nav h1 {
     font-size: 2em;
     font-weight: bold;
     z-index: 5;
+    cursor: pointer;
 }
 #icons:before {
     content: "\2630";
@@ -120,6 +128,9 @@ nav h1 {
     width: 40vw;
 }
 
+.img_topMobile img {
+    width: 100%;
+}
 
 h1 {
     color: rgb(0, 122, 156);
@@ -143,6 +154,7 @@ h1 {
 
 .show_boxPost {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 15px 0;

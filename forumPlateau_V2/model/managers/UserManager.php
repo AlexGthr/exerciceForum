@@ -14,6 +14,7 @@ class UserManager extends Manager{
         parent::connect();
     }
 
+    // Public function pou retrouver un user via son NickName
     public function findByNickName($nickName) {
 
         $sql = "SELECT * 

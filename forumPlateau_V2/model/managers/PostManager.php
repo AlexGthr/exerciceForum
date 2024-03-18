@@ -14,6 +14,7 @@ class PostManager extends Manager{
         parent::connect();
     }
 
+    // Public function pour retrouver un post par son id
     public function findPostsByTopic($id) {
 
         $sql = "SELECT * 

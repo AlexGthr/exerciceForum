@@ -2,11 +2,13 @@
 
 use App\Session; ?>
 
+ <!-- Si l'utilisateur est déjà connecté, je le redirige sur l'accueil -->
 <?php if(App\Session::getUser()) { 
         header("Location: index.php"); exit;
 
 } else { ?>
 
+<!-- Message de session en cas d'erreur ou de success -->
 <?php 
 $session = new Session();
 echo $session->getFlash("message");
@@ -14,6 +16,8 @@ echo $session->getFlash("message");
 
 <h1>Sign Up !</h1>
 
+
+<!-- Formulaire d'inscription -->
 <form action="index.php?ctrl=security&action=addRegister" method="POST" enctype="multipart/form-data">
 
     <label for="nickName">Pseudo</label>

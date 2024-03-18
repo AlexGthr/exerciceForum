@@ -9,6 +9,7 @@ use Model\Managers\UserManager;
 class SecurityController extends AbstractController{
     // contiendra les méthodes liées à l'authentification : register, login et logout
 
+    // Affiche la vue du formulaire de registration
     public function register () {
 
         return [
@@ -124,11 +125,14 @@ class SecurityController extends AbstractController{
                         Session::addFlash("message", "Sign Up success !");
                         $this->redirectTo("security", "login");
                         exit;
+
+                    // Si les mots de passes sont différent, message d'erreur
                     } elseif ($pass1 !== $pass2) {
 
                         Session::addFlash("message", "Your password is different !");
                         $this->redirectTo("security", "register");
 
+                    // Si les mots de passes ne sont pas conforme au regex, message d'erreur
                     } elseif (!preg_match('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/', $pass1)) {
                         Session::addFlash("message", "Your password is not correct !");
                         $this->redirectTo("security", "register");
@@ -145,6 +149,7 @@ class SecurityController extends AbstractController{
     }
 
 
+    // On affiche la vue du formulaire de Login
     public function login () {
 
         return [
@@ -154,6 +159,7 @@ class SecurityController extends AbstractController{
 
     }
 
+    // Method pour la connexion d'un utilisateur
     public function addLogin () {
 
         if($_POST["submit"]) { 
@@ -170,21 +176,28 @@ class SecurityController extends AbstractController{
                 // Une fois le filtre vérifié, je check dans la BDD si un utilisateur avec ce pseudo existe
                 $user = $userManager->findByNickName($nickName);
 
+                // Si je trouve un utilisateur avec ce nickName je passe à la suite
                 if ($user) {
 
+                    // Je récupère le hash du MDP
                     $checkPassword = $user->getPassword();
                     
+                    // Je compare le hash du mdp au mdp donner par l'utilisateur grace à la function password_verify
                     if (password_verify($password, $checkPassword)) {
+
+                        // Si c'est tout bon, alors j'ajoute l'utilisateur en session et je redirige vers l'accueil.
                         Session::setUser($user);
 
                         $this->redirectTo("index", "home");
                     }
 
+                    // Si le password_verify n'est pas correct, message d'erreur.
                     Session::addFlash("message", "Password is not correct.");
                     $this->redirectTo("security", "login");
 
                 }
 
+                // Si le pseudo n'existe pas, message d'erreur.
                 Session::addFlash("message", "This pseudo doesn't exist.");
                 $this->redirectTo("security", "login");
 
@@ -199,8 +212,10 @@ class SecurityController extends AbstractController{
 
     }
 
+    // Method pour la deconnexion d'un utilisateur
     public function logout () {
 
+        // Je retire les informations user de la session.
         unset($_SESSION["user"]);
 
         $this->redirectTo("index", "home");
