@@ -130,6 +130,7 @@ nav h1 {
 
 .img_topMobile img {
     width: 100%;
+    object-fit: cover;
 }
 
 h1 {
@@ -182,6 +183,25 @@ h1 {
 .active.show_boxPost p {
     box-shadow: none;
     transform: translate(5px, 5px);
+}
+
+.display_profil {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.display_profil img {
+    width: max-content;
+    height: 200px;
+    border-radius: 14px;
+}
+
+.display_profil a {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
 }
 
 }

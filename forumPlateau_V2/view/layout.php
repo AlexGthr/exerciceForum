@@ -27,7 +27,7 @@
                                 <?php if(App\Session::getUser()) { ?>
 
                                     <li><a href="index.php">Home</a></li>
-                                    <li><a href="index.php?ctrl=security&action=profile">My profile</a></li>
+                                    <li><a href="index.php?ctrl=home&action=profile">My profile</a></li>
                                     <li><a href="#">Contact</a></li>
                                     <li><a href="index.php?ctrl=security&action=logout">Logout</a></li>
                                 
@@ -65,7 +65,7 @@
                                     <!-- Si l'utilisateur est connecté, on affiche son avatar -->
                             <?php if(App\Session::getUser()) { ?>
 
-                                <a href="index.php?ctrl=security&action=login">
+                                <a href="index.php?ctrl=home&action=profile">
                                     <img class="nav_avatar" src="<?= App\Session::getUser()->getAvatar(); ?>" title="avatar user">
                                 </a>
 
@@ -83,7 +83,7 @@
 
                     <!-- Image en dessous de la nav -->
                     <figure class="img_topMobile">
-                        <img src="./public/img/img-top-mobile.svg" title="image top mobile">
+                        <img src="./public/img/img-top-mobile.webp" title="image top mobile">
                     </figure>
 
                 </header>

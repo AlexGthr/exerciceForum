@@ -221,7 +221,8 @@ class ForumController extends AbstractController implements ControllerInterface{
             }
 
         }
-    }} else {
+    } else {
         $this->redirectTo("forum", "findPostsByTopic", $id);
     }
+}
 }
