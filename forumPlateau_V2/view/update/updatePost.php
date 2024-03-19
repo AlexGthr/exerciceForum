@@ -12,6 +12,8 @@ $session = new Session();
 echo $session->getFlash("message");
 ?>
 
+<br><a href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $post->getTopic()->getId(); ?>">View Topic</a>
+
 <?php if (App\Session::getUser() && (App\Session::isAdmin() || App\Session::isModerator()) || App\Session::getUser() == $post->getUser()) { ?>
 
 <h1> Detail before update </h1><br>

@@ -263,7 +263,7 @@ public function updatePost($id) {
 
             if (empty($post)) {
                 Session::addFlash("message", "You can't update a empty post.");
-                $this->redirectTo("forum", "updatePost&id=", $id);
+                $this->redirectTo("forum", "updatePost", $id);
             } elseif ($post) {
 
                 $postManager = new PostManager();
@@ -277,18 +277,18 @@ public function updatePost($id) {
 
                     if ($postManager) {
                         Session::addFlash("message", "Success");
-                        $this->redirectTo("forum", "updatePost&id=", $id);
+                        $this->redirectTo("forum", "updatePost", $id);
                     } else {
                         Session::addFlash("message", "Something wrong.. Try again.1");
-                        $this->redirectTo("forum", "updatePost&id=", $id);
+                        $this->redirectTo("forum", "updatePost", $id);
                     }
                 } else {
                     Session::addFlash("message", "Something wrong.. Try again.2");
-                    $this->redirectTo("forum", "updatePost&id=", $id);
+                    $this->redirectTo("forum", "updatePost", $id);
                 }
             } else {
                 Session::addFlash("message", "Something wrong.. Try again.3");
-                $this->redirectTo("forum", "updatePost&id=", $id);
+                $this->redirectTo("forum", "updatePost", $id);
             }
         }
     } else {
@@ -330,7 +330,7 @@ public function updateTopic($id) {
 
             if (empty($topic)) {
                 Session::addFlash("message", "You can't update a empty topic.");
-                $this->redirectTo("forum", "updateTopic&id=", $id);
+                $this->redirectTo("forum", "updateTopic", $id);
             } elseif ($topic) {
 
                 if (Session::getUser() && (Session::isAdmin() || Session::isModerator())) {
@@ -343,22 +343,56 @@ public function updateTopic($id) {
 
                     if ($topicManager) {
                         Session::addFlash("message", "Success");
-                        $this->redirectTo("forum", "updateTopic&id=", $id);
+                        $this->redirectTo("forum", "updateTopic", $id);
                     } else {
                         Session::addFlash("message", "Something wrong.. Try again.1");
-                        $this->redirectTo("forum", "updateTopic&id=", $id);
+                        $this->redirectTo("forum", "updateTopic", $id);
                     }
                 } else {
                     Session::addFlash("message", "Something wrong.. Try again.2");
-                    $this->redirectTo("forum", "updateTopic&id=", $id);
+                    $this->redirectTo("forum", "updateTopic", $id);
                 }
             } else {
                 Session::addFlash("message", "Something wrong.. Try again.3");
-                $this->redirectTo("forum", "updateTopic&id=", $id);
+                $this->redirectTo("forum", "updateTopic", $id);
             }
         }
     } else {
         $this->redirectTo("home", "index");
     }
-}
+    }
+
+    public function deletePost($id) {
+         // Je vérifie que l'utilisateur soit connecté, si ce n'est pas le cas, direction l'INDEX
+        if (!Session::getUser()) {
+            $this->redirectTo("home", "index");
+        } else {
+
+            $postManager = new PostManager();
+
+            $post = $postManager->findOneById($id);
+
+            $postIdTopic = $post->getTopic()->getId();
+
+            $firstPost = $postManager->findFirstPost($postIdTopic);
+
+            if ($post->getId() == $firstPost->getId()) {
+
+                Session::addFlash("message", "You can't delete this post.");
+                $this->redirectTo("forum", "findPostsByTopic", $post->getTopic()->getId());
+
+            } elseif (Session::getUser() && (Session::getUser() == $post->getUser() || Session::isAdmin() || Session::isModerator())) {
+
+
+                $postManager->delete($id);
+                $this->redirectTo("forum", "findPostsByTopic", $post->getTopic()->getId());
+
+
+            } else {
+
+                $this->redirectTo("forum", "findPostsByTopic", $post->getTopic()->getId());
+            }
+        }
+        
+    }
 }

@@ -27,4 +27,18 @@ class PostManager extends Manager{
             $this->className
         );
     }
+
+    public function findFirstPost($id) {
+
+        $sql = "SELECT *
+                FROM ". $this->tableName." t
+                WHERE t.topic_id = :id
+                ORDER BY DATE_FORMAT(dateCreation, '%Y/%m/%d/%H/%i/%s')
+                LIMIT 1";
+        
+        return $this->getOneOrNullResult(
+                DAO::select($sql, ['id' => $id], false), 
+                $this->className
+        );
+    }
 }

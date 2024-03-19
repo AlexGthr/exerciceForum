@@ -8,6 +8,11 @@ use App\Session; ?>
     $users = $result["data"]["users"];
 ?>
 
+<?php 
+$session = new Session();
+echo $session->getFlash("message");
+ ?>
+
     <!-- Lien pour revenir à la liste des topics -->
 <a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $topics->getCategory()->getId(); ?>">Return list topic</a>
 
@@ -31,10 +36,12 @@ foreach($posts as $post) { ?>
     <?php if (App\Session::getUser() && $post->getUser() == App\Session::getUser()->getNickName()) { ?>
 
         <a href="index.php?ctrl=forum&action=updatePost&id=<?= $post->getId() ?>"> Update </a>
+        <a href="index.php?ctrl=forum&action=deletePost&id=<?= $post->getId() ?>"> Delete </a>
 
     <?php } elseif (App\Session::getUser() && (App\Session::isAdmin() || App\Session::isModerator())) { ?>
 
         <a href="index.php?ctrl=forum&action=updatePost&id=<?= $post->getId() ?>"> Update </a>
+        <a href="index.php?ctrl=forum&action=deletePost&id=<?= $post->getId() ?>"> Delete </a>
 
 <?php } } ?>
 
