@@ -234,8 +234,13 @@ public function updatePost($id) {
 
     $post = $postManager->findOneById($id);
 
-    if (!$post) {
+    if ($post->getTopic()->getClosed()) {
         $this->redirectTo("home", "index");
+
+    } elseif (!$post) {
+
+        $this->redirectTo("home", "index");
+
     } else {
 
         return [
@@ -302,8 +307,14 @@ public function updateTopic($id) {
 
     $topic = $topicManager->findOneById($id);
 
-    if (!$topic) {
+    if ($topic->getClosed()) {
+
         $this->redirectTo("home", "index");
+
+    } elseif (!$topic) {
+
+        $this->redirectTo("home", "index");
+        
     } else {
 
         return [
@@ -394,5 +405,47 @@ public function updateTopic($id) {
             }
         }
         
+    }
+
+    public function lockTopic($id) {
+
+        if (!Session::getUser() && (!Session::isAdmin() || !Session::isModerator())) {
+            $this->redirectTo("home", "index");
+        } else { 
+
+            $topicManager = new TopicManager();
+
+            $topicManager->findOneById($id);
+
+            $information = [
+                "closed" => '1'
+            ];
+
+            $topicManager->update($information, $id);
+
+            $this->redirectTo("forum", "findPostsByTopic", $id);
+
+        }
+    }
+
+    public function unlockTopic($id) {
+
+        if (!Session::getUser() && (!Session::isAdmin() || !Session::isModerator())) {
+            $this->redirectTo("home", "index");
+        } else { 
+
+            $topicManager = new TopicManager();
+
+            $topicManager->findOneById($id);
+
+            $information = [
+                "closed" => '0'
+            ];
+
+            $topicManager->update($information, $id);
+
+            $this->redirectTo("forum", "findPostsByTopic", $id);
+
+        }
     }
 }

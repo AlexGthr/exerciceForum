@@ -210,4 +210,19 @@ h1 {
     padding: 10px 0;
 }
 
+.titleTopic {
+    display: flex;
+    align-items: center;
+}
+
+.green {
+    padding: 0 25px;
+    color: green;
+}
+
+.red {
+    padding: 0 25px;
+    color: red;
+}
+
 }

@@ -16,7 +16,43 @@ echo $session->getFlash("message");
     <!-- Lien pour revenir à la liste des topics -->
 <a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $topics->getCategory()->getId(); ?>">Return list topic</a>
 
-<h1> <?= $topics ?> </h1>
+  <!-- J'affiche le titre du topic et si il est ouvert ou fermer -->
+<div class="titleTopic">
+
+    <h1> <?= $topics ?> </h1>
+
+    <?php if (!$topics->getClosed()) {
+
+            if (App\Session::isAdmin() || App\Session::isModerator()) { ?> 
+            
+            <a href="index.php?ctrl=forum&action=lockTopic&id=<?= $topics->getId() ?>">
+                <i class="fa-solid fa-unlock-keyhole green"></i>
+            </a>
+        
+        <?php } else { ?>
+
+            <i class="fa-solid fa-unlock-keyhole green"></i>
+            
+        <?php } ?>
+
+
+    <?php } else { 
+
+        if (App\Session::isAdmin() || App\Session::isModerator()) { ?> 
+            
+            <a href="index.php?ctrl=forum&action=unlockTopic&id=<?= $topics->getId() ?>">
+                <i class="fa-solid fa-lock red"></i>
+            </a>
+        
+        <?php } else { ?>
+
+            <i class="fa-solid fa-lock red"></i>
+            
+        <?php } ?>
+
+    <?php } ?>
+
+</div>
 
 <?php if (App\Session::getUser() && (App\Session::isAdmin() || App\Session::isModerator())) { ?>
 
@@ -33,7 +69,7 @@ foreach($posts as $post) { ?>
     <p> By <?= $post->getUser() ?> </p>
 
             <!-- // Permet la modification de son propre message ou de tout les messages en fonction du role -->
-    <?php if (App\Session::getUser() && $post->getUser() == App\Session::getUser()->getNickName()) { ?>
+    <?php if (App\Session::getUser() && $post->getUser() == App\Session::getUser()->getNickName() && !$topics->getClosed()) { ?>
 
         <a href="index.php?ctrl=forum&action=updatePost&id=<?= $post->getId() ?>"> Update </a>
         <a href="index.php?ctrl=forum&action=deletePost&id=<?= $post->getId() ?>"> Delete </a>
@@ -46,7 +82,7 @@ foreach($posts as $post) { ?>
 <?php } } ?>
 
 <!-- Si l'utilisateur est connecté, il pourra envoyé un message dans le topic -->
-<?php if(App\Session::getUser()) { ?>
+<?php if((App\Session::getUser() && !$topics->getClosed()) || (App\Session::isAdmin() || App\Session::isModerator())) { ?>
     <div class="show_boxPost">
 
         <h3> <?= App\Session::getUser()->getNickName(); ?> </h3>
@@ -72,14 +108,22 @@ foreach($posts as $post) { ?>
 
     <div class="show_boxPost">
 
-        <p><span class="addActive"> Add post </span></p>
+        <p><span class="addActive"> Locked </span></p>
 
     </div>
 
     <div class="boxPost">
         
-        <h2> You need to be connected to post à new message </h2>
-        <a href="index.php?ctrl=security&action=login">Login</a>
+        <?php if ($topics->getClosed()) { ?>
+            
+            <h2> This topic is closed. </h2>
+
+        <?php } else { ?>
+
+            <h2> You must be connected to send a post. </h2>
+            <a href="index.php?ctrl=security&action=login">Login</a>
+
+        <?php } ?>
 
     </div>
 

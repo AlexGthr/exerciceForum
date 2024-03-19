@@ -1,4 +1,6 @@
 <?php
+    use App\Session;
+
     $category = $result["data"]['category']; 
     $topics = $result["data"]['topics']; 
 ?>
@@ -13,7 +15,47 @@
 <?php if (isset($topics)) {
 
 foreach($topics as $topic ){ ?>
-    <p><a href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $topic->getId() ?>"><?= $topic ?></a> par <?= $topic->getUser() ?></p>
+    <div class="lockListTopic">
+
+        <a href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $topic->getId() ?>">
+            <?= $topic ?>
+        </a>
+
+            <?php if (!$topic->getClosed()) {
+
+                if (App\Session::isAdmin() || App\Session::isModerator()) { ?> 
+            
+                    <a href="index.php?ctrl=forum&action=lockTopic&id=<?= $topic->getId() ?>">
+                        <i class="fa-solid fa-unlock-keyhole green"></i>
+                    </a>
+        
+                <?php } else { ?>
+
+                    <i class="fa-solid fa-unlock-keyhole green"></i>
+            
+                <?php } ?>
+
+            <?php } else { 
+
+                if (App\Session::isAdmin() || App\Session::isModerator()) { ?> 
+            
+                    <a href="index.php?ctrl=forum&action=unlockTopic&id=<?= $topic->getId() ?>">
+                        <i class="fa-solid fa-lock red"></i>
+                    </a>
+        
+                <?php } else { ?>
+
+                    <i class="fa-solid fa-lock red"></i>
+            
+                <?php } ?>
+
+            <?php } ?>
+
+    </div>
+
+
+        <p> par <?= $topic->getUser() ?></p> <br>
+
 <?php }
 
 // Sinon, je met un message personnalisé
