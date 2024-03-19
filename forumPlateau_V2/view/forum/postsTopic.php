@@ -13,15 +13,30 @@ use App\Session; ?>
 
 <h1> <?= $topics ?> </h1>
 
-<ul>
+<?php if (App\Session::getUser() && (App\Session::isAdmin() || App\Session::isModerator())) { ?>
 
-<?php 
-        // Affichage des messages d'un topic
-foreach($posts as $post) {
-    echo "<li>" . $post->getPost() . "<li><br>", 
-            "<p> By <span>" . $post->getUser() . "</span></p>";
-}
-?>
+    <a href="index.php?ctrl=forum&action=updateTopic&id=<?= $topics->getId() ?>"> Edit </a>
+
+<?php } ?>
+
+<?php  // Affichage des messages d'un topic
+foreach($posts as $post) { ?>
+
+    <br><p> <?= $post->getPost() ?> </p>
+
+
+    <p> By <?= $post->getUser() ?> </p>
+
+            <!-- // Permet la modification de son propre message ou de tout les messages en fonction du role -->
+    <?php if (App\Session::getUser() && $post->getUser() == App\Session::getUser()->getNickName()) { ?>
+
+        <a href="index.php?ctrl=forum&action=updatePost&id=<?= $post->getId() ?>"> Update </a>
+
+    <?php } elseif (App\Session::getUser() && (App\Session::isAdmin() || App\Session::isModerator())) { ?>
+
+        <a href="index.php?ctrl=forum&action=updatePost&id=<?= $post->getId() ?>"> Update </a>
+
+<?php } } ?>
 
 <!-- Si l'utilisateur est connecté, il pourra envoyé un message dans le topic -->
 <?php if(App\Session::getUser()) { ?>

@@ -4,6 +4,7 @@ namespace Controller;
 use App\Session;
 use App\AbstractController;
 use App\ControllerInterface;
+use App\DAO;
 use Model\Managers\CategoryManager;
 use Model\Managers\TopicManager;
 use Model\Managers\PostManager;
@@ -225,4 +226,94 @@ class ForumController extends AbstractController implements ControllerInterface{
         $this->redirectTo("forum", "findPostsByTopic", $id);
     }
 }
+
+
+public function updatePost($id) {
+
+    $postManager = new PostManager();
+
+    $post = $postManager->findOneById($id);
+
+    if (!$post) {
+        $this->redirectTo("home", "index");
+    } else {
+
+        return [
+            "title" => "Forum - edit post",
+            "view" => VIEW_DIR."update/updatePost.php",
+            "meta_description" => "Update Post",
+            "data" => [
+                "post" => $post
+                ]
+            ];
+        }
+    }
+    
+
+    public function addUpdatePost($id) {
+
+        if($_POST["submit"]) { 
+
+            // Je vérifie que l'utilisateur soit connecté, si ce n'est pas le cas, direction l'INDEX
+        if (!Session::getUser()) {
+            $this->redirectTo("home", "index");
+        } else { 
+
+            $post = filter_input(INPUT_POST, "post", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            if (empty($post)) {
+                Session::addFlash("message", "You can't update a empty post.");
+                $this->redirectTo("update", "updatePost&id=", $id);
+            } elseif ($post) {
+
+                $postManager = new PostManager();
+                $userPost = $postManager->findOneById($id);
+
+                if ($userPost && ($userPost->getUser()->getId() == Session::getUser()->getId() || Session::isModerator() || Session::isAdmin()) ) {
+                    
+                    $information = ["post" => $post];
+
+                    $postManager->update($information, $id);
+
+                    if ($postManager) {
+                        Session::addFlash("message", "Success");
+                        $this->redirectTo("update", "updatePost&id=", $id);
+                    } else {
+                        Session::addFlash("message", "Something wrong.. Try again.1");
+                        $this->redirectTo("update", "updatePost&id=", $id);
+                    }
+                } else {
+                    Session::addFlash("message", "Something wrong.. Try again.2");
+                    $this->redirectTo("update", "updatePost&id=", $id);
+                }
+            } else {
+                Session::addFlash("message", "Something wrong.. Try again.3");
+                $this->redirectTo("update", "updatePost&id=", $id);
+            }
+        }
+    } else {
+        $this->redirectTo("home", "index");
+    }
+}
+
+public function updateTopic($id) {
+
+    $postManager = new PostManager();
+
+    $topic = $topicManager->findOneById($id);
+
+    if (!$topic) {
+        $this->redirectTo("home", "index");
+    } else {
+
+        return [
+            "title" => "Forum - edit topic",
+            "view" => VIEW_DIR."update/updateTopic.php",
+            "meta_description" => "Update Post",
+            "data" => [
+                "post" => $post
+                ]
+            ];
+        }
+    }
 }

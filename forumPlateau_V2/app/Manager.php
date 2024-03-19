@@ -66,6 +66,34 @@ abstract class Manager{
             die();
         }
     }
+
+    public function update($data, $id){
+
+        // Je crée un tableau qui récupères ma key et ma value de DATA
+        $setStatements = [];
+
+        // J'effectue un forEach pour récupérer tout les éléments
+        foreach ($data as $key => $value) {
+            $setStatements[] = "$key = :$key";
+        }
+    
+        // Je supprime les virgules de mon tableau
+        $setClause = implode(', ', $setStatements);
+        
+        // Je déclare ma requette SQL pour update un élément
+        $sql = "UPDATE ".$this->tableName."
+                SET " .$setClause."
+                WHERE id_".$this->tableName." = :id";
+
+        try{
+            $data['id'] = $id;
+            return DAO::update($sql, $data);
+        }
+        catch(\PDOException $e){
+            echo $e->getMessage();
+            die();
+        }
+    }
     
     public function delete($id){
         $sql = "DELETE FROM ".$this->tableName."

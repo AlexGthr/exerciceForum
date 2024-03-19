@@ -13,7 +13,7 @@ class SecurityController extends AbstractController{
     public function register () {
 
         return [
-            "view" => VIEW_DIR."forum/register.php",
+            "view" => VIEW_DIR."security/register.php",
             "meta_description" => "Register form"
         ]; 
 
@@ -153,7 +153,7 @@ class SecurityController extends AbstractController{
     public function login () {
 
         return [
-            "view" => VIEW_DIR."forum/login.php",
+            "view" => VIEW_DIR."security/login.php",
             "meta_description" => "Login form"
         ]; 
 

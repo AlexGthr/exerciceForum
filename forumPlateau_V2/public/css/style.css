@@ -28,6 +28,12 @@
 
 @media only screen and (min-width: 320px) {
 
+
+/* ******************************
+        NAV BAR
+   ****************************** */
+
+
 .nav_mobile {
     background-color: var(--bg-header-footer);
     width: 100%;

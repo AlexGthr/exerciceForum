@@ -43,7 +43,7 @@ class HomeController extends AbstractController implements ControllerInterface {
 
         
         return [
-            "view" => VIEW_DIR."forum/profil.php",
+            "view" => VIEW_DIR."security/profil.php",
             "meta_description" => "Liste des utilisateurs du forum",
             "data" => [ 
                 "user" => $user 
