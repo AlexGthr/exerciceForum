@@ -28,7 +28,7 @@ echo $session->getFlash("message");
 
     
         
-            <input type="submit" name="submit" value="Add post !">
+            <input type="submit" name="submit" value="Edit post !">
 
         </form>
         
