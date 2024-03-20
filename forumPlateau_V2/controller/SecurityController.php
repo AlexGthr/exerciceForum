@@ -177,8 +177,9 @@ class SecurityController extends AbstractController{
                 // Une fois le filtre vérifié, je check dans la BDD si un utilisateur avec ce pseudo existe
                 $user = $userManager->findByNickName($nickName);
 
+
                 // Si je trouve un utilisateur avec ce nickName je passe à la suite
-                if ($user) {
+                if ($user && !$user->getBan()) {
 
                     // Je récupère le hash du MDP
                     $checkPassword = $user->getPassword();
@@ -195,6 +196,12 @@ class SecurityController extends AbstractController{
                     // Si le password_verify n'est pas correct, message d'erreur.
                     Session::addFlash("message", "Password is not correct.");
                     $this->redirectTo("security", "login");
+
+                } else if ($user->getBan()) {
+
+                // Si le pseudo n'existe pas, message d'erreur.
+                Session::addFlash("message", "You are banned from this website.");
+                $this->redirectTo("security", "login");
 
                 }
 
@@ -220,5 +227,83 @@ class SecurityController extends AbstractController{
         unset($_SESSION["user"]);
 
         $this->redirectTo("index", "home");
+    }
+
+
+    public function listUsers() {
+
+        if (!Session::isAdmin() && !Session::isModerator()) {
+
+            $this->redirectTo("home", "index");
+
+        } else { 
+
+        $userManager = new UserManager();
+
+        $users = $userManager->findAll();
+
+        return [
+            "title" => "Forum - list users",
+            "view" => VIEW_DIR."security/listUsers.php",
+            "meta_description" => "Update Post",
+            "data" => [
+                "users" => $users
+                ]
+            ];
+
+    }
+    }
+
+    public function editUserAdmin($id) {
+
+        if($_POST["submit"]) {
+
+            if (!Session::isAdmin() && !Session::isModerator()) {
+
+                $this->redirectTo("home", "index");
+
+            } elseif ($id == 1) { 
+
+                $this->redirectTo("home", "index");
+
+            } else {
+
+                $role = filter_input(INPUT_POST, "role", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $ban = filter_input(INPUT_POST, "banned", FILTER_VALIDATE_INT);
+
+                $userManager = new UserManager();
+
+                $user = $userManager->findOneById($id);
+
+                if ($user) {
+
+                    $information = [
+                        "role" => $role,
+                        "ban" => $ban
+                    ];
+
+                    $userManager->update($information, $id);
+
+                    if ($userManager) {
+
+                        Session::addFlash("message", "Success");
+                        $this->redirectTo("security", "listUsers");
+
+                    } else {
+                        Session::addFlash("message", "Error on update");
+                        $this->redirectTo("security", "listUsers");
+                    }
+                } else {
+
+                    Session::addFlash("message", "User not found");
+                    $this->redirectTo("security", "listUsers");
+
+                }
+            } 
+        } else {
+
+            $this->redirectTo("home", "index");
+
+        }       
     }
 }

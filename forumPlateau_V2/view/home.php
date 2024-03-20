@@ -6,4 +6,4 @@
 
 <p> Role : <?php if(App\Session::getUser()) { echo App\Session::getUser()->getRole(); }?></p><br>
 
-<a href="index.php?ctrl=forum&action=index">Liste des catégories</a>
+<a href="index.php?ctrl=forum&action=listCategory">Liste des catégories</a>

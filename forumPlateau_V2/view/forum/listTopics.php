@@ -6,7 +6,7 @@
 ?>
 
 <!-- Lien pour revenir à la liste des catégories -->
-<a href="index.php?ctrl=forum&action=index"> Return list category </a>
+<a href="index.php?ctrl=forum&action=listCategory"> Return list category </a>
 
 <h1>Liste des topics de la catégorie <?= $category->getName() ?></h1>
 

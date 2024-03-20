@@ -47,7 +47,7 @@ class Session{
 
     public static function isModerator(){
         // attention de bien définir la méthode "hasRole" dans l'entité User en fonction de la façon dont sont gérés les rôles en base de données
-        if(self::getUser() && self::getUser()->hasRole("MODERATOR")){
+        if(self::getUser() && self::getUser()->hasRole("moderator")){
             return true;
         }
         return false;

@@ -12,7 +12,7 @@ use Model\Managers\UserManager;
 
 class ForumController extends AbstractController implements ControllerInterface{
 
-    public function index() {
+    public function listCategory() {
         
         // créer une nouvelle instance de CategoryManager
         $categoryManager = new CategoryManager();
@@ -40,15 +40,22 @@ class ForumController extends AbstractController implements ControllerInterface{
         $category = $categoryManager->findOneById($id);
         $topics = $topicManager->findTopicsByCategory($id);
 
-        // Et je retourne mes infos à la vue
-        return [
-            "view" => VIEW_DIR."forum/listTopics.php",
-            "meta_description" => "Liste des topics par catégorie : ".$category,
-            "data" => [
-                "category" => $category,
-                "topics" => $topics
-            ]
-        ];
+
+        if (!$category) {
+            $this->redirectTo("home", "index");
+        } else {
+            
+            // Et je retourne mes infos à la vue
+            return [
+                "view" => VIEW_DIR."forum/listTopics.php",
+                "meta_description" => "Liste des topics par catégorie : ".$category,
+                "data" => [
+                    "category" => $category,
+                    "topics" => $topics
+                ]
+            ];
+        }
+
     }
 
     // Method pour recupérer les posts pas ID d'un topic
@@ -64,6 +71,10 @@ class ForumController extends AbstractController implements ControllerInterface{
         $users = $userManager->findOneById($id);
         $posts = $postManager->findPostsByTopic($id);
 
+        if (!$topics) {
+            $this->redirectTo("home", "index");
+        } else {
+
         // Et j'envoi le tout dans ma vue
         return [
             "view" => VIEW_DIR."forum/postsTopic.php",
@@ -75,7 +86,7 @@ class ForumController extends AbstractController implements ControllerInterface{
             ]
         ];
     }
-
+    }
     // MEthod pour le formulaire d'un nouveau topic
     public function newTopic() {
 
@@ -109,8 +120,17 @@ class ForumController extends AbstractController implements ControllerInterface{
             // Je récupère l'id de mon utilisateur
         $idUser = Session::getUser()->getId();
 
-        // Je compare l'id de mon url avec celle de mon user, pour éviter la création de topic avec un autre ID
-        if($id == $idUser) {
+        $userManager = new UserManager();
+        $user = $userManager->findOnebyId($idUser);
+
+        if ($user->getBan() !== Session::getUser()->getBan()) {
+
+            // Je retire les informations user de la session.
+            unset($_SESSION["user"]);
+            Session::addFlash("message", "You are banned.");
+            $this->redirectTo("security", "login");
+        } else if($id == $idUser) {
+            // Je compare l'id de mon url avec celle de mon user, pour éviter la création de topic avec un autre ID
 
             // Je filtre les données reçus
             $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -195,8 +215,19 @@ class ForumController extends AbstractController implements ControllerInterface{
             $this->redirectTo("home", "index");
         } else {
 
-            // Je récupère l'id de mon utilisateur
-            $idUser = Session::getUser()->getId();
+        // Je récupère l'id de mon utilisateur
+        $idUser = Session::getUser()->getId();
+
+        $userManager = new UserManager();
+        $user = $userManager->findOnebyId($idUser);
+
+        if ($user->getBan() !== Session::getUser()->getBan()) {
+
+            // Je retire les informations user de la session.
+            unset($_SESSION["user"]);
+            Session::addFlash("message", "You are banned.");
+            $this->redirectTo("security", "login");
+        }
     
             // Je filtre les résultats
             $post = filter_input(INPUT_POST, "post", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -234,6 +265,10 @@ public function updatePost($id) {
 
     $post = $postManager->findOneById($id);
 
+    if (!$post) {
+        $this->redirectTo("home", "index");
+    } else {
+
     if ($post->getTopic()->getClosed()) {
         $this->redirectTo("home", "index");
 
@@ -252,6 +287,7 @@ public function updatePost($id) {
                 ]
             ];
         }
+    }
     }
     
 
@@ -307,6 +343,10 @@ public function updateTopic($id) {
 
     $topic = $topicManager->findOneById($id);
 
+    if (!$topic) {
+        $this->redirectTo("home", "index");
+    } else {
+
     if ($topic->getClosed()) {
 
         $this->redirectTo("home", "index");
@@ -326,6 +366,7 @@ public function updateTopic($id) {
                 ]
             ];
         }
+    }
     }
 
     public function addUpdateTopic($id) {
@@ -405,6 +446,37 @@ public function updateTopic($id) {
             }
         }
         
+    }
+
+    public function deleteTopic($id) {
+
+        if (!Session::getUser() && (!Session::isAdmin() || !Session::isModerator())) {
+
+            $this->redirectTo("home", "index");
+
+        } else { 
+
+            $topicManager = new TopicManager();
+
+            $topic = $topicManager->findOneById($id);
+
+            if (!$topic) {
+
+                $this->redirectTo("home", "index");
+
+            } elseif (Session::isAdmin() || Session::isModerator()) {
+                
+                $topicManager->delete($id);
+
+                $this->redirectTo("forum", "listCategory");
+
+            } else {
+
+                $this->redirectTo("home", "index");
+
+            }
+        }
+
     }
 
     public function lockTopic($id) {

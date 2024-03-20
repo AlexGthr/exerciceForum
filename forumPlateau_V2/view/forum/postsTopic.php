@@ -57,6 +57,7 @@ echo $session->getFlash("message");
 <?php if (App\Session::getUser() && (App\Session::isAdmin() || App\Session::isModerator())) { ?>
 
     <a href="index.php?ctrl=forum&action=updateTopic&id=<?= $topics->getId() ?>"> Edit </a>
+    <a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topics->getId() ?>"> Delete </a>
 
 <?php } ?>
 

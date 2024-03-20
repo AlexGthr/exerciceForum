@@ -42,9 +42,9 @@
                                 <?php } ?>
 
                                  <!-- Si l'utilisateur est un Admin, on ajoute ces pages  -->
-                                <?php if(App\Session::isAdmin()) { ?>
+                                <?php if(App\Session::isAdmin() || App\Session::isModerator()) { ?>
 
-                                    <li><a href="index.php?ctrl=security&action=users">List Users</a></li>
+                                    <li><a href="index.php?ctrl=security&action=listUsers">List Users</a></li>
                                 
                                 <?php } ?>
 
@@ -89,7 +89,9 @@
                 </header>
                 
                 <main id="forum">
+
                     <?= $page ?>
+                    
                 </main>
             </div>
             <footer>
