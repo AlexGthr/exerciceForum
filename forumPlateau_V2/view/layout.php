@@ -91,7 +91,7 @@
                 <main id="forum">
 
                     <?= $page ?>
-                    
+
                 </main>
             </div>
             <footer>

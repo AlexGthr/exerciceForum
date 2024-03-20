@@ -60,6 +60,7 @@ nav h1 {
     height: 50px;
     width: 50px;
     border-radius: 14px;
+    object-fit: cover;
     color: var(--first-color);
 }
 
@@ -159,7 +160,9 @@ h1 {
     flex-direction: column;
 }
 
-.show_boxPost {
+.show_boxPost,
+.show_boxPostAvatar,
+.show_boxPostPassword {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -167,7 +170,9 @@ h1 {
     padding: 15px 0;
 }
 
-.show_boxPost p {
+.show_boxPost p,
+.show_boxPostAvatar p,
+.show_boxPostPassword p {
     color: var(--first-color);
     background-color: var(--bg-border);
     padding: 10px 50px;
@@ -186,7 +191,9 @@ h1 {
     text-align: center;
 }
 
-.active.show_boxPost p {
+.active.show_boxPost p,
+.active.show_boxPostAvatar p,
+.active.show_boxPostPassword p {
     box-shadow: none;
     transform: translate(5px, 5px);
 }
@@ -223,6 +230,32 @@ h1 {
 .red {
     padding: 0 25px;
     color: red;
+}
+
+.show_editAvatar {
+    display: none;
+}
+
+.form_editAvatar {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+padding: 15px;
+}
+
+.show_editPassword {
+    display: none;
+}
+
+.form_editPassword form {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+padding: 15px;
 }
 
 }

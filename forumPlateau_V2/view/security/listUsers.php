@@ -23,11 +23,12 @@ echo $session->getFlash("message");
         <li> <?= $user->getNickName() ?> 
 
             <form id="editAdminUser" action="index.php?ctrl=security&action=editUserAdmin&id=<?= $user->getId() ?>" method="POST">
-
+                
+            <?php if (App\Session::isAdmin()) { ?>
+                
                 <label for="roleUser">Role :</label>
 
                     <select name="role" id="RoleUser">
-
                         <?php if ($user->getRole() == "user") { ?>
                             
                             <option value="user">USER</option>
@@ -38,7 +39,7 @@ echo $session->getFlash("message");
                             <option value="moderator">MODERATOR</option>
                             <option value="user">USER</option>
                         
-                        <?php }?>
+                        <?php }}?>
 
                     </select>
 

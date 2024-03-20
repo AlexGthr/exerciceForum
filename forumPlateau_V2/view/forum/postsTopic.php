@@ -67,7 +67,7 @@ foreach($posts as $post) { ?>
     <br><p> <?= $post->getPost() ?> </p>
 
 
-    <p> By <?= $post->getUser() ?> </p>
+    <p> By <a href="index.php?ctrl=home&action=viewProfil&id=<?= $post->getUser()->getId() ?>"><?= $post->getUser() ?></p>
 
             <!-- // Permet la modification de son propre message ou de tout les messages en fonction du role -->
     <?php if (App\Session::getUser() && $post->getUser() == App\Session::getUser()->getNickName() && !$topics->getClosed()) { ?>
