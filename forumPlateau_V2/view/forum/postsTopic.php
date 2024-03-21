@@ -26,6 +26,7 @@ echo $session->getFlash("message");
             if (App\Session::isAdmin() || App\Session::isModerator()) { ?> 
             
             <a href="index.php?ctrl=forum&action=lockTopic&id=<?= $topics->getId() ?>">
+                <?php unset($_SESSION["link"]); ?>
                 <i class="fa-solid fa-unlock-keyhole green"></i>
             </a>
         
@@ -41,6 +42,7 @@ echo $session->getFlash("message");
         if (App\Session::isAdmin() || App\Session::isModerator()) { ?> 
             
             <a href="index.php?ctrl=forum&action=unlockTopic&id=<?= $topics->getId() ?>">
+                <?php unset($_SESSION["link"]); ?>
                 <i class="fa-solid fa-lock red"></i>
             </a>
         
@@ -64,21 +66,27 @@ echo $session->getFlash("message");
 <?php  // Affichage des messages d'un topic
 foreach($posts as $post) { ?>
 
-    <br><p> <?= $post->getPost() ?> </p>
+    <br><br><p> <?= $post->getPost() ?> </p>
 
 
-    <p> By <a href="index.php?ctrl=home&action=viewProfil&id=<?= $post->getUser()->getId() ?>"><?= $post->getUser() ?></p>
+    <p> By 
+        <a href="index.php?ctrl=home&action=viewProfil&id=<?= $post->getUser()->getId() ?>">
+        <?= $post->getUser() ?>
+        </a>
+    </p>
 
             <!-- // Permet la modification de son propre message ou de tout les messages en fonction du role -->
     <?php if (App\Session::getUser() && $post->getUser() == App\Session::getUser()->getNickName() && !$topics->getClosed()) { ?>
 
         <a href="index.php?ctrl=forum&action=updatePost&id=<?= $post->getId() ?>"> Update </a>
+        <p> OR </p>
         <a href="index.php?ctrl=forum&action=deletePost&id=<?= $post->getId() ?>"> Delete </a>
 
     <?php } elseif (App\Session::getUser() && (App\Session::isAdmin() || App\Session::isModerator())) { ?>
 
-        <a href="index.php?ctrl=forum&action=updatePost&id=<?= $post->getId() ?>"> Update </a>
-        <a href="index.php?ctrl=forum&action=deletePost&id=<?= $post->getId() ?>"> Delete </a>
+        <p><a href="index.php?ctrl=forum&action=updatePost&id=<?= $post->getId() ?>"> Update </a>
+         OR 
+        <a href="index.php?ctrl=forum&action=deletePost&id=<?= $post->getId() ?>"> Delete </a></p>
 
 <?php } } ?>
 
@@ -118,11 +126,11 @@ foreach($posts as $post) { ?>
         <?php if ($topics->getClosed()) { ?>
             
             <h2> This topic is closed. </h2>
-
-        <?php } else { ?>
-
-            <h2> You must be connected to send a post. </h2>
-            <a href="index.php?ctrl=security&action=login">Login</a>
+            
+            <?php } else { ?>
+                
+                <h2> You must be connected to send a post. </h2>
+                <a href="index.php?ctrl=security&action=login">Login</a>
 
         <?php } ?>
 

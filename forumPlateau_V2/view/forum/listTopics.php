@@ -26,6 +26,7 @@ foreach($topics as $topic ){ ?>
                 if (App\Session::isAdmin() || App\Session::isModerator()) { ?> 
             
                     <a href="index.php?ctrl=forum&action=lockTopic&id=<?= $topic->getId() ?>">
+                        <?php App\Session::addFlash("link", $category->getId()); ?>
                         <i class="fa-solid fa-unlock-keyhole green"></i>
                     </a>
         
@@ -40,6 +41,7 @@ foreach($topics as $topic ){ ?>
                 if (App\Session::isAdmin() || App\Session::isModerator()) { ?> 
             
                     <a href="index.php?ctrl=forum&action=unlockTopic&id=<?= $topic->getId() ?>">
+                    <?php App\Session::addFlash("link", $category->getId()); ?>
                         <i class="fa-solid fa-lock red"></i>
                     </a>
         

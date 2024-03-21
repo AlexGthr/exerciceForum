@@ -495,7 +495,20 @@ public function updateTopic($id) {
 
             $topicManager->update($information, $id);
 
-            $this->redirectTo("forum", "findPostsByTopic", $id);
+            if (!isset($_SESSION["link"])) {
+
+                $this->redirectTo("forum", "findPostsByTopic", $id);
+
+            } else {
+
+                $idCategory = $_SESSION["link"];
+
+                unset($_SESSION["link"]);
+
+                $this->redirectTo("forum", "listTopicsByCategory", $idCategory);
+            }
+
+            
 
         }
     }
@@ -516,8 +529,20 @@ public function updateTopic($id) {
 
             $topicManager->update($information, $id);
 
-            $this->redirectTo("forum", "findPostsByTopic", $id);
 
+            if (!isset($_SESSION["link"])) {
+
+                $this->redirectTo("forum", "findPostsByTopic", $id);
+
+            } else {
+                
+                $idCategory = $_SESSION["link"];
+
+                unset($_SESSION["link"]);
+                
+                $this->redirectTo("forum", "listTopicsByCategory", $idCategory);
+            }
+            
         }
     }
 }
