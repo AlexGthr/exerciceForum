@@ -25,13 +25,19 @@ CREATE TABLE IF NOT EXISTS `category` (
   `name` varchar(50) NOT NULL,
   `picture` varchar(255) NOT NULL,
   PRIMARY KEY (`id_category`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table forum.category : ~3 rows (environ)
+-- Listage des données de la table forum.category : ~9 rows (environ)
 INSERT INTO `category` (`id_category`, `name`, `picture`) VALUES
 	(1, 'Taverne', 'public/img/65e992bb051718.19870077.webp'),
 	(2, 'Adventure games', 'public/img/65e992bb051718.19870077.webp'),
-	(3, 'MMORPG', 'public/img/65e992bb051718.19870077.webp');
+	(3, 'MMORPG', 'public/img/65e992bb051718.19870077.webp'),
+	(4, 'Roleplay', 'public/img/65e992bb051718.19870077.webp'),
+	(5, 'Cars games', 'public/img/65e992bb051718.19870077.webp'),
+	(6, 'Retrogaming', 'public/img/65e992bb051718.19870077.webp'),
+	(7, 'Rogue like', 'public/img/65e992bb051718.19870077.webp'),
+	(8, 'Narrative games', 'public/img/65e992bb051718.19870077.webp'),
+	(9, 'Puzzle games', 'public/img/65e992bb051718.19870077.webp');
 
 -- Listage de la structure de table forum. post
 CREATE TABLE IF NOT EXISTS `post` (
@@ -41,17 +47,18 @@ CREATE TABLE IF NOT EXISTS `post` (
   `topic_id` int NOT NULL,
   `user_id` int NOT NULL,
   PRIMARY KEY (`id_post`),
-  KEY `topic_id` (`topic_id`),
   KEY `user_id` (`user_id`),
-  CONSTRAINT `post_ibfk_1` FOREIGN KEY (`topic_id`) REFERENCES `topic` (`id_topic`),
+  KEY `post_ibfk_1` (`topic_id`),
+  CONSTRAINT `post_ibfk_1` FOREIGN KEY (`topic_id`) REFERENCES `topic` (`id_topic`) ON DELETE CASCADE,
   CONSTRAINT `post_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table forum.post : ~3 rows (environ)
+-- Listage des données de la table forum.post : ~4 rows (environ)
 INSERT INTO `post` (`id_post`, `post`, `dateCreation`, `topic_id`, `user_id`) VALUES
-	(1, 'Hello Everyone ! It\'s my first message here !', '2024-03-15 15:48:35', 1, 1),
-	(2, 'Hi! Second message, just try something !', '2024-03-15 16:27:39', 1, 1),
-	(3, 'Hello Admin! Are you ok ?', '2024-03-15 16:50:40', 1, 14);
+	(5, 'teste 2', '2024-03-18 10:44:55', 13, 1),
+	(6, 'Salut, des fran&ccedil;ais par ici ?55', '2024-03-18 10:47:41', 14, 1),
+	(10, 'Coucou Everyone ! 55', '2024-03-18 14:17:55', 2, 1),
+	(13, 'Hello Admin! how are you ?!  x', '2024-03-19 13:45:50', 2, 15);
 
 -- Listage de la structure de table forum. topic
 CREATE TABLE IF NOT EXISTS `topic` (
@@ -66,11 +73,13 @@ CREATE TABLE IF NOT EXISTS `topic` (
   KEY `category_id` (`category_id`),
   CONSTRAINT `topic_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id_user`),
   CONSTRAINT `topic_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `category` (`id_category`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table forum.topic : ~1 rows (environ)
+-- Listage des données de la table forum.topic : ~3 rows (environ)
 INSERT INTO `topic` (`id_topic`, `title`, `closed`, `creationDate`, `user_id`, `category_id`) VALUES
-	(1, 'First topic !', 0, '2024-03-15 14:51:08', 1, 1);
+	(2, 'Second Topic 2', 1, '2024-03-18 10:05:25', 1, 1),
+	(13, 'New mmorpg !', 0, '2024-03-18 10:44:55', 1, 3),
+	(14, 'Salut tout le monde !5', 1, '2024-03-18 10:47:41', 1, 1);
 
 -- Listage de la structure de table forum. user
 CREATE TABLE IF NOT EXISTS `user` (
@@ -82,12 +91,13 @@ CREATE TABLE IF NOT EXISTS `user` (
   `dateRegistration` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ban` tinyint NOT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table forum.user : ~2 rows (environ)
+-- Listage des données de la table forum.user : ~3 rows (environ)
 INSERT INTO `user` (`id_user`, `nickName`, `avatar`, `password`, `role`, `dateRegistration`, `ban`) VALUES
-	(1, 'Admin', './public/img/avatar/65f451c0341f37.26351321.webp', '$2y$10$TNAMmOt7TA7zkgy08FOD1.zb.Q.doL6LLavMbExIct1EI0XaDWj/G', 'user', '2024-03-15 14:48:48', 0),
-	(14, 'User1', './public/img/avatar/default.webp', '$2y$10$ueKYtewZUtqSPkrMn0hnf.3qupuaUQUyL2n1o.p.1/WySXA6aDs2a', 'user', '2024-03-15 16:50:10', 0);
+	(1, 'Admin', './public/img/avatar/65faed71065277.26114292.webp', '$2y$10$TNAMmOt7TA7zkgy08FOD1.zb.Q.doL6LLavMbExIct1EI0XaDWj/G', 'ADMIN', '2024-03-15 14:48:48', 0),
+	(14, 'User1', './public/img/avatar/default.webp', '$2y$10$ueKYtewZUtqSPkrMn0hnf.3qupuaUQUyL2n1o.p.1/WySXA6aDs2a', 'user', '2024-03-15 16:50:10', 0),
+	(15, 'AlexUser', './public/img/avatar/65faf7dacc8287.04328252.webp', '$2y$10$q.F9CIBKZDkfglNUYwU/GeLS6chGLW4FywvkoLMhQF/iGg.f67iKO', 'user', '2024-03-19 08:37:52', 0);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
