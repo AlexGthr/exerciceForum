@@ -123,7 +123,7 @@ class SecurityController extends AbstractController{
                         $userManager->add($information);
 
                         // Je crée ensuite un message personnalisé en Session, pour confirmer l'inscription et je redirige vers le login
-                        Session::addFlash("message", "Sign Up success !");
+                        Session::addFlash("message", "Success");
                         $this->redirectTo("security", "login");
                         exit;
 
@@ -197,18 +197,18 @@ class SecurityController extends AbstractController{
                     Session::addFlash("message", "Password is not correct.");
                     $this->redirectTo("security", "login");
 
-                } else if ($user->getBan()) {
-
-                // Si le pseudo n'existe pas, message d'erreur.
-                Session::addFlash("message", "You are banned from this website.");
-                $this->redirectTo("security", "login");
-
-                }
+                } else if (!$user) {
 
                 // Si le pseudo n'existe pas, message d'erreur.
                 Session::addFlash("message", "This pseudo doesn't exist.");
                 $this->redirectTo("security", "login");
 
+                } else if ($user->getBan()) {
+
+                // Si le pseudo n'existe pas, message d'erreur.
+                Session::addFlash("message", "You are banned from this website.");
+                $this->redirectTo("security", "login");
+                }
             }
 
             Session::addFlash("message", "Problem with something. Try again.");

@@ -38,3 +38,10 @@ echo $session->getFlash("message");
 <p> * : Not required </p>
 
 <?php } ?>
+
+
+<?php 
+
+$noImg = true;
+
+?>

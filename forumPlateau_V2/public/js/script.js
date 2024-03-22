@@ -14,6 +14,27 @@ links.forEach((link) => {
     })
 })
 
+let msgSession = document.querySelector('.value_session');
+let boxSession = document.querySelector('.box_session');
+
+function showReaction(type) {
+    boxSession.classList.add(type);
+    setTimeout(function () {
+        boxSession.classList.remove(type);
+    }, 1800);
+}
+
+if (msgSession) {
+    if (msgSession.textContent === "Success !") {
+        showReaction("session_success");
+    } else if (msgSession.textContent !== "") {
+        showReaction("session_error");
+    } else {
+        boxSession.classList.remove('session_error');
+        boxSession.classList.remove('session_success');
+    }
+}
+
 
 // Récupération éléments pour le "push" boutton d'ajout de message
 let buttonAddPost = document.querySelector('.show_boxPost')

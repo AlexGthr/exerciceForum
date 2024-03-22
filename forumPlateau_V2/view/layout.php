@@ -82,9 +82,11 @@
                     </nav>
 
                     <!-- Image en dessous de la nav -->
-                    <figure class="img_topMobile">
-                        <img src="./public/img/img-top-mobile.webp" title="image top mobile">
-                    </figure>
+                    <?php if (!isset($noImg)) {?>
+                        <figure class="img_topMobile">
+                            <img src="./public/img/img-top-mobile.webp" title="image top mobile">
+                        </figure>
+                    <?php } ?>
 
                 </header>
                 
@@ -95,7 +97,9 @@
                 </main>
             </div>
             <footer>
-                <p>&copy; <?= date_create("now")->format("Y") ?> - <a href="#">Règlement du forum</a> - <a href="#">Mentions légales</a></p>
+                <p>&copy; <?= date_create("now")->format("Y") ?> - 
+                    <a href="#"><span class="link_yellow">Règlement du forum </span></a> | 
+                    <a href="#"><span class="link_yellow">Mentions légales</span></a></p>
             </footer>
         </div>
         <script
