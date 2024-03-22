@@ -205,7 +205,6 @@ nav h1 {
 
 .card_Login {
     width: 90%;
-    height: 63vh;
     background-color: var(--bg-card);
     border-radius: 14px;
     display: flex;
@@ -320,6 +319,88 @@ nav h1 {
 .rose_color {
     color: var(--first-color-rose);
     text-decoration: underline;
+}
+
+
+/* ******************************
+        Register
+   ****************************** */
+.box_Card {
+    padding: 10px 0px 30px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card_register {
+    width: 90%;
+    background-color: var(--bg-card);
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card_register h1 {
+    color: var(--first-color);
+    padding: 70px 0px 20px 0;
+    font-weight: var(--Regular);
+    font-size: var(--title-size);
+}
+
+.register_input{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin: 30px 0;
+}
+
+.register_input label{
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: var(--first-color);
+    pointer-events: none; /*pas de surlignage possible */
+    transition: .5s;
+}
+
+.register_input i {
+    color: var(--first-color);
+    position: absolute;
+    right: 20px;
+    top: 30%;
+}
+
+.register_input input{
+    width: 95%;
+    height: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 0 5px;
+    background: var(--bg-border);
+    border-radius: 14px;
+    border: none;
+    outline: none;
+
+}
+
+.register_file {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--first-color);
+    padding-bottom: 25px;
+}
+
+.register_input input:focus~label,
+.register_input input:valid~label{ /*permettra un déplacement du champ vers le haut*/
+    top: -10px;
+}
+
+.white {
+    color: var(--first-color);
 }
 
 /* ******************************

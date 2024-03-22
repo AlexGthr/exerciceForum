@@ -16,6 +16,7 @@ final class User extends Entity{
     private $role;
     private $dateRegistration;
     private $ban;
+    private $email;
 
     public function __construct($data){         
         $this->hydrate($data);        
@@ -152,6 +153,26 @@ final class User extends Entity{
     public function setBan($ban)
     {
         $this->ban = $ban;
+
+        return $this;
+    }
+
+        /**
+     * Get the value of ban
+     */ 
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set the value of ban
+     *
+     * @return  self
+     */ 
+    public function setEmail($email)
+    {
+        $this->email = $email;
 
         return $this;
     }

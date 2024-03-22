@@ -27,4 +27,17 @@ class UserManager extends Manager{
         $this->className
 );
     }
+
+    public function findByEmail($email) {
+
+        $sql = "SELECT * 
+        FROM ".$this->tableName." u 
+        WHERE u.email = :email";
+
+        // la requête renvoie plusieurs enregistrements --> getMultipleResults
+        return $this->getOneOrNullResult(
+        DAO::select($sql, ['email' => $email], false), 
+        $this->className
+);
+    }
 }
