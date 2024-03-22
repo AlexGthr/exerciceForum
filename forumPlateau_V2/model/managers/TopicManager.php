@@ -27,4 +27,32 @@ class TopicManager extends Manager{
             $this->className
         );
     }
+
+    public function findAllByDate(){
+
+        $sql = "SELECT *
+                FROM ".$this->tableName." a
+                ORDER BY DATE_FORMAT(creationDate, '%Y/%m/%d/%H/%i/%s') DESC
+                LIMIT 3";
+
+        return $this->getMultipleResults(
+            DAO::select($sql), 
+            $this->className
+        );
+    }
+
+    public function findTopicByNumber() {
+
+        $sql = "SELECT *, COUNT(category_id) AS nbTopic
+                FROM topic
+                GROUP BY id_topic
+                ORDER BY nbPost
+                LIMIT 3";
+        
+        return $this->getMultipleResults(
+            DAO::select($sql), 
+            $this->className
+        );
+    }
+    
 }

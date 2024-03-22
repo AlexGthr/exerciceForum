@@ -54,4 +54,19 @@ class PostManager extends Manager{
             $this->className
         );
     }
+
+    public function findPostByNumber() {
+
+        $sql = "SELECT *, COUNT(topic_id) AS nbPost
+                FROM post
+                GROUP BY id_post
+                ORDER BY nbPost
+                LIMIT 3";
+        
+        return $this->getMultipleResults(
+            DAO::select($sql), 
+            $this->className
+        );
+    }
+    
 }

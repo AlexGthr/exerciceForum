@@ -12,9 +12,34 @@ use Model\Managers\UserManager;
 class HomeController extends AbstractController implements ControllerInterface {
 
     public function index(){
+
+        $topicManager = new TopicManager();
+        $categoryManager = new CategoryManager();
+        $userManager = new UserManager();
+        $postManager = new PostManager();
+
+        $topics = $topicManager->findAllByDate();
+        $nbTopics = $topicManager->findAll();
+
+        $nbPosts = $postManager->findAll();
+        $posts = $postManager->findPostByNumber();
+
+        $category = $postManager->findPostByNumber();
+
+
+        // $category = $categoryManager->
+        // $users = $userManager->
+
         return [
             "view" => VIEW_DIR."home.php",
-            "meta_description" => "Page d'accueil du forum"
+            "meta_description" => "Page d'accueil du forum",
+            "data" => [
+                "topics" => $topics,
+                "nbTopics" => $nbTopics,
+                "posts" => $posts,
+                "nbPost" => $nbPosts,
+                "category" => $category
+            ]
         ];
     }
         
