@@ -5,21 +5,86 @@
     $topics = $result["data"]['topics']; 
 ?>
 
-<!-- Lien pour revenir à la liste des catégories -->
-<a href="index.php?ctrl=forum&action=listCategory"> Return list category </a>
+<section class="wrapper_list">
 
-<h1>Liste des topics de la catégorie <?= $category->getName() ?></h1>
+<div class="button_listTopic">
+<!-- Lien pour crée un topic -->
+    <div class="returnCategory">
+
+        <a href="index.php?ctrl=forum&action=listCategory">
+            <p><span class="addActiveAvatar"> Category </span></p>
+        </a>
+
+    </div>
+
+    <div class="boxAddTopic">
+
+        <a href="index.php?ctrl=forum&action=newTopic"> 
+            <p><span class="addActiveAvatar"> New Topic </span></p>
+        </a>
+
+    </div>
+
+</div>
+
+<div class="title_popularTopic">
+        <h1> Topic of <?= $category->getName() ?> </h1>
+        <hr class="after_titlePink" />
+</div>
+
+<section class="latest_topic">
 
 
 <!-- Si il y as des topics dans la catégorie, je les affiches --> 
 <?php if (isset($topics)) {
 
 foreach($topics as $topic ){ ?>
-    <div class="lockListTopic">
+    <div class="boxTopic">
 
-        <a href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $topic->getId() ?>">
-            <?= $topic ?>
-        </a>
+<figure class="img_avatarList">
+    <a href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $topic->getId() ?>">
+        <img src="<?= $topic->getUser()->getAvatar()?>" title="image top mobile">
+    </a>
+</figure>
+
+<div class="list_titleTopic">
+
+    <div class="titleTopicList">
+
+        <p>
+            <a href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $topic->getId() ?>">
+                <?= $topic->getTitle(); ?>
+            </a>
+        </p>
+
+    </div>
+
+    <div class="list_infoTopic">
+
+        <p> By <span class="yellow">
+                <a href="index.php?ctrl=home&action=viewProfil&id=<?= $topic->getUser()->getId() ?>">
+                    <?= $topic->getUser() ?>
+                </a>
+            </span> | <?= $topic->getCreationDate()->format("F jS, Y") ?>
+        </p>
+
+        <p> In <span class="yellow">
+                <a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $topic->getCategory()->getId() ?>">
+                    <?= $topic->getCategory() ?>
+                </a>
+            </span>
+        </p>
+
+    </div>
+</div>
+
+<div class="list_nbPost">
+
+    <i class="fa-regular fa-message"></i>
+    <p> 17 </p>
+</div>
+
+</div>
 
             <?php if (!$topic->getClosed()) {
 
@@ -51,18 +116,20 @@ foreach($topics as $topic ){ ?>
             
                 <?php } ?>
 
-            <?php } ?>
+<?php }} ?>
 
     </div>
 
 
-        <p> par <?= $topic->getUser() ?></p> <br>
 
 <?php }
 
 // Sinon, je met un message personnalisé
-} else { ?>
+ else { ?>
 
     <p> No topic here.. </p>
 
 <?php } ?>
+
+</section>
+</section>

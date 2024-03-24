@@ -2,24 +2,61 @@
     $categories = $result["data"]['categories']; 
 ?>
 
-<h1>Liste des catégories</h1>
+<section class="list_Category">
+
+<div class="title_popularTopic">
+        <h1> BEST CATEGORIES </h1>
+        <hr class="after_title" />
+    </div>
+
+    <section class="latest_topic">
 
 <!-- Lien pour crée un topic -->
-<a href="index.php?ctrl=forum&action=newTopic"> Create topic </a>
+<div class="boxAddTopic">
+
+<a href="index.php?ctrl=forum&action=newTopic"> 
+    <p><span class="addActiveAvatar"> New Topic </span></p>
+</a>
+
+</div>
 
 <?php
 
 // Affichage de la liste des categories
-foreach($categories as $category ){?>
+foreach($categories as $categ ){?>
 
-    <div class="img_category">
-        <figure>
-            <img src="<?= $category->getPicture() ?>" title="<?= $category->getName() ?>">
-    </figure>
-    
-        <p><a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $category->getId() ?>"><?= $category->getName() ?></a></p>
+    <div class="boxCateg">
+
+        <figure class="img_CategList">
+            <a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $categ->getId() ?>">
+                <img src="./public/img/imgcateg.svg" title="image top mobile">
+            </a>
+        </figure> 
+
+        <div class="list_titleCateg">
+
+            <div class="titleCategList">
+
+                <p>
+                    <a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $categ->getId() ?>">
+                    <?= $categ->getName(); ?>
+                    </a>
+                </p>
+
+            </div>
+        </div>
+
+        <div class="list_nbPost_">
+            <p><i class="fa-solid fa-thumbtack"></i> 17 </p>
+            <p><i class="fa-regular fa-message"></i> 17 </p>
+        </div>
+
     </div>
+
 <?php } ?>
+
+</section>
+</section>
 
 
 

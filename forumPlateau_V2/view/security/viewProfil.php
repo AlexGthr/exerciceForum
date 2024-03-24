@@ -38,3 +38,10 @@ echo $session->getFlash("message");
 <?php } else {
     header('Location: index.php');
 } ?>
+
+<?php 
+
+$noFireStat = true;
+$noContact = true;
+
+?>

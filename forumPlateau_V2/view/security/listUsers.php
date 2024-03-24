@@ -74,3 +74,10 @@ echo $session->getFlash("message");
 <?php } else { 
     echo "vous n'avez rien à faire la brigand";
 } ?>
+
+<?php 
+
+$noFireStat = true;
+$noContact = true;
+
+?>

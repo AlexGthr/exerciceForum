@@ -85,5 +85,7 @@ echo "<span class='value_session'>" . $session->getFlash("message") . "</span>";
 <?php 
 
 $noImg = true;
+$noFireStat = true;
+$noContact = true;
 
 ?>

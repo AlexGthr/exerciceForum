@@ -6,7 +6,8 @@
         <meta name="description" content="<?= $meta_description ?>">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <script src="https://cdn.tiny.cloud/1/zg3mwraazn1b2ezih16je1tc6z7gwp5yd4pod06ae5uai8pa/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css" integrity="sha512-8RxmFOVaKQe/xtg6lbscU9DU0IRhURWEuiI0tXevv+lXbAHfkpamD4VKFQRto9WgfOJDwOZ74c/s9Yesv3VvIQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />        <link rel="stylesheet" href="<?= PUBLIC_DIR ?>/css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css" integrity="sha512-8RxmFOVaKQe/xtg6lbscU9DU0IRhURWEuiI0tXevv+lXbAHfkpamD4VKFQRto9WgfOJDwOZ74c/s9Yesv3VvIQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />        
+        <link rel="stylesheet" href="<?= PUBLIC_DIR ?>/css/style.css">
         <script src="https://kit.fontawesome.com/a34c2ac31d.js" crossorigin="anonymous"></script>
         <title>FORUM</title>
     </head>
@@ -92,7 +93,75 @@
                 
                 <main id="forum">
 
-                    <?= $page ?>
+                                    <!-- Image en dessous de la nav -->
+                    <?php if (!isset($noFireStat)) {?>
+                        <section class="fire_stat">
+
+                            <!-- Barre de recherche -->
+                        <div class="searchBar">
+
+                            <form action="#" method="post" enctype="multipart/form-data"> <!-- Formulaire pour envoyer un produit -->
+
+    
+                                <input type="search" class="research" name="research" placeholder="Research">
+                                <button type="submit" name="submit" class="fa-mobile"><i class="fa-solid fa-magnifying-glass"></i></button>
+
+                            </form>
+
+                        </div>
+
+
+                        <div class="best_stat">
+                            <i class="fa-solid fa-fire"></i>
+                            <p>Number of Topics : 555</p>
+                        </div>
+
+                        <div class="best_stat">
+                            <i class="fa-solid fa-fire"></i>
+                            <p>Number of messages : 555 </p>
+                        </div>
+
+                        <div class="best_stat">
+                            <i class="fa-solid fa-fire"></i>
+                            <p>Number of members : 643 </p>
+                        </div>
+
+                    </section>
+                    <?php } ?>
+
+                        <?= $page ?>
+
+                    <?php if (!isset($noContact)) {?>
+                        <section class="contact">
+
+                            <div class="title_popularTopic">
+                                <h1> Contact </h1>
+                                <hr class="after_titlePink" />    
+                            </div>
+
+                            <div class="info_contact">
+                                <p> <span class="rose_color"> NEWSLETTER </span> </p>
+
+                            <!-- Barre de recherche -->
+                            <div class="searchBar">
+
+                                <form action="#" method="post" enctype="multipart/form-data"> <!-- Formulaire pour envoyer un produit -->
+
+
+                                    <input type="search" class="research" name="research" placeholder="Research">
+                                    <button type="submit" name="submit" class="fa-mobile"><i class="fa-solid fa-magnifying-glass"></i></button>
+
+                                </form>
+
+                            </div>
+                                <p> Do You find a bug ? <br>
+                                    Do you have a problem on the site? </p>
+                                <p> Contact us : </p>
+                                <p> <i class="fa-solid fa-envelope-circle-check"></i> <span class="rose_color"> forum@forum.com </span> </p>
+                            </div>
+
+                        </section>
+                    <?php } ?>
 
                 </main>
             </div>

@@ -687,19 +687,8 @@ nav h1 {
     background-image: url('../img/carrecontact.webp');
 }
 
-/* ******************************
-        List CATEGORY
-   ****************************** */
-
-.img_category {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.img_category img {
-    height: 100px;
-    width: 100px;
+.list_Category {
+    background-image: url('../img/bg_section.webp');
 }
 
 /* ******************************
@@ -711,13 +700,22 @@ nav h1 {
     flex-direction: column;
 }
 
+.button_listTopic {
+    padding-top: 15px; 
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
 /* ******************************
         SHOW BOX
    ****************************** */
 
 .show_boxPost,
 .show_boxPostAvatar,
-.show_boxPostPassword {
+.show_boxPostPassword,
+.boxAddTopic,
+.returnCategory {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -727,7 +725,8 @@ nav h1 {
 
 .show_boxPost p,
 .show_boxPostAvatar p,
-.show_boxPostPassword p {
+.show_boxPostPassword p,
+.boxAddTopic p {
     color: var(--first-color);
     background-color: var(--bg-border);
     padding: 10px 50px;
@@ -737,6 +736,23 @@ nav h1 {
     box-shadow: 5px 5px 0px 0px var(--second-color-yellow);
     cursor: pointer;
     transition: all 0.5s;
+}
+
+.returnCategory p {
+    color: var(--first-color);
+    background-color: var(--bg-border);
+    padding: 10px 50px;
+    border-radius: 50px;
+    border: solid 2px var(--second-color-rose);
+    -webkit-box-shadow: 5px 5px 0px 0px var(--bg-border); 
+    box-shadow: 5px 5px 0px 0px var(--second-color-rose);
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.boxAddTopic a,
+.returnCategory a {
+    text-decoration: none;
 }
 
 .boxPost {
