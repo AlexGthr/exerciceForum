@@ -1,3 +1,9 @@
+<?php 
+
+use Services\Statistique;
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -113,17 +119,17 @@
 
                         <div class="best_stat">
                             <i class="fa-solid fa-fire"></i>
-                            <p>Number of Topics : 555</p>
+                            <p>Number of Topics : <?= Statistique::statTopic(); ?> </p>
                         </div>
 
                         <div class="best_stat">
                             <i class="fa-solid fa-fire"></i>
-                            <p>Number of messages : 555 </p>
+                            <p>Number of messages : <?= Statistique::statPost(); ?> </p>
                         </div>
 
                         <div class="best_stat">
                             <i class="fa-solid fa-fire"></i>
-                            <p>Number of members : 643 </p>
+                            <p>Number of members : <?= Statistique::statUser(); ?> </p>
                         </div>
 
                     </section>

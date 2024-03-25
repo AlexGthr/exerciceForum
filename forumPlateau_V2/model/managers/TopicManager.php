@@ -17,9 +17,12 @@ class TopicManager extends Manager{
     // récupérer tous les topics d'une catégorie spécifique (par son id)
     public function findTopicsByCategory($id) {
 
-        $sql = "SELECT * 
-                FROM ".$this->tableName." t 
-                WHERE t.category_id = :id";
+        $sql = "SELECT topic.*, COUNT(post.id_post) AS nbPosts
+                FROM topic
+                LEFT JOIN post ON topic.id_topic = post.topic_id
+                WHERE topic.category_id = :id
+                GROUP BY id_topic
+                ORDER BY DATE_FORMAT(creationDate, '%Y/%m/%d/%H/%i/%s') DESC";
        
         // la requête renvoie plusieurs enregistrements --> getMultipleResults
         return  $this->getMultipleResults(
@@ -30,8 +33,10 @@ class TopicManager extends Manager{
 
     public function findAllByDate(){
 
-        $sql = "SELECT *
-                FROM ".$this->tableName." a
+        $sql = "SELECT topic.*, COUNT(post.id_post) AS nbPosts
+                FROM topic
+                LEFT JOIN post ON topic.id_topic = post.topic_id
+                GROUP BY id_topic
                 ORDER BY DATE_FORMAT(creationDate, '%Y/%m/%d/%H/%i/%s') DESC
                 LIMIT 3";
 
@@ -40,6 +45,22 @@ class TopicManager extends Manager{
             $this->className
         );
     }
+
+    public function findAllByNbPost() {
+
+        $sql = "SELECT topic.*, COUNT(post.id_post) AS nbPosts
+                FROM topic
+                LEFT JOIN post ON topic.id_topic = post.topic_id
+                GROUP BY id_topic
+                ORDER BY nbPosts DESC
+                LIMIT 3";
+
+        return $this->getMultipleResults(
+            DAO::select($sql), 
+            $this->className
+        );
+    }
+
 
     public function findTopicByNumber() {
 

@@ -19,8 +19,8 @@ class HomeController extends AbstractController implements ControllerInterface {
         $postManager = new PostManager();
 
         $topics = $topicManager->findAllByDate();
-        $posts = $postManager->findPostByNumber();
-        $category = $postManager->findPostByNumber();
+        $popularTopics = $topicManager->findAllByNbPost();
+        $category = $categoryManager->NbTopicByCategory();
 
 
         // $category = $categoryManager->
@@ -31,7 +31,7 @@ class HomeController extends AbstractController implements ControllerInterface {
             "meta_description" => "Page d'accueil du forum",
             "data" => [
                 "topics" => $topics,
-                "posts" => $posts,
+                "popularTopics" => $popularTopics,
                 "category" => $category
             ]
         ];

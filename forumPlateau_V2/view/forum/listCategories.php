@@ -47,8 +47,8 @@ foreach($categories as $categ ){?>
         </div>
 
         <div class="list_nbPost_">
-            <p><i class="fa-solid fa-thumbtack"></i> 17 </p>
-            <p><i class="fa-regular fa-message"></i> 17 </p>
+        <p><i class="fa-solid fa-thumbtack"></i> <?= $categ->getNbTopics(); ?></p>
+                    <p><i class="fa-regular fa-message"></i> <?= $categ->getNbPosts(); ?></p>
         </div>
 
     </div>

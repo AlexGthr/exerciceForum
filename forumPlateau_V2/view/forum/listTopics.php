@@ -72,7 +72,7 @@ foreach($topics as $topic ){ ?>
                 <a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $topic->getCategory()->getId() ?>">
                     <?= $topic->getCategory() ?>
                 </a>
-            </span>
+            </span> | <?= $topic->getCreationDate()->format("G:i") ?>
         </p>
 
     </div>
@@ -81,7 +81,7 @@ foreach($topics as $topic ){ ?>
 <div class="list_nbPost">
 
     <i class="fa-regular fa-message"></i>
-    <p> 17 </p>
+    <p> <?= $topic->getNbPosts(); ?> </p>
 </div>
 
 </div>

@@ -3,8 +3,9 @@
 use App\Session;
 
 $topics = $result["data"]['topics'];
-$posts = $result["data"]['posts'];
+$popularTopics = $result["data"]['popularTopics'];
 $category = $result["data"]['category'];
+
 ?>
 
 <section class="wrapper_list">
@@ -52,7 +53,7 @@ $category = $result["data"]['category'];
                                 <a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $topic->getCategory()->getId() ?>">
                                     <?= $topic->getCategory() ?>
                                 </a>
-                            </span>
+                            </span> | <?= $topic->getCreationDate()->format("G:i") ?>
                         </p>
 
                     </div>
@@ -61,7 +62,7 @@ $category = $result["data"]['category'];
                 <div class="list_nbPost">
 
                     <i class="fa-regular fa-message"></i>
-                    <p> 17 </p>
+                    <p> <?= $topic->getnbPosts(); ?> </p>
                 </div>
 
             </div>
@@ -77,13 +78,13 @@ $category = $result["data"]['category'];
 
     <section class="latest_topic">
 
-        <?php foreach($posts as $post) { ?> 
+        <?php foreach($popularTopics as $popTopic) { ?> 
 
             <div class="boxTopic">
 
                 <figure class="img_avatarList">
-                    <a href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $post->getTopic()->getId() ?>">
-                        <img src="<?= $post->getUser()->getAvatar()?>" title="image top mobile">
+                    <a href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $popTopic->getId() ?>">
+                        <img src="<?= $popTopic->getUser()->getAvatar()?>" title="image top mobile">
                     </a>
                 </figure> 
 
@@ -92,8 +93,8 @@ $category = $result["data"]['category'];
                     <div class="titleTopicList">
 
                         <p>
-                            <a href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $post->getTopic()->getId() ?>">
-                                <?= $post->getTopic()->getTitle(); ?>
+                            <a href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $popTopic->getId() ?>">
+                                <?= $popTopic->getTitle(); ?>
                             </a>
                         </p>
 
@@ -102,17 +103,17 @@ $category = $result["data"]['category'];
                     <div class="list_infoTopic">
 
                         <p> By <span class="yellow">
-                                <a href="index.php?ctrl=home&action=viewProfil&id=<?= $post->getUser()->getId() ?>">
-                                    <?= $post->getUser() ?>
+                                <a href="index.php?ctrl=home&action=viewProfil&id=<?= $popTopic->getUser()->getId() ?>">
+                                    <?= $popTopic->getUser() ?>
                                 </a>
-                            </span> | <?= $post->getTopic()->getCreationDate()->format("F jS, Y") ?>
+                            </span> | <?= $popTopic->getCreationDate()->format("F jS, Y") ?>
                         </p>
 
                         <p> In <span class="yellow">
-                                <a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $post->getTopic()->getCategory()->getId() ?>">
-                                    <?= $post->getTopic()->getCategory() ?>
+                                <a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $popTopic->getCategory()->getId() ?>">
+                                    <?= $popTopic->getCategory() ?>
                                 </a>
-                            </span>
+                            </span> | <?= $topic->getCreationDate()->format("G:i") ?>
                         </p>
 
                     </div>
@@ -121,7 +122,7 @@ $category = $result["data"]['category'];
                 <div class="list_nbPost">
 
                     <i class="fa-regular fa-message"></i>
-                    <p> 17 </p>
+                    <p> <?= $popTopic->getNbPosts() ?> </p>
 
                 </div>
             </div>
@@ -140,7 +141,7 @@ $category = $result["data"]['category'];
             <div class="boxCateg">
 
                 <figure class="img_CategList">
-                    <a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $categ->getTopic()->getCategory()->getId() ?>">
+                    <a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $categ->getId() ?>">
                         <img src="./public/img/imgcateg.svg" title="image top mobile">
                     </a>
                 </figure> 
@@ -150,8 +151,8 @@ $category = $result["data"]['category'];
                     <div class="titleCategList">
 
                         <p>
-                            <a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $categ->getTopic()->getCategory()->getId() ?>">
-                                <?= $categ->getTopic()->getCategory()->getName(); ?>
+                            <a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $categ->getId() ?>">
+                                <?= $categ->getName(); ?>
                             </a>
                         </p>
 
@@ -159,8 +160,8 @@ $category = $result["data"]['category'];
                 </div>
 
                 <div class="list_nbPost_">
-                    <p><i class="fa-solid fa-thumbtack"></i> 17 </p>
-                    <p><i class="fa-regular fa-message"></i> 17 </p>
+                    <p><i class="fa-solid fa-thumbtack"></i> <?= $categ->getNbTopics(); ?></p>
+                    <p><i class="fa-regular fa-message"></i> <?= $categ->getNbPosts(); ?></p>
                 </div>
 
             </div>

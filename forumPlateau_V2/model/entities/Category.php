@@ -12,6 +12,8 @@ final class Category extends Entity{
     private $id;
     private $name;
     private $picture;
+    private $nbTopics;
+    private $nbPosts;
 
     // chaque entité aura le même constructeur grâce à la méthode hydrate (issue de App\Entity)
     public function __construct($data){         
@@ -75,6 +77,46 @@ final class Category extends Entity{
     public function setPicture($picture)
     {
         $this->picture = $picture;
+
+        return $this;
+    }
+
+        /**
+     * Get the value of id
+     */ 
+    public function getNbTopics()
+    {
+        return $this->nbTopics;
+    }
+
+    /**
+     * Set the value of id
+     *
+     * @return  self
+     */ 
+    public function setNbTopics($nbTopics) 
+    {
+        $this->nbTopics = $nbTopics;
+
+        return $this;
+    }
+
+            /**
+     * Get the value of id
+     */ 
+    public function getNbPosts()
+    {
+        return $this->nbPosts;
+    }
+
+    /**
+     * Set the value of id
+     *
+     * @return  self
+     */ 
+    public function setNbPosts($nbPosts) 
+    {
+        $this->nbPosts = $nbPosts;
 
         return $this;
     }

@@ -15,6 +15,7 @@ final class Topic extends Entity{
     private $category;
     private $creationDate;
     private $closed;
+    private $nbPosts;
 
     public function __construct($data){         
         $this->hydrate($data);        
@@ -134,4 +135,24 @@ final class Topic extends Entity{
 
         return $this;
     }
+        /**
+     * Get the value of category
+     */ 
+    public function getNbPosts()
+    {
+        return $this->nbPosts;
+    }
+
+    /**
+     * Set the value of category
+     *
+     * @return  self
+     */ 
+    public function setNbPosts($nbPosts)
+    {
+        $this->nbPosts = $nbPosts;
+
+        return $this;
+    }
+
 }
