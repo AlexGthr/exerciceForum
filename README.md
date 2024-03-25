@@ -41,14 +41,21 @@ Un système de gestion de base de données (SGBD) (MySQL / HeidiSQL)
 <p> Quelques images : </p>
 
 ![registerforum](https://github.com/AlexGthr/exerciceForum/assets/145430486/0a75c689-b476-4832-9154-bc5f1821a83b)
-
+------------
 ![loginforum](https://github.com/AlexGthr/exerciceForum/assets/145430486/9680bdc9-bc4f-47ae-bd6a-61043ebb34b5)
+------------
+![home1](https://github.com/AlexGthr/exerciceForum/assets/145430486/46fd0af7-1649-429e-ad7d-58788c93aa36)
+![home2](https://github.com/AlexGthr/exerciceForum/assets/145430486/dd0c8b55-1100-4dcf-921a-719f4e7cb929)
+------------
+![categlist](https://github.com/AlexGthr/exerciceForum/assets/145430486/4e646624-d518-47af-8f99-d5f820653aba)
+------------
+![topiclist](https://github.com/AlexGthr/exerciceForum/assets/145430486/37be9933-4d82-432c-9551-5de75d6a0c4e)
+------------
+![navbarmobile](https://github.com/AlexGthr/exerciceForum/assets/145430486/42a829d1-125b-40d0-99e7-21cb0f0efc58)
 
-![homeForum](https://github.com/AlexGthr/exerciceForum/assets/145430486/7b82f5d9-03f9-4ee8-bb66-41c6b5f7d7fe)
 
-![listtopic](https://github.com/AlexGthr/exerciceForum/assets/145430486/ab31c5f8-2d82-4947-b31c-5016fd5ad033)
 
-![listCategory](https://github.com/AlexGthr/exerciceForum/assets/145430486/4c59b072-b3f3-401a-9731-96c829c62248)
+
 
 
 
