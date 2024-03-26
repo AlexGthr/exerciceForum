@@ -61,6 +61,20 @@ class TopicManager extends Manager{
         );
     }
 
+    public function findOneByNbPost($id) {
+
+        $sql = "SELECT topic.*, COUNT(post.id_post) AS nbPosts
+                FROM topic
+                LEFT JOIN post ON topic.id_topic = post.topic_id
+                WHERE topic.id_topic = :id";
+
+        // la requête renvoie plusieurs enregistrements --> getMultipleResults
+        return $this->getOneOrNullResult(
+            DAO::select($sql, ['id' => $id], false), 
+            $this->className
+    );
+    }
+
 
     public function findTopicByNumber() {
 

@@ -6,16 +6,20 @@
 
  <!-- Si l'utilisateur est connectés, alors affiche le profil, sinon direction la page de connexion. -->
 <?php if(App\Session::getUser()) { ?>
-
+    <section class="wrapper_detail">
 <!-- Message de session en cas de success/erreur -->
 <?php 
 $session = new Session();
 echo $session->getFlash("message");
 ?>
 
+<div class="title_popularTopic">
+        <h1> Topic of <?= $user->getNickName() ?> </h1>
+        <hr class="after_titlePink" />
+</div>
+
 <div class="display_profil">
 
-    <h1> <?= $user->getNickName() ?> profile </h1><br>
 
     <p> Avatar </p>
     
@@ -64,7 +68,9 @@ echo $session->getFlash("message");
             <label for="pass2">Confirm new Password</label>
             <input type="password" name="pass2" id="pass2" required><br>
     
-                <input type="submit" name="submit" value="Edit">
+            <div class="button_addPost">
+    <input class="button__addPost" type="submit" name="submit" value="Validate">
+</div>
             </form>
     
         </div>
@@ -79,7 +85,7 @@ echo $session->getFlash("message");
 
 </div>
 
-
+</section>
 
 
 

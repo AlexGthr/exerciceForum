@@ -78,8 +78,10 @@ echo $session->getFlash("message");
 
 <?php if (App\Session::getUser() && (App\Session::isAdmin() || App\Session::isModerator())) { ?>
 
-    <a href="index.php?ctrl=forum&action=updateTopic&id=<?= $topics->getId() ?>"> Edit</a> <span> / </span>
-    <a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topics->getId() ?>"> Delete </a>
+    <div class="deleteEditAdmin">
+        <a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topics->getId() ?>"> <img class="delete_img" src="./public/img/delete.svg" alt="delet"> </a>
+        <a href="index.php?ctrl=forum&action=updateTopic&id=<?= $topics->getId() ?>"><img class="delete_img" src="./public/img/edit.svg" alt="edit"></a>
+    </div>
 
 <?php } ?>
 
@@ -90,7 +92,7 @@ echo $session->getFlash("message");
         <div class="created_By">
             <a href="index.php?ctrl=home&action=viewProfil&id=<?= $topics->getUser()->getId() ?>">
                 <figure>
-                    <img src="<?= $topics->getUser()->getAvatar() ?>" title="avatar user created topic">
+                    <img src="<?= $topics->getUser()->getAvatar() ?>" alt="avatar user created topic">
                 </figure>
                 <p> Created by <br> <span class="yellow"> <?= $topics->getUser() ?> </span></p>
             </a>
@@ -99,7 +101,7 @@ echo $session->getFlash("message");
         <div class="created_By Last_message">
             <a href="index.php?ctrl=home&action=viewProfil&id=<?= $users->getUser()->getId() ?>">
                 <figure>
-                    <img src="<?= $users->getUser()->getAvatar() ?>" title="avatar user last post">
+                    <img src="<?= $users->getUser()->getAvatar() ?>" alt="avatar user last post">
                 </figure>
                 <p> Last post <br> <span class="yellow"> <?= $users->getUser()->getNickName() ?> </span></p>
             </a>
@@ -107,7 +109,7 @@ echo $session->getFlash("message");
 
         <div class="data_topic">
             <p> 555 <br> <span class="rose_colorNoUnderligne"> VIEW </span> </p>
-            <p> 2 <br> <span class="rose_colorNoUnderligne"> REPLIES </span> </p>
+            <p> <?= $topics->getNbPosts() ?> <br> <span class="rose_colorNoUnderligne"> REPLIES </span> </p>
         </div>
     </div>
 
@@ -121,36 +123,46 @@ foreach($posts as $post) { ?>
 
     <div class="post_picture">
         <figure>
-            <img src="<?= $post->getUser()->getAvatar() ?>">
+            <img src="<?= $post->getUser()->getAvatar() ?>" alt="avatar">
         </figure>
 
     <div class="post_NameHours">
         <a href="index.php?ctrl=home&action=viewProfil&id=<?= $post->getUser()->getId() ?>">
             <h2 class="yellow"> <?= $post->getUser()->getNickName() ?> </h2>
         </a>
-        <p> <span class="timePost"> <?= $post->getDateCreation()->format("G:i") ?> </span></p>
+        <p> <span class="timePost"> <?= $post->getDateCreation()->format("d/m/y - G:i") ?> </span></p>
 
     </div>
-    </div>
+</div>
 
+<h4> <?= $post->getPost() ?> </h4>
 
-    <p> <?= $post->getPost() ?> </p>
-
-
+<div class="function_post">
+    <div class="deleteOrEdit">
             <!-- // Permet la modification de son propre message ou de tout les messages en fonction du role -->
     <?php if (App\Session::getUser() && $post->getUser() == App\Session::getUser()->getNickName() && !$topics->getClosed()) { ?>
 
-        <a href="index.php?ctrl=forum&action=updatePost&id=<?= $post->getId() ?>"> Update </a>
-        <p> OR </p>
-        <a href="index.php?ctrl=forum&action=deletePost&id=<?= $post->getId() ?>"> Delete </a>
+        <a href="index.php?ctrl=forum&action=deletePost&id=<?= $post->getId() ?>"> <img class="delete_img" src="./public/img/delete.svg" alt="delet"> </a>
+        <a href="index.php?ctrl=forum&action=updatePost&id=<?= $post->getId() ?>"> <img class="delete_img" src="./public/img/edit.svg" alt="edit"> </a>
+
+        </div>
 
     <?php } elseif (App\Session::getUser() && (App\Session::isAdmin() || App\Session::isModerator())) { ?>
 
-        <p><a href="index.php?ctrl=forum&action=updatePost&id=<?= $post->getId() ?>"> Update </a>
-         OR 
-        <a href="index.php?ctrl=forum&action=deletePost&id=<?= $post->getId() ?>"> Delete </a></p>
+        <a href="index.php?ctrl=forum&action=deletePost&id=<?= $post->getId() ?>"> <img class="delete_img" src="./public/img/delete.svg" alt="delete"> </a>
+        <a href="index.php?ctrl=forum&action=updatePost&id=<?= $post->getId() ?>"> <img class="delete_img" src="./public/img/edit.svg" alt="edit"> </a>
+        
+        </div>
 
-<?php } } ?>
+        <?php } ?>
+
+        <img class="delete_img" src="./public/img/retweet.svg" alt="retweet">
+    </div>
+
+    <div class="seperator">
+        <hr class="next_post" />
+    </div>
+    <?php } ?>
 
 <!-- Si l'utilisateur est connecté, il pourra envoyé un message dans le topic -->
 <?php if((App\Session::getUser() && !$topics->getClosed()) || (App\Session::isAdmin() || App\Session::isModerator())) { ?>
@@ -165,11 +177,13 @@ foreach($posts as $post) { ?>
         <form action="index.php?ctrl=forum&action=addPost&id=<?= $topics->getId() ?>" method="POST">
         
         <label for="post">Post</label><br>
-        <textarea id="post" name="post" placeholder="Votre texte ici..." rows="5" required></textarea><br>
+        <textarea id="post" name="post" placeholder="Votre texte ici..." rows="5"></textarea><br>
 
     
         
-            <input type="submit" name="submit" value="Add post !">
+        <div class="button_addPost">
+    <input class="button__addPost" type="submit" name="submit" value="Validate">
+</div>
 
         </form>
     </div>

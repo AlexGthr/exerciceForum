@@ -6,31 +6,47 @@ use App\Session; ?>
     $post = $result["data"]['post']; 
 ?>
 
+<section class="wrapper_detail">
 <!-- Message de session en cas de success/erreur -->
 <?php 
 $session = new Session();
 echo $session->getFlash("message");
 ?>
 
-<br><a href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $post->getTopic()->getId(); ?>">View Topic</a>
 
 <?php if (App\Session::getUser() && (App\Session::isAdmin() || App\Session::isModerator()) || App\Session::getUser() == $post->getUser()) { ?>
+    
+    <div class="title_popularTopic">
+        <h1> Update post </h1>
+        <hr class="after_title" />
+    </div>
+    
+    <div class="boxAddTopic">
+    
+    <a href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $post->getTopic()->getId(); ?>"> 
+        <p><span class="addActiveAvatar"> View Topic </span></p>
+    </a>
+    
+    </div>
 
-<h1> Detail before update </h1><br>
+    <div class="post_beforeUpdate">
+        <p> <?= $post->getPost(); ?></p>
+        <p> By <span class="yellow"> <?= $post->getUser(); ?></span></p>
+    </div>
 
-<p> <?= $post->getPost(); ?></p>
-<p> <?= $post->getUser(); ?></p>
 
 <div class="update_Post">
 
         <form action="index.php?ctrl=forum&action=addUpdatePost&id=<?= $post->getId() ?>" method="POST">
         
-        <label for="post">Post</label><br>
-        <textarea id="post" name="post" placeholder="Votre texte ici..." rows="5" required><?= $post->getPost(); ?></textarea><br>
+
+        <br><textarea id="post" name="post" placeholder="Votre texte ici..." rows="5" required><?= $post->getPost(); ?></textarea><br>
 
     
         
-            <input type="submit" name="submit" value="Edit post !">
+        <div class="button_addPost">
+            <input class="button__addPost" type="submit" name="submit" value="Validate">
+        </div>
 
         </form>
         
@@ -41,3 +57,5 @@ echo $session->getFlash("message");
 header("Location: index.php"); exit;
 
 }?>
+
+</section>
