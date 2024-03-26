@@ -63,12 +63,12 @@ class ForumController extends AbstractController implements ControllerInterface{
 
         // Je crée mes objets
         $topicManager = new TopicManager();
-        $userManager = new UserManager();
+        $userLastPost = new PostManager();
         $postManager = new PostManager();
 
         // Je recupère mes éléments
         $topics = $topicManager->findOneById($id);
-        $users = $userManager->findOneById($id);
+        $users = $userLastPost->findLastUserPost($id);
         $posts = $postManager->findPostsByTopic($id);
 
         if (!$topics) {

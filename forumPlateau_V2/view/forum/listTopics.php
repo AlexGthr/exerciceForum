@@ -39,13 +39,14 @@
 <?php if (isset($topics)) {
 
 foreach($topics as $topic ){ ?>
+
     <div class="boxTopic">
 
-<figure class="img_avatarList">
-    <a href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $topic->getId() ?>">
-        <img src="<?= $topic->getUser()->getAvatar()?>" title="image top mobile">
-    </a>
-</figure>
+        <figure class="img_avatarList">
+            <a href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $topic->getId() ?>">
+                <img src="<?= $topic->getUser()->getAvatar()?>" title="image top mobile">
+            </a>
+        </figure>
 
 <div class="list_titleTopic">
 
@@ -116,11 +117,7 @@ foreach($topics as $topic ){ ?>
             
                 <?php } ?>
 
-<?php }} ?>
-
-    </div>
-
-
+    <?php }} ?>
 
 <?php }
 

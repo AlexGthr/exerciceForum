@@ -35,7 +35,7 @@ use Services\Statistique;
 
                                     <li><a href="index.php">Home</a></li>
                                     <li><a href="index.php?ctrl=home&action=profile">My profile</a></li>
-                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="#contact">Contact</a></li>
                                     <li><a href="index.php?ctrl=security&action=logout">Logout</a></li>
                                 
                                  <!-- Si l'utilisateur n'est pas connecté, on affiche ce menu -->
@@ -44,7 +44,7 @@ use Services\Statistique;
                                     <li><a href="index.php">Home</a></li>
                                     <li><a href="index.php?ctrl=security&action=register">Sign Up</a></li>
                                     <li><a href="index.php?ctrl=security&action=login">Login</a></li>
-                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="#contact">Contact</a></li>
 
                                 <?php } ?>
 
@@ -138,7 +138,7 @@ use Services\Statistique;
                         <?= $page ?>
 
                     <?php if (!isset($noContact)) {?>
-                        <section class="contact">
+                        <section id="contact" class="contact">
 
                             <div class="title_popularTopic">
                                 <h1> Contact </h1>

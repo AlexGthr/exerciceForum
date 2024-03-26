@@ -6,7 +6,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Lexend", sans-serif;;
+    font-family: "Lexend", sans-serif;
+    scroll-behavior: smooth;
 }
 
 
@@ -92,6 +93,7 @@ nav h1 {
     display: flex;
     flex-direction: column;
     width: 30px;
+    z-index: 2;
 }
 
 .nav_liste {
@@ -141,7 +143,7 @@ nav h1 {
 
 .nav_burger.active .nav_liste{
     left: 0;
-    z-index: 2;
+    z-index: 5;
 }
 
 .nav_burger.active #icons:before {
@@ -593,8 +595,11 @@ nav h1 {
     color: var(--first-color);
 }
 
-.yellow a {
+.yellow {
     color: var(--first-color-yellow);
+}
+
+.yellow a {
     text-decoration: none;
 }
 
@@ -822,6 +827,11 @@ padding: 15px;
         DETAIL TOPIC
    ****************************** */
 
+.wrapper_detail {
+    background-image: url('../img/bg_section.webp');
+    color: #fff;
+}
+
 .titleTopic {
     display: flex;
     align-items: center;
@@ -835,6 +845,93 @@ padding: 15px;
 .red {
     padding: 0 25px;
     color: red;
+}
+
+.lockTopic {
+    display: flex;
+    align-items: center;
+}
+
+.information_topTopic {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 25px; 
+}
+
+.created_By {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    line-height: 1.5em;
+}
+
+.created_By a {
+    text-decoration: none;
+    color: var(--first-color);
+}
+
+.created_By img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    object-fit: cover;
+}
+
+.data_topic {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.data_topic p {
+    padding: 20px 0;
+}
+
+.rose_colorNoUnderligne {
+    color: var(--second-color-rose);
+    font-weight: 700;
+}
+
+#content_post {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.content_post {
+    width: 90%;
+    border-radius: 8px;
+    background-color: var(--bg-border);
+}
+
+.post_picture {
+    display: flex;
+    justify-content: space-between;
+}
+
+.post_picture img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
+    margin: 10px 15px;
+}
+
+.post_NameHours {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 0 15px;
+}
+
+.post_NameHours a {
+    text-decoration: none;
+}
+
+.timePost {
+    font-weight: 200;
 }
 
 /* ******************************

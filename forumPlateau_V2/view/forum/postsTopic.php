@@ -13,67 +13,129 @@ $session = new Session();
 echo $session->getFlash("message");
  ?>
 
-    <!-- Lien pour revenir à la liste des topics -->
-<a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $topics->getCategory()->getId(); ?>">Return list topic</a>
+<section class="wrapper_detail">
 
-  <!-- J'affiche le titre du topic et si il est ouvert ou fermer -->
-<div class="titleTopic">
+<div class="button_listTopic">
 
-    <h1> <?= $topics ?> </h1>
+<!-- Lien pour revenir à la liste des topics -->
+    <div class="returnCategory">
+        <a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $topics->getCategory()->getId(); ?>">
+            <p><span class="addActiveAvatar"> Topics </span></p>
+        </a>
+    </div>
 
-    <?php if (!$topics->getClosed()) {
+<!-- Lien pour crée un topic -->
+    <div class="boxAddTopic">
+
+        <a href="index.php?ctrl=forum&action=newTopic"> 
+            <p><span class="addActiveAvatar"> New Topic </span></p>
+        </a>
+
+    </div>
+
+</div>
+
+<div class="title_popularTopic">
+
+    <div class="lockTopic">
+
+        <h1> <?= $topics->getTitle() ?> </h1>
+        <?php if (!$topics->getClosed()) {
 
             if (App\Session::isAdmin() || App\Session::isModerator()) { ?> 
-            
-            <a href="index.php?ctrl=forum&action=lockTopic&id=<?= $topics->getId() ?>">
-                <?php unset($_SESSION["link"]); ?>
+
+                <a href="index.php?ctrl=forum&action=lockTopic&id=<?= $topics->getId() ?>">
+                    <?php unset($_SESSION["link"]); ?>
+                        <i class="fa-solid fa-unlock-keyhole green"></i>
+                    </a>
+
+            <?php } else { ?>
+
                 <i class="fa-solid fa-unlock-keyhole green"></i>
-            </a>
-        
-        <?php } else { ?>
 
-            <i class="fa-solid fa-unlock-keyhole green"></i>
-            
-        <?php } ?>
+            <?php } ?>
 
 
-    <?php } else { 
+            <?php } else { 
 
-        if (App\Session::isAdmin() || App\Session::isModerator()) { ?> 
-            
-            <a href="index.php?ctrl=forum&action=unlockTopic&id=<?= $topics->getId() ?>">
-                <?php unset($_SESSION["link"]); ?>
+            if (App\Session::isAdmin() || App\Session::isModerator()) { ?> 
+
+                <a href="index.php?ctrl=forum&action=unlockTopic&id=<?= $topics->getId() ?>">
+                    <?php unset($_SESSION["link"]); ?>
+                    <i class="fa-solid fa-lock red"></i>
+                </a>
+
+            <?php } else { ?>
+
                 <i class="fa-solid fa-lock red"></i>
-            </a>
-        
-        <?php } else { ?>
 
-            <i class="fa-solid fa-lock red"></i>
-            
-        <?php } ?>
+            <?php } }?>
 
-    <?php } ?>
+    </div>
 
+    <hr class="after_title" />
 </div>
 
 <?php if (App\Session::getUser() && (App\Session::isAdmin() || App\Session::isModerator())) { ?>
 
-    <a href="index.php?ctrl=forum&action=updateTopic&id=<?= $topics->getId() ?>"> Edit </a>
+    <a href="index.php?ctrl=forum&action=updateTopic&id=<?= $topics->getId() ?>"> Edit</a> <span> / </span>
     <a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topics->getId() ?>"> Delete </a>
 
 <?php } ?>
 
+<section class="detail_topic">
+
+    <div class="information_topTopic">
+
+        <div class="created_By">
+            <a href="index.php?ctrl=home&action=viewProfil&id=<?= $topics->getUser()->getId() ?>">
+                <figure>
+                    <img src="<?= $topics->getUser()->getAvatar() ?>" title="avatar user created topic">
+                </figure>
+                <p> Created by <br> <span class="yellow"> <?= $topics->getUser() ?> </span></p>
+            </a>
+        </div>
+
+        <div class="created_By Last_message">
+            <a href="index.php?ctrl=home&action=viewProfil&id=<?= $users->getUser()->getId() ?>">
+                <figure>
+                    <img src="<?= $users->getUser()->getAvatar() ?>" title="avatar user last post">
+                </figure>
+                <p> Last post <br> <span class="yellow"> <?= $users->getUser()->getNickName() ?> </span></p>
+            </a>
+        </div>
+
+        <div class="data_topic">
+            <p> 555 <br> <span class="rose_colorNoUnderligne"> VIEW </span> </p>
+            <p> 2 <br> <span class="rose_colorNoUnderligne"> REPLIES </span> </p>
+        </div>
+    </div>
+
+</section>
+
+<section id="content_post">
+
+    <div class="content_post">
 <?php  // Affichage des messages d'un topic
 foreach($posts as $post) { ?>
 
-    <br><br><p> <?= $post->getPost() ?> </p>
+    <div class="post_picture">
+        <figure>
+            <img src="<?= $post->getUser()->getAvatar() ?>">
+        </figure>
 
-
-    <p> By 
+    <div class="post_NameHours">
         <a href="index.php?ctrl=home&action=viewProfil&id=<?= $post->getUser()->getId() ?>">
-        <?= $post->getUser() ?>
+            <h2 class="yellow"> <?= $post->getUser()->getNickName() ?> </h2>
         </a>
-    </p>
+        <p> <span class="timePost"> <?= $post->getDateCreation()->format("G:i") ?> </span></p>
+
+    </div>
+    </div>
+
+
+    <p> <?= $post->getPost() ?> </p>
+
 
             <!-- // Permet la modification de son propre message ou de tout les messages en fonction du role -->
     <?php if (App\Session::getUser() && $post->getUser() == App\Session::getUser()->getNickName() && !$topics->getClosed()) { ?>
@@ -138,3 +200,6 @@ foreach($posts as $post) { ?>
 
 
 <?php } ?>
+        </div>
+</section>
+</section>

@@ -54,5 +54,20 @@ class PostManager extends Manager{
             $this->className
         );
     }
+
+    public function findLastUserPost($id) {
+
+        $sql = "SELECT *
+                FROM post
+                WHERE topic_id = :id
+                ORDER BY DATE_FORMAT(dateCreation, '%Y/%m/%d/%H/%i/%s') DESC
+                LIMIT 1";
+       
+        // la requête renvoie plusieurs enregistrements --> getMultipleResults
+        return $this->getOneOrNullResult(
+            DAO::select($sql, ['id' => $id], false), 
+            $this->className
+    );
+    }
     
 }
