@@ -85,6 +85,10 @@ echo $session->getFlash("message");
 
 </div>
 
+<div class="darkmode">
+    <button class="btn-toggle"><i class="fa-regular fa-moon lightAndDarkMode"></i></button>
+</div>
+
 </section>
 
 

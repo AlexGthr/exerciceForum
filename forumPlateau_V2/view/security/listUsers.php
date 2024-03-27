@@ -13,67 +13,80 @@ $session = new Session();
 echo $session->getFlash("message");
 ?>
 
-    <ul>
+<div class="tableau_listUser">
+
+<table class="cinereousTable">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Banned</th>
+            <th>Send</th>
+        </tr>
+    </thead>
+    <tbody>
 
 <?php 
     foreach($users as $user) { ?>
 
+    <tr>
+
     <?php if ($user->getNickName() !== "Admin") { ?>
 
-        <li> <?= $user->getNickName() ?> 
-
+            <td> <?= $user->getNickName() ?> </td>
+            
             <form id="editAdminUser" action="index.php?ctrl=security&action=editUserAdmin&id=<?= $user->getId() ?>" method="POST">
-                
-            <?php if (App\Session::isAdmin()) { ?>
-                
-                <label for="roleUser">Role :</label>
+            
+            <td><?php if (App\Session::isAdmin()) { ?>
 
                     <select name="role" id="RoleUser">
                         <?php if ($user->getRole() == "user") { ?>
-                            
+        
                             <option value="user">USER</option>
                             <option value="moderator">MODERATOR</option>
 
                         <?php } else { ?>
-                            
+        
                             <option value="moderator">MODERATOR</option>
                             <option value="user">USER</option>
-                        
+    
                         <?php }}?>
 
                     </select>
+            </td>
 
-                    <label for="BanUser">Banned ?</label>
-
-                        <select name="banned" id="BanUser">
-
-                            <?php if ($user->getBan() == 0) { ?>
-        
-                                <option value=0>Free</option>
-                                <option value=1>BANNED</option>
-
-                            <?php } else { ?>
-        
-                                <option value=1>BANNED</option>
-                                <option value=0>Free</option>
+            <td>  
+                <select name="banned" id="BanUser">
     
-                            <?php }?>
+                    <?php if ($user->getBan() == 0) { ?>
 
-                        </select>                    
+                        <option value=0>Free</option>
+                        <option value=1>BANNED</option>
 
-                    <input type="submit" name="submit" value="Edit">
-            </form>
-    
-    
-        </li>
+                    <?php } else { ?>
+
+                        <option value=1>BANNED</option>
+                        <option value=0>Free</option>
+
+                    <?php }?>
+
+                </select>
+            </td> 
+
+            <td> <input type="submit" name="submit" value="Edit"> 
+                </form>
+            </td> </tr>
     
     <?php }} ?>
 
-    </ul>
+    </tbody>
+</table>
 
 <?php } else { 
     echo "vous n'avez rien à faire la brigand";
 } ?>
+
+</div>
 
 <?php 
 

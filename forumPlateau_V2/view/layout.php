@@ -14,6 +14,7 @@ use Services\Statistique;
         <script src="https://cdn.tiny.cloud/1/zg3mwraazn1b2ezih16je1tc6z7gwp5yd4pod06ae5uai8pa/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css" integrity="sha512-8RxmFOVaKQe/xtg6lbscU9DU0IRhURWEuiI0tXevv+lXbAHfkpamD4VKFQRto9WgfOJDwOZ74c/s9Yesv3VvIQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />        
         <link rel="stylesheet" href="<?= PUBLIC_DIR ?>/css/style.css">
+        <link rel="stylesheet" href="<?= PUBLIC_DIR ?>/css/color.css">
         <script src="https://kit.fontawesome.com/a34c2ac31d.js" crossorigin="anonymous"></script>
         <title>FORUM</title>
     </head>

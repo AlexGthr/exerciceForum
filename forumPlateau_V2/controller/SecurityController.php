@@ -235,12 +235,21 @@ class SecurityController extends AbstractController{
 
                 $user = $userManager->findOneById($id);
 
-                if ($user) {
+                if ($role == null) {
+
+                    $information = [
+                        "ban" => $ban
+                    ];
+
+                } else {
 
                     $information = [
                         "role" => $role,
                         "ban" => $ban
                     ];
+                }
+
+                if ($user) {
 
                     $userManager->update($information, $id);
 

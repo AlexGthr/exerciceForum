@@ -4,7 +4,7 @@
     $user = $result["data"]['user']; 
     $posts = $result["data"]['posts'];
 ?>
-
+<section class="wrapper_list">
  <!-- Si l'utilisateur est connectés, alors affiche le profil, sinon direction la page de connexion. -->
 <?php if(App\Session::getUser()) { ?>
 
@@ -14,14 +14,19 @@ $session = new Session();
 echo $session->getFlash("message");
 ?>
 
+
+<div class="title_popularTopic">
+    <h1> <?= $user->getNickName() ?> </h1>
+    <hr class="after_titlePink" />
+</div>
+
 <div class="display_profil">
+<section class="latest_topic">
 
-    <h1> <?= $user->getNickName() ?> profile </h1><br>
-
-    <p> Avatar </p>
+    <p> Avatar </p><br>
     <img src="<?= $user->getAvatar() ?>" title="Avatar user">
 
-    <p> Last post : </p><br>
+    <br><p> Last post : </p><br>
 
     <?php foreach($posts as $post) { ?>
 
@@ -32,7 +37,7 @@ echo $session->getFlash("message");
             </a> </p>
 
     <?php } ?>
-
+    </section>
 </div>
 
 <?php } else {
@@ -45,3 +50,4 @@ $noFireStat = true;
 $noContact = true;
 
 ?>
+</section>
