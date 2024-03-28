@@ -40,6 +40,10 @@ if(isset($_GET['action']) && method_exists($ctrl, $_GET['action'])){
     //la méthode à appeller sera celle de l'url
     $action = $_GET['action'];
 }
+else {
+    header('Location: index.php?ctrl=home&action=index');
+}
+
 if(isset($_GET['id'])){
     $id = $_GET['id'];
 }
