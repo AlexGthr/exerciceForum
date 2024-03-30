@@ -5,11 +5,11 @@
     $topics = $result["data"]['topics']; 
 ?>
 
-<section class="wrapper_list">
+<section class="wrapper_listTopic">
 
-<div class="button_listTopic">
+<div class="button_listCateg_newTopic">
 <!-- Lien pour crée un topic -->
-    <div class="returnCategory">
+    <div class="listTopic_returnCategory">
 
         <a href="index.php?ctrl=forum&action=listCategory">
             <p><span class="addActiveAvatar"> Category </span></p>
@@ -17,7 +17,7 @@
 
     </div>
 
-    <div class="boxAddTopic">
+    <div class="listTopic_newTopic">
 
         <a href="index.php?ctrl=forum&action=newTopic"> 
             <p><span class="addActiveAvatar"> New Topic </span></p>
@@ -32,7 +32,7 @@
         <hr class="after_titlePink" />
 </div>
 
-<section class="latest_topic">
+<section class="list_topic">
 
 
 <!-- Si il y as des topics dans la catégorie, je les affiches --> 
@@ -40,7 +40,7 @@
 
 foreach($topics as $topic ){ ?>
 
-    <div class="boxTopic">
+    <div class="boxListTopic">
 
         <figure class="img_avatarList">
             <a href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $topic->getId() ?>">
@@ -48,46 +48,45 @@ foreach($topics as $topic ){ ?>
             </a>
         </figure>
 
-<div class="list_titleTopic">
+        <div class="list_titleTopic">
 
-    <div class="titleTopicList">
+            <div class="titleTopicList">
 
-        <p>
-            <a href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $topic->getId() ?>">
-                <?= $topic->getTitle(); ?>
-            </a>
-        </p>
+                <p>
+                    <a href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $topic->getId() ?>">
+                        <?= $topic->getTitle(); ?>
+                    </a>
+                </p>
 
-    </div>
+            </div>
 
-    <div class="list_infoTopic">
+            <div class="list_infoTopic">
 
-        <p> By <span class="yellow">
-                <a href="index.php?ctrl=home&action=viewProfil&id=<?= $topic->getUser()->getId() ?>">
-                    <?= $topic->getUser() ?>
-                </a>
-            </span> | <?= $topic->getCreationDate()->format("F jS, Y") ?>
-        </p>
+                <p> By <span class="yellow">
+                    <a href="index.php?ctrl=home&action=viewProfil&id=<?= $topic->getUser()->getId() ?>">
+                        <?= $topic->getUser() ?>
+                    </a>
+                    </span> | <?= $topic->getCreationDate()->format("F jS, Y") ?>
+                </p>
 
-        <p> In <span class="yellow">
-                <a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $topic->getCategory()->getId() ?>">
-                    <?= $topic->getCategory() ?>
-                </a>
-            </span> | <?= $topic->getCreationDate()->format("G:i") ?>
-        </p>
+                <p> In <span class="yellow">
+                    <a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $topic->getCategory()->getId() ?>">
+                        <?= $topic->getCategory() ?>
+                    </a>
+                    </span> | <?= $topic->getCreationDate()->format("G:i") ?>
+                </p>
 
-    </div>
-</div>
+            </div>
+        </div>
 
-<div class="list_nbPost">
+        <div class="list_nbPost">
 
-    <i class="fa-regular fa-message"></i>
-    <p> <?= $topic->getNbPosts(); ?> </p>
-</div>
+            <i class="fa-regular fa-message"></i>
+            <p> <?= $topic->getNbPosts(); ?> </p>
+        </div>
 
-</div>
-
-            <?php if (!$topic->getClosed()) {
+        <div class="topicClosed">
+                    <?php if (!$topic->getClosed()) {
 
                 if (App\Session::isAdmin() || App\Session::isModerator()) { ?> 
             
@@ -115,9 +114,12 @@ foreach($topics as $topic ){ ?>
 
                     <i class="fa-solid fa-lock red"></i>
             
-                <?php } ?>
+                <?php }} ?>
+        </div>
 
-    <?php }} ?>
+    </div>
+
+            <?php } ?>
 
 <?php }
 
@@ -130,3 +132,10 @@ foreach($topics as $topic ){ ?>
 
 </section>
 </section>
+
+
+<?php 
+
+$css = "listTopics.css";
+
+?>

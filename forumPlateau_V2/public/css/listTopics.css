@@ -1,0 +1,139 @@
+@media only screen and (min-width: 320px) {
+
+.wrapper_listTopic {
+    background-image: var(--bg-page);
+}
+
+.button_listCateg_newTopic {
+    padding-top: 15px; 
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.listTopic_returnCategory,
+.listTopic_newTopic {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.listTopic_returnCategory p,
+.listTopic_newTopic p {
+    color: var(--first-color);
+    background-color: var(--bg-border);
+    padding: 10px 50px;
+    border-radius: 50px;
+    border: solid 2px var(--second-color-yellow);
+    -webkit-box-shadow: 5px 5px 0px 0px var(--bg-border); 
+    box-shadow: 5px 5px 0px 0px var(--second-color-yellow);
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.listTopic_returnCategory p {
+    border: solid 2px var(--second-color-rose);
+    -webkit-box-shadow: 5px 5px 0px 0px var(--bg-border); 
+    box-shadow: 5px 5px 0px 0px var(--second-color-rose);
+}
+
+.listTopic_returnCategory a,
+.listTopic_newTopic a {
+    color: var(--first-color);
+    text-decoration: none;
+}
+
+.list_topic {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.list_topic p {
+    color: var(--first-color);
+    font-size: 1.1em;
+}
+
+.boxListTopic {
+    position: relative;
+    margin: 20px 0;
+    width: 90%;
+    min-height: 110px;
+    border-radius: 8px;
+    background-color: var(--bg-border);
+    display: flex;
+    position: relative;
+}
+
+.boxListTopic a {
+    color: var(--first-color);
+    text-decoration: none;
+}
+
+.img_avatarList {
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+}
+
+.img_avatarList img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.list_titleTopic {
+    padding: 5px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.titleTopicList p {
+    font-weight: var(--Bold);
+    font-size: 1.3em;
+}
+
+.list_infoTopic p {
+    font-weight: var(--Light);
+}
+
+.list_nbPost {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding-right: 5px;
+}
+
+.list_nbPost i {
+    padding-right: 10px;
+    color: var(--first-color);
+}
+
+.topicClosed {
+    position: absolute;
+    top: 10px;
+    right: -15px;
+}
+
+.yellow {
+    color: var(--first-color-yellow);
+}
+
+.yellow a {
+    color: var(--first-color-yellow);
+    text-decoration: none;
+}
+
+.yellow a:hover {
+    text-decoration: underline;
+}
+
+}

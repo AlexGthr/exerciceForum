@@ -6,7 +6,7 @@
 
  <!-- Si l'utilisateur est connectés, alors affiche le profil, sinon direction la page de connexion. -->
 <?php if(App\Session::getUser()) { ?>
-    <section class="wrapper_detail">
+    <section class="wrapper_profil">
 <!-- Message de session en cas de success/erreur -->
 <?php 
 $session = new Session();
@@ -38,9 +38,11 @@ echo $session->getFlash("message");
                     Edit Avatar <br> (Format : jpg, png, jpeg, webp - 1MO max)
                 </label>
                     
-                <input type="file" name="file"><br>
+                <input type="file" name="file">
     
-                <input type="submit" name="submit" value="Edit">
+                <div class="button_addPost">
+                    <input class="button__addPost" type="submit" name="submit" value="Submit">
+                </div>
             </form>
     
         </div>
@@ -59,18 +61,18 @@ echo $session->getFlash("message");
     
             <form action="index.php?ctrl=home&action=editPassword&id=<?= $user->getId()?>" method="POST">
     
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" required><br>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" required><br>
 
-            <label for="pass1">New Password</label>
-            <input type="password" name="pass1" id="pass1" required><br>
+                <label for="pass1">New Password</label>
+                <input type="password" name="pass1" id="pass1" required><br>
 
-            <label for="pass2">Confirm new Password</label>
-            <input type="password" name="pass2" id="pass2" required><br>
+                <label for="pass2">Confirm new Password</label>
+                <input type="password" name="pass2" id="pass2" required><br>
     
-            <div class="button_addPost">
-    <input class="button__addPost" type="submit" name="submit" value="Validate">
-</div>
+                <div class="button_addPost">
+                    <input class="button__addPost" type="submit" name="submit" value="Validate">
+                </div>
             </form>
     
         </div>
@@ -84,11 +86,6 @@ echo $session->getFlash("message");
 
 
 </div>
-
-<div class="darkmode">
-    <button class="btn-toggle"><i class="fa-regular fa-moon lightAndDarkMode"></i></button>
-</div>
-
 </section>
 
 
@@ -103,5 +100,6 @@ echo $session->getFlash("message");
 
 $noFireStat = true;
 $noContact = true;
+$css = "profil.css";
 
 ?>

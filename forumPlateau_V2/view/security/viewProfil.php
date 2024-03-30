@@ -4,7 +4,7 @@
     $user = $result["data"]['user']; 
     $posts = $result["data"]['posts'];
 ?>
-<section class="wrapper_list">
+<section class="wrapper_profil">
  <!-- Si l'utilisateur est connectés, alors affiche le profil, sinon direction la page de connexion. -->
 <?php if(App\Session::getUser()) { ?>
 
@@ -21,7 +21,7 @@ echo $session->getFlash("message");
 </div>
 
 <div class="display_profil">
-<section class="latest_topic">
+<section class="latest_topicProfil">
 
     <p> Avatar </p><br>
     <img src="<?= $user->getAvatar() ?>" title="Avatar user">
@@ -31,7 +31,7 @@ echo $session->getFlash("message");
     <?php foreach($posts as $post) { ?>
 
         <p> <?= $post->getTopic()->getTitle() ?> </p>
-        <p> <?= $post->getPost() ?> </p>
+        <p> <span class="profilPost"> <?= $post->getPost() ?> </span> </p>
         <p> <a href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $post->getTopic()->getId() ?>">
                 See topic
             </a> </p>
@@ -48,6 +48,7 @@ echo $session->getFlash("message");
 
 $noFireStat = true;
 $noContact = true;
+$css = "profil.css";
 
 ?>
 </section>

@@ -11,11 +11,11 @@ use App\Session; ?>
 <?php 
 $session = new Session();
 echo $session->getFlash("message");
- ?>
+?>
 
 <section class="wrapper_detail">
 
-<div class="button_listTopic">
+<div class="button_returnTopic_newTopic">
 
 <!-- Lien pour revenir à la liste des topics -->
     <div class="returnCategory">
@@ -25,7 +25,7 @@ echo $session->getFlash("message");
     </div>
 
 <!-- Lien pour crée un topic -->
-    <div class="boxAddTopic">
+    <div class="detail_newTopic">
 
         <a href="index.php?ctrl=forum&action=newTopic"> 
             <p><span class="addActiveAvatar"> New Topic </span></p>
@@ -138,9 +138,9 @@ foreach($posts as $post) { ?>
 <h4> <?= $post->getPost() ?> </h4>
 
 <div class="function_post">
-    <div class="deleteOrEdit">
-            <!-- // Permet la modification de son propre message ou de tout les messages en fonction du role -->
+    <!-- // Permet la modification de son propre message ou de tout les messages en fonction du role -->
     <?php if (App\Session::getUser() && $post->getUser() == App\Session::getUser()->getNickName() && !$topics->getClosed()) { ?>
+        <div class="deleteOrEdit">
 
         <a href="index.php?ctrl=forum&action=deletePost&id=<?= $post->getId() ?>"> <img class="delete_img" src="./public/img/delete.svg" alt="delet"> </a>
         <a href="index.php?ctrl=forum&action=updatePost&id=<?= $post->getId() ?>"> <img class="delete_img" src="./public/img/edit.svg" alt="edit"> </a>
@@ -148,6 +148,7 @@ foreach($posts as $post) { ?>
         </div>
 
     <?php } elseif (App\Session::getUser() && (App\Session::isAdmin() || App\Session::isModerator())) { ?>
+        <div class="deleteOrEdit">
 
         <a href="index.php?ctrl=forum&action=deletePost&id=<?= $post->getId() ?>"> <img class="delete_img" src="./public/img/delete.svg" alt="delete"> </a>
         <a href="index.php?ctrl=forum&action=updatePost&id=<?= $post->getId() ?>"> <img class="delete_img" src="./public/img/edit.svg" alt="edit"> </a>
@@ -217,3 +218,9 @@ foreach($posts as $post) { ?>
         </div>
 </section>
 </section>
+
+<?php
+
+$css = "postTopic.css";
+
+?>

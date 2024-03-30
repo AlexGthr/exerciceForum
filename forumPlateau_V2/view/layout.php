@@ -13,8 +13,11 @@ use Services\Statistique;
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <script src="https://cdn.tiny.cloud/1/zg3mwraazn1b2ezih16je1tc6z7gwp5yd4pod06ae5uai8pa/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css" integrity="sha512-8RxmFOVaKQe/xtg6lbscU9DU0IRhURWEuiI0tXevv+lXbAHfkpamD4VKFQRto9WgfOJDwOZ74c/s9Yesv3VvIQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />        
+        
+                    <!-- LINK CSS -->
         <link rel="stylesheet" href="<?= PUBLIC_DIR ?>/css/style.css">
-        <link rel="stylesheet" href="<?= PUBLIC_DIR ?>/css/color.css">
+        <link rel="stylesheet" href="<?= PUBLIC_DIR ?>/css/<?= $css ?>">
+        
         <script src="https://kit.fontawesome.com/a34c2ac31d.js" crossorigin="anonymous"></script>
         <title>FORUM</title>
     </head>
@@ -38,6 +41,12 @@ use Services\Statistique;
                                     <li><a href="index.php?ctrl=home&action=profile">My profile</a></li>
                                     <li><a href="#contact">Contact</a></li>
                                     <li><a href="index.php?ctrl=security&action=logout">Logout</a></li>
+                                    <li>
+                                        <div class="darkmode">
+                                            <button aria-label="darkLightMode" class="btn-toggle"><i class="fa-regular fa-moon lightAndDarkMode"></i></button>
+                                        </div>
+                                    </li>
+
                                 
                                  <!-- Si l'utilisateur n'est pas connecté, on affiche ce menu -->
                                 <?php } else { ?>
@@ -46,6 +55,11 @@ use Services\Statistique;
                                     <li><a href="index.php?ctrl=security&action=register">Sign Up</a></li>
                                     <li><a href="index.php?ctrl=security&action=login">Login</a></li>
                                     <li><a href="#contact">Contact</a></li>
+                                    <li>
+                                        <div class="darkmode">
+                                            <button class="btn-toggle"><i class="fa-regular fa-moon lightAndDarkMode"></i></button>
+                                        </div>
+                                    </li>
 
                                 <?php } ?>
 

@@ -12,7 +12,7 @@ $category = $result["data"]['category'];
 
     <div class="title_popularTopic">
         <h1> LATEST TOPICS </h1>
-        <hr class="after_titlePink" />
+        <hr class="after_title" />
 
     </div>
 
@@ -20,7 +20,7 @@ $category = $result["data"]['category'];
 
         <?php foreach($topics as $topic) { ?> 
 
-            <div class="boxTopic">
+            <div class="boxLastTopic">
 
                 <figure class="img_avatarList">
                     <a href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $topic->getId() ?>">
@@ -76,11 +76,11 @@ $category = $result["data"]['category'];
         <hr class="after_titlePink" />
     </div>
 
-    <section class="latest_topic">
+    <section class="popular_topic">
 
         <?php foreach($popularTopics as $popTopic) { ?> 
 
-            <div class="boxTopic">
+            <div class="boxPopularTopic">
 
                 <figure class="img_avatarList">
                     <a href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $popTopic->getId() ?>">
@@ -175,3 +175,10 @@ $category = $result["data"]['category'];
     </div>
 
 </section>
+
+
+<?php
+
+$css = "home.css";
+
+?>

@@ -14,47 +14,49 @@ use App\Session; ?>
 <div class="session_info">
     <div class="box_session">
 <!-- Message de session en cas d'erreur ou de success -->
-<?php 
-$session = new Session();
+        <?php 
+            $session = new Session();
 
-echo "<span class='value_session'>" . $session->getFlash("message") . "</span>";
- ?>
- </div>
+            echo "<span class='value_session'>" . $session->getFlash("message") . "</span>";
+        ?>
+    </div>
  </div>
 
 <div class="box_Card">
     <div class="card_Login">
-<h1>LOGIN</h1>
+        <h1>LOGIN</h1>
 
-<!-- Formulaire de connexion -->
-<form action="index.php?ctrl=security&action=addLogin" method="POST">
-
-<div class="input-group">
-    <input type="text" name="nickName" id="nickName" required><br>
-    <label for="nickName">Username </label>
-    <i class="fa-solid fa-user"></i>
+                        <!-- Formulaire de connexion -->
+            <form action="index.php?ctrl=security&action=addLogin" method="POST">
     
-</div>
-<div class="input-group">
-    <input type="password" name="password" id="password" required><br>
-    <label for="password">Password</label>
-    <i class="fa-solid fa-lock"></i>
-</div>  
-<div class="button_submit">
-    <p> <span class="forgot_password">Forgot password ?</span> </p>
-    <input class="button__submit" type="submit" name="submit" value="LOG IN">
-</div>
-</form>
+                <div class="login_input">
+                    <input type="text" name="nickName" id="nickName" required><br>
+                    <label for="nickName">Username </label>
+                    <i class="fa-solid fa-user"></i>
+                </div>
 
-<div class="social_media">
-    <a href="#"> <i class="fa-brands fa-square-x-twitter"></i> </a>
-    <a href="#"> <i class="fa-brands fa-facebook"></i> </a>
-    <a href="#"> <i class="fa-brands fa-linkedin"></i> </a>
-</div>
+                <div class="login_input">
+                    <input type="password" name="password" id="password" required><br>
+                    <label for="password">Password</label>
+                    <i class="fa-solid fa-lock"></i>
+                </div>
 
-<?php } ?>
+                <div class="login_buttonSubmit">
+                    <p> <span class="forgot_password">Forgot password ?</span> </p>
+                    <input class="login_Submit" type="submit" name="submit" value="LOG IN">
+                </div>
 
-</div>
+            </form>
+
+            <div class="social_media">
+                <a href="#"> <i class="fa-brands fa-square-x-twitter"></i> </a>
+                <a href="#"> <i class="fa-brands fa-facebook"></i> </a>
+                <a href="#"> <i class="fa-brands fa-linkedin"></i> </a>
+            </div>
+
+        <?php } ?>
+
+    </div>
 </div>
 
 <div class="no_account">
@@ -72,5 +74,6 @@ echo "<span class='value_session'>" . $session->getFlash("message") . "</span>";
 $noImg = true;
 $noFireStat = true;
 $noContact = true;
+$css = "login.css";
 
 ?>

@@ -6,7 +6,7 @@ use App\Session; ?>
     $post = $result["data"]['post']; 
 ?>
 
-<section class="wrapper_detail">
+<section class="wrapper_update">
 <!-- Message de session en cas de success/erreur -->
 <?php 
 $session = new Session();
@@ -21,7 +21,7 @@ echo $session->getFlash("message");
         <hr class="after_title" />
     </div>
     
-    <div class="boxAddTopic">
+    <div class="returnTopicButton">
     
     <a href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $post->getTopic()->getId(); ?>"> 
         <p><span class="addActiveAvatar"> View Topic </span></p>
@@ -29,9 +29,13 @@ echo $session->getFlash("message");
     
     </div>
 
-    <div class="post_beforeUpdate">
-        <p> <?= $post->getPost(); ?></p>
-        <p> By <span class="yellow"> <?= $post->getUser(); ?></span></p>
+    <div class="middle_beforeUpdate">
+
+        <div class="post_beforeUpdate">
+            <p> <?= $post->getPost(); ?></p>
+            <p> By <span class="yellow"> <?= $post->getUser(); ?></span></p>
+        </div>
+
     </div>
 
 
@@ -59,3 +63,10 @@ header("Location: index.php"); exit;
 }?>
 
 </section>
+
+
+<?php
+
+$css = "update.css";
+
+?>

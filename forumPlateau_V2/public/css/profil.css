@@ -1,0 +1,102 @@
+@media only screen and (min-width: 320px) {
+
+
+.wrapper_profil {
+    background-image: var(--bg-page);
+    color: #fff;
+    width: auto;
+}
+
+.display_profil {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.display_profil img {
+    width: 40%;
+    height: 60%;
+    border-radius: 14px;
+    object-fit: cover;
+}
+
+.display_profil a {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.show_editAvatar {
+    display: none;
+}
+
+.form_editAvatar {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+padding: 15px;
+}
+
+.show_editPassword {
+    display: none;
+}
+
+.form_editPassword form {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+padding: 15px;
+}
+
+.latest_topicProfil {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.latest_topicProfil p {
+    color: var(--first-color);
+    font-size: 1.1em;
+}
+
+.latest_topicProfil a {
+    color: var(--first-color-yellow);
+}
+
+.profilPost {
+    font-weight: 200;
+    font-style: italic;
+}
+
+.button_addPost {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: flex-end;
+}
+
+.button__addPost {
+    width: 150px;
+    height: 30px;
+    color: var(--first-color);
+    background-color: transparent;
+    border: solid 1px var(--first-color);
+    border-radius: 5px;
+    font-size: 1.3em;
+    font-weight: var(--Medium);
+    margin: 15px 15px;
+}
+
+
+
+
+
+
+}

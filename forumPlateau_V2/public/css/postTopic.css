@@ -1,0 +1,221 @@
+@media only screen and (min-width: 320px) {
+
+.wrapper_detail {
+    background-image: var(--bg-page);
+    color: #fff;
+}
+
+.button_returnTopic_newTopic {
+    padding-top: 15px; 
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.detail_newTopic,
+.returnCategory {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.returnCategory p,
+.detail_newTopic p {
+    color: var(--first-color);
+    background-color: var(--bg-border);
+    padding: 10px 50px;
+    border-radius: 50px;
+    border: solid 2px var(--second-color-yellow);
+    -webkit-box-shadow: 5px 5px 0px 0px var(--bg-border); 
+    box-shadow: 5px 5px 0px 0px var(--second-color-yellow);
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.returnCategory p {
+    border: solid 2px var(--second-color-rose);
+    -webkit-box-shadow: 5px 5px 0px 0px var(--bg-border); 
+    box-shadow: 5px 5px 0px 0px var(--second-color-rose);
+}
+
+.returnCategory a,
+.detail_newTopic a {
+    color: var(--first-color);
+    text-decoration: none;
+}
+
+.information_topTopic {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 25px; 
+}
+
+.created_By {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    line-height: 1.5em;
+}
+
+.created_By a {
+    text-decoration: none;
+    color: var(--first-color);
+}
+
+.created_By img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    object-fit: cover;
+}
+
+.data_topic {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.data_topic p {
+    padding: 20px 0;
+}
+
+.rose_colorNoUnderligne {
+    color: var(--second-color-rose);
+    font-weight: 700;
+}
+
+#content_post {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.content_post {
+    width: 90%;
+    border-radius: 8px;
+    background-color: var(--bg-border);
+}
+
+.yellow {
+    color: var(--first-color-yellow);
+}
+
+.yellow a {
+    color: var(--first-color-yellow);
+    text-decoration: none;
+}
+
+.yellow a:hover {
+    text-decoration: underline;
+}
+
+.post_picture {
+    display: flex;
+    justify-content: space-between;
+}
+
+.post_picture img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
+    margin: 10px 15px;
+    object-fit: cover;
+}
+
+.post_NameHours {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 0 15px;
+}
+
+.post_NameHours a {
+    text-decoration: none;
+}
+
+.timePost {
+    font-weight: 200;
+}
+
+.content_post h4 {
+    padding-left: 75px;
+    padding-right: 20px;
+    text-align: inherit;
+    font-weight: 400;
+}
+
+.function_post {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10px;
+}
+
+.deleteEditAdmin {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-top: 5px;
+    padding-left: 30px;
+}
+
+.deleteOrEdit {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.seperator {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.next_post {
+    text-align: center;
+    width: 40%;
+    border: solid 3px var(--second-color-rose);
+    border-radius: 15px;
+}
+
+.boxPost {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#post {
+    resize: none;
+    width: 90%;
+    height: 300px;
+    border-radius: 8px;
+    padding: 10px 10px;
+    background-color: #d3d1d1d5;
+}
+
+.button_addPost {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: flex-end;
+}
+
+.button__addPost {
+    width: 150px;
+    height: 30px;
+    color: var(--first-color);
+    background-color: transparent;
+    border: solid 1px var(--first-color);
+    border-radius: 5px;
+    font-size: 1.3em;
+    font-weight: var(--Medium);
+    margin: 15px 15px;
+}
+
+}

@@ -6,7 +6,7 @@ use App\Session; ?>
     $topic = $result["data"]['topic']; 
 ?>
 
-<section class="wrapper_detail">
+<section class="wrapper_update">
 <!-- Message de session en cas de success/erreur -->
 <?php 
 $session = new Session();
@@ -17,11 +17,11 @@ echo $session->getFlash("message");
 <?php if (App\Session::getUser() && (App\Session::isAdmin() || App\Session::isModerator())) { ?>
     
     <div class="title_popularTopic">
-        <h1> Update Topic </h1>
+        <h1> Update Title topic </h1>
         <hr class="after_title" />
     </div>
 
-    <div class="boxAddTopic">
+    <div class="returnTopicButton">
     
     <a href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $topic->getId(); ?>"> 
         <p><span class="addActiveAvatar"> View Topic </span></p>
@@ -29,9 +29,13 @@ echo $session->getFlash("message");
     
     </div>
 
+    <div class="middle_beforeUpdate">
+
     <div class="topic_beforeUpdate">
         <p> <?= $topic->getTitle(); ?></p>
         <p>By <span class="yellow"> <?= $topic->getUser(); ?> </span></p><br>
+    </div>
+
     </div>
 
 <div class="update_Topic">
@@ -40,8 +44,8 @@ echo $session->getFlash("message");
         
 
         <div class="input-group">
-        <input type="text" name="title" id="title" value="<?= $topic->getTitle() ?>" required><br>
-        <label> Title : </label>
+            <label> Title </label>
+            <input type="text" name="title" id="title" value="<?= $topic->getTitle() ?>" required><br>
         </div>
     
         
@@ -59,3 +63,10 @@ header("Location: index.php"); exit;
 }?>
 
 </section>
+
+
+<?php
+
+$css = "update.css";
+
+?>
