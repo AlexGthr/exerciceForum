@@ -126,7 +126,7 @@ class HomeController extends AbstractController implements ControllerInterface {
             // Je crée un tableau pour accepter UNIQUEMENT ce genre d'extension
             $extensions = ['jpg', 'png', 'jpeg', 'webp'];
             // Et je crée une condition pour la taille MAX d'une image (1 MO ici)
-            $maxSize = 1000000;
+            $maxSize = 100000000000;
             
             $uniqueName = uniqid('', true);
             

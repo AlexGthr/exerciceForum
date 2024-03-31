@@ -4,8 +4,8 @@
 .login_User {
 
     margin-top: 70px;
-    background-image: url('../img/bg_section.webp');
-    
+    background-image: var(--bg-page);
+    background-size: cover;
 }
 
 .box_Card {
@@ -17,6 +17,8 @@
 
 .card_Login {
     width: 90%;
+    max-width: 600px;
+    height: 655px;
     background-color: var(--bg-card);
     border-radius: 14px;
     display: flex;
@@ -75,6 +77,11 @@
 
 }
 
+.login_input input:focus~i{ /*permettra un déplacement du champ vers le haut*/
+    color: var(--second-color-yellow);
+    transition: all 0.5s;
+}
+
 .login_buttonSubmit {
     display: flex;
     flex-direction: column;
@@ -87,8 +94,10 @@
     text-decoration: underline;
 }
 
-.login_buttonSubmit p {
-    padding-bottom: 30px;
+.login_buttonSubmit a {
+    margin-bottom: 40px;
+    height: fit-content;
+    color: var(--first-color);
 }
 
 .login_Submit {
@@ -100,12 +109,14 @@
     border-radius: 5px;
     font-size: 1.3em;
     font-weight: var(--Medium);
+    cursor: pointer;
 }
 
 .social_media {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 50px;
 }
 
 .social_media a {
@@ -126,6 +137,46 @@
     color: var(--first-color);
     font-size: 1em;
     line-height: 20px;
+}
+
+.arrow i {
+    color: #fff;
+}
+
+.login_buttonSubmit a:hover i {
+    transform: translateX(5px);
+    transition: all 0.5s;
+}
+
+.no_account a:hover i {
+    transform: translateX(5px);
+    transition: all 0.5s;
+}
+
+
+
+
+
+}
+
+@media only screen and (min-width: 1024px) {
+
+
+.card_Login {
+    height: 660px;
+}
+
+.login_Submit:hover {
+    box-shadow: inset 250px 0 0 0 var(--first-color-yellow);
+    color: black;
+    border-color: var(--first-color-yellow);
+    transition: all 1s;
+}
+
+.social_media a:hover {
+    color: var(--first-color-yellow);
+    transform: scale(1.1);
+    transition: all 0.5s;
 }
 
 

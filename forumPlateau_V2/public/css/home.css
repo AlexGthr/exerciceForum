@@ -2,6 +2,7 @@
 
 .wrapper_list {
     background-image: var(--bg-page);
+    background-size: cover;
 }
 
 .popular_topic,
@@ -173,4 +174,63 @@
     color: var(--first-color);
     text-decoration: underline;
 }
+}
+
+@media only screen and (min-width: 1024px) { 
+
+.boxPopularTopic, .boxLastTopic {
+    max-width: 1200px;
+    height: 150px;
+}
+.boxPopularTopic .img_avatarList img,
+.boxLastTopic .img_avatarList img  {
+    height: 100px;
+    width: 100px;
+}
+
+.boxPopularTopic a, .boxLastTopic a {
+    font-size: 1.1em;
+}
+
+.boxPopularTopic p, .boxLastTopic p {
+    font-size: 1.3em;
+}
+
+.list_nbPost i {
+    font-size: 2em;
+}
+
+.boxCateg {
+    max-width: 1200px;
+    height: 108px;
+    border-radius: 80px 8px 8px 80px;
+}
+
+.img_CategList img {
+    width: 120px;
+    height: 120px;
+}
+
+.boxCateg a {
+    font-size: 1.3em;
+}
+
+.list_nbPost {
+    bottom: 5px;
+}
+
+.list_nbPost_ p {
+    font-size: 1.3em;
+    padding: 3px 0;
+}
+
+.list_nbPost_ i {
+    font-size: 1.3em;
+    padding: 3px 0;
+}
+
+.viewAll a {
+    font-size: 1.3em;
+}
+
 }

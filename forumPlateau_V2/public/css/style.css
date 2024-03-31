@@ -140,8 +140,10 @@ nav h1 {
 }
 
 .img_topMobile img {
+    padding-top: 70px;
     display: block;
     width: 100%;
+    max-height: 550px;
     object-fit: cover;
 }
 
@@ -206,6 +208,16 @@ nav h1 {
     color: #fff;
 }
 
+.researchContact {
+    padding: 0 15px;
+    height: 35px;
+    width: 200px;
+    border-radius: 25px;
+    background-color: var(--bg-border);
+    border: none;
+    color: #fff;
+}
+
 .searchBar button {
     font-size: 1em;
     background: none;
@@ -260,6 +272,7 @@ nav h1 {
 
 .after_title {
     width: 20%;
+    max-width: 150px;
     border: var(--second-color-yellow) 3px solid;
     margin-left: 10px;
     border-radius: 7px;
@@ -267,6 +280,7 @@ nav h1 {
 
 .after_titlePink {
     width: 20%;
+    max-width: 150px;
     border: var(--second-color-rose) 3px solid;
     margin-left: 10px;
     border-radius: 7px;
@@ -369,9 +383,60 @@ footer p {
 }
 
 
-
 }
 
+
+
+/* ******************************
+        VUES DESKTOP
+   ****************************** */
+
 @media only screen and (min-width: 1024px) {
+
+.fire_stat {
+    padding: 30px 0;
+}
+
+.nav_liste {
+    width: 40%;
+}
+
+.img_topMobile img {
+    height: 600px;
+}
+
+.research {
+    width: 35%;
+}
+
+.boxBestStat {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0;
+}
+
+.best_stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.best_stat i{
+    font-size: 2em;
+    padding-bottom: 5px;
+}
+
+.best_stat p {
+    font-size: 1.7em;
+    font-weight: 500;
+}
+
+.title_popularTopic {
+    margin-left: 40px;
+}
+
+.info_contact p {
+    font-size: 1.5em;
+}
+
 
 }

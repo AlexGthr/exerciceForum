@@ -88,7 +88,10 @@ $(document).ready(function() {
 
 document.addEventListener("DOMContentLoaded", function () {
     const btnToggleTheme = document.querySelector(".btn-toggle");
-    localStorage.setItem("theme", "dark")
+
+    if (!localStorage.getItem("theme")) {
+        document.body.classList.add("dark-theme");
+    }
   
     // Vérifier que l'élément .btn-toggle existe avant d'attacher l'événement
     const currentTheme = localStorage.getItem("theme");

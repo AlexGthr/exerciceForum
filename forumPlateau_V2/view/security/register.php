@@ -78,7 +78,7 @@ use App\Session; ?>
 <div class="have_account">
     <p> Already have an account ? <br>
         <a href="index.php?ctrl=security&action=login">
-            <span class="rose_color">Log in ! </span>
+            <span class="rose_color">Log in ! <i class="fa-solid fa-arrow-right"></i></span>
         </a>
     </p>
 </div>

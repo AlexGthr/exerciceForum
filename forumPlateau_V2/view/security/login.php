@@ -42,16 +42,20 @@ use App\Session; ?>
                 </div>
 
                 <div class="login_buttonSubmit">
-                    <p> <span class="forgot_password">Forgot password ?</span> </p>
+                    <a href="#">
+                         <span class="forgot_password">Forgot password ?</span>
+                           <i class="fa-solid fa-arrow-right"></i> 
+                    </a>
+                    
                     <input class="login_Submit" type="submit" name="submit" value="LOG IN">
                 </div>
 
             </form>
 
             <div class="social_media">
-                <a href="#"> <i class="fa-brands fa-square-x-twitter"></i> </a>
-                <a href="#"> <i class="fa-brands fa-facebook"></i> </a>
-                <a href="#"> <i class="fa-brands fa-linkedin"></i> </a>
+                <a aria-label="link Twitter" href="#"> <i class="fa-brands fa-square-x-twitter"></i> </a>
+                <a aria-label="link Facebook" href="#"> <i class="fa-brands fa-facebook"></i> </a>
+                <a aria-label="link Linkedin" href="#"> <i class="fa-brands fa-linkedin"></i> </a>
             </div>
 
         <?php } ?>
@@ -62,7 +66,7 @@ use App\Session; ?>
 <div class="no_account">
     <p> Don't have an account ? <br>
         <a href="index.php?ctrl=security&action=register">
-            <span class="rose_color">Register ! </span>
+            <span class="rose_color">Register ! <i class="fa-solid fa-arrow-right"></i></span>
         </a>
     </p>
 </div>

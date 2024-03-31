@@ -57,7 +57,7 @@ use Services\Statistique;
                                     <li><a href="#contact">Contact</a></li>
                                     <li>
                                         <div class="darkmode">
-                                            <button class="btn-toggle"><i class="fa-regular fa-moon lightAndDarkMode"></i></button>
+                                            <button aria-label="darkLightMode" class="btn-toggle"><i class="fa-regular fa-moon lightAndDarkMode"></i></button>
                                         </div>
                                     </li>
 
@@ -106,7 +106,7 @@ use Services\Statistique;
                     <!-- Image en dessous de la nav -->
                     <?php if (!isset($noImg)) {?>
                         <figure class="img_topMobile">
-                            <img src="./public/img/img-top-mobile.webp" title="image top mobile">
+                            <img id="imgTopScreen" src="./public/img/img-top-mobile.webp" title="image top mobile">
                         </figure>
                     <?php } ?>
 
@@ -131,20 +131,21 @@ use Services\Statistique;
 
                         </div>
 
-
-                        <div class="best_stat">
-                            <i class="fa-solid fa-fire"></i>
-                            <p>Number of Topics : <?= Statistique::statTopic(); ?> </p>
-                        </div>
-
-                        <div class="best_stat">
-                            <i class="fa-solid fa-fire"></i>
-                            <p>Number of messages : <?= Statistique::statPost(); ?> </p>
-                        </div>
-
-                        <div class="best_stat">
-                            <i class="fa-solid fa-fire"></i>
-                            <p>Number of members : <?= Statistique::statUser(); ?> </p>
+                        <div class="boxBestStat">
+                            <div class="best_stat">
+                                <i class="fa-solid fa-fire"></i>
+                                <p>Number of Topics : <?= Statistique::statTopic(); ?> </p>
+                            </div>
+    
+                            <div class="best_stat">
+                                <i class="fa-solid fa-fire"></i>
+                                <p>Number of messages : <?= Statistique::statPost(); ?> </p>
+                            </div>
+    
+                            <div class="best_stat">
+                                <i class="fa-solid fa-fire"></i>
+                                <p>Number of members : <?= Statistique::statUser(); ?> </p>
+                            </div>
                         </div>
 
                     </section>
@@ -169,7 +170,7 @@ use Services\Statistique;
                                 <form action="#" method="post" enctype="multipart/form-data"> <!-- Formulaire pour envoyer un produit -->
 
 
-                                    <input type="search" class="research" name="research" placeholder="Research">
+                                    <input type="search" class="researchContact" name="research" placeholder="Research">
                                     <button type="submit" name="submit" class="fa-mobile"><i class="fa-solid fa-magnifying-glass"></i></button>
 
                                 </form>

@@ -3,7 +3,8 @@
 .register_user {
     
     margin-top: 70px;
-    background-image: url('../img/bg_section.webp');
+    background-image: var(--bg-page);
+    background-size: cover;
     
 }
 
@@ -16,6 +17,7 @@
 
 .card_register {
     width: 90%;
+    max-width: 655px;
     background-color: var(--bg-card);
     border-radius: 14px;
     display: flex;
@@ -73,6 +75,11 @@
     top: -10px;
 }
 
+.register_input input:focus~i{ /*permettra un déplacement du champ vers le haut*/
+    color: var(--second-color-yellow);
+    transition: all 0.5s;
+}
+
 .register_submit {
     display: flex;
     flex-direction: column;
@@ -89,6 +96,7 @@
     border-radius: 5px;
     font-size: 1.3em;
     font-weight: var(--Medium);
+    cursor: pointer;
 }
 
 .social_media {
@@ -117,4 +125,32 @@
     line-height: 20px;
 }
 
+.have_account a:hover i {
+    transform: translateX(5px);
+    transition: all 0.5s;
+}
+
+
+}
+
+@media only screen and (min-width: 1024px) {
+
+
+.card_register {
+    height: 660px;
+}
+    
+.register_buttonSubmit:hover {
+    box-shadow: inset 250px 0 0 0 var(--second-color-yellow);
+    color: black;
+    border-color: var(--second-color-yellow);
+    transition: all 1.5s;
+}
+    
+.social_media a:hover {
+    color: var(--second-color-yellow);
+    transform: scale(1.1);
+    transition: all 0.5s;
+}
+      
 }
