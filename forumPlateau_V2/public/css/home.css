@@ -179,8 +179,9 @@
 @media only screen and (min-width: 1024px) { 
 
 .boxPopularTopic, .boxLastTopic {
-    max-width: 1200px;
+    max-width: 1500px;
     height: 150px;
+    cursor: pointer;
 }
 .boxPopularTopic .img_avatarList img,
 .boxLastTopic .img_avatarList img  {
@@ -201,9 +202,10 @@
 }
 
 .boxCateg {
-    max-width: 1200px;
+    max-width: 1500px;
     height: 108px;
     border-radius: 80px 8px 8px 80px;
+    cursor: pointer;
 }
 
 .img_CategList img {
@@ -231,6 +233,26 @@
 
 .viewAll a {
     font-size: 1.3em;
+}
+
+.boxPopularTopic:hover, .boxLastTopic:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    transition: all 1s;
+}
+
+.boxPopularTopic:hover .nameTopic, .boxLastTopic:hover .nameTopic {
+    color: var(--first-color-yellow);
+    transition: all 1s;
+}
+
+.boxCateg:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    transition: all 1s;
+}
+
+.boxCateg:hover a {
+    color: var(--first-color-yellow);
+    transition: all 1s;
 }
 
 }

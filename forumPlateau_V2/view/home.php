@@ -33,7 +33,7 @@ $category = $result["data"]['category'];
                     <div class="titleTopicList">
 
                         <p>
-                            <a href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $topic->getId() ?>">
+                            <a class="nameTopic" href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $topic->getId() ?>">
                                 <?= $topic->getTitle(); ?>
                             </a>
                         </p>
@@ -93,7 +93,7 @@ $category = $result["data"]['category'];
                     <div class="titleTopicList">
 
                         <p>
-                            <a href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $popTopic->getId() ?>">
+                            <a class="nameTopic" href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $popTopic->getId() ?>">
                                 <?= $popTopic->getTitle(); ?>
                             </a>
                         </p>

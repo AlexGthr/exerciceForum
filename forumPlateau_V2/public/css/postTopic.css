@@ -2,6 +2,7 @@
 
 .wrapper_detail {
     background-image: var(--bg-page);
+    background-size: cover;
     color: #fff;
 }
 
@@ -218,4 +219,72 @@
     margin: 15px 15px;
 }
 
+}
+
+@media only screen and (min-width: 1024px) {
+
+#content_post {
+    padding: 50px 0;
+}
+
+.content_post {
+    max-width: 1200px;
+}
+
+.deleteEditAdmin {
+    padding-left: 180px;
+}
+
+.returnCategory p,
+.detail_newTopic p {
+    padding: 20px 80px;
+    font-size: 1.3em;
+}
+
+.created_By img {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.information_topTopic {
+    justify-content: center;
+    gap: 250px;
+}
+
+.information_topTopic p {
+    font-size: 1.5em;
+}
+
+.post_picture img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+
+.post_NameHours a,
+.post_NameHours h2 {
+    font-size: 1.4em;
+}
+
+.content_post h4 {
+    font-size: 1.4em;
+    margin-left: 150px;
+    padding: 50px 0;
+}
+
+.deleteOrEdit {
+    margin-left: 20px;
+}
+
+.show_boxPost h3 {
+    font-size: 1.7em;
+    padding: 10px 0;
+}
+
+.show_boxPost p {
+    padding: 20px 80px;
+    font-size: 1.3em;
+}
 }

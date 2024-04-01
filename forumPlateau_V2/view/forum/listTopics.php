@@ -53,7 +53,7 @@ foreach($topics as $topic ){ ?>
             <div class="titleTopicList">
 
                 <p>
-                    <a href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $topic->getId() ?>">
+                    <a class="nameTopic" href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $topic->getId() ?>">
                         <?= $topic->getTitle(); ?>
                     </a>
                 </p>

@@ -2,6 +2,7 @@
 
 .wrapper_listTopic {
     background-image: var(--bg-page);
+    background-size: cover;
 }
 
 .button_listCateg_newTopic {
@@ -136,4 +137,53 @@
     text-decoration: underline;
 }
 
+}
+
+@media only screen and (min-width: 1024px) {
+
+.boxListTopic {
+    max-width: 1500px;
+    height: 150px;
+    cursor: pointer;
+}
+
+.boxListTopic img {
+    height: 100px;
+    width: 100px;
+}
+
+.boxListTopic a {
+    font-size: 1.1em;
+}
+
+.boxListTopic p {
+    font-size: 1.3em;
+}
+
+.list_nbPost {
+    bottom: 5px;
+}
+
+.list_nbPost i {
+    font-size: 2em;
+}
+
+.topicClosed i {
+    font-size: 1.5em;
+}
+
+.boxListTopic:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    transition: all 1s;
+}
+
+.boxListTopic:hover .nameTopic {
+    color: var(--first-color-yellow);
+    transition: all 1s;
+}
+
+.listTopic_returnCategory p, .listTopic_newTopic p {
+    padding: 20px 80px;
+    font-size: 1.3em;
+}
 }
