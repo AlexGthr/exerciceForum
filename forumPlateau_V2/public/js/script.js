@@ -111,3 +111,33 @@ document.addEventListener("DOMContentLoaded", function () {
         })
     }
 });
+
+const buttonDelTopic = document.getElementById("delTopic");
+const popUp = document.querySelector('.boxPopUp_delTopic');
+const removePopUp = document.getElementById('no');
+
+if (buttonDelTopic && popUp && removePopUp) {
+    buttonDelTopic.addEventListener("click", function() {
+        popUp.classList.add("active");
+    })
+
+    removePopUp.addEventListener("click", function() {
+        popUp.classList.remove("active");
+    })
+}
+
+const buttonDelPost = document.querySelectorAll(".delPost");
+const popUpPost = document.querySelector('.boxPopUp_delPost');
+const removePopUpPost = document.getElementById('noPost');
+
+if (buttonDelPost && popUpPost && removePopUpPost) {
+    buttonDelPost.forEach(button => {
+        button.addEventListener("click", function() {
+            popUpPost.classList.add("active");
+        });
+    });
+
+    removePopUpPost.addEventListener("click", function() {
+        popUpPost.classList.remove("active");
+    })
+}

@@ -79,7 +79,7 @@ echo $session->getFlash("message");
 <?php if (App\Session::getUser() && (App\Session::isAdmin() || App\Session::isModerator())) { ?>
 
     <div class="deleteEditAdmin">
-        <a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topics->getId() ?>"> <img class="delete_img" src="./public/img/delete.svg" alt="delet"> </a>
+        <a id="delTopic" href="#"> <img class="delete_img" src="./public/img/delete.svg" alt="delet"> </a>
         <a href="index.php?ctrl=forum&action=updateTopic&id=<?= $topics->getId() ?>"><img class="delete_img" src="./public/img/edit.svg" alt="edit"></a>
     </div>
 
@@ -142,7 +142,7 @@ foreach($posts as $post) { ?>
     <?php if (App\Session::getUser() && $post->getUser() == App\Session::getUser()->getNickName() && !$topics->getClosed()) { ?>
         <div class="deleteOrEdit">
 
-        <a href="index.php?ctrl=forum&action=deletePost&id=<?= $post->getId() ?>"> <img class="delete_img" src="./public/img/delete.svg" alt="delet"> </a>
+        <a class="delPost" href="#"> <img class="delete_img" src="./public/img/delete.svg" alt="delet"> </a>
         <a href="index.php?ctrl=forum&action=updatePost&id=<?= $post->getId() ?>"> <img class="delete_img" src="./public/img/edit.svg" alt="edit"> </a>
 
         </div>
@@ -150,7 +150,7 @@ foreach($posts as $post) { ?>
     <?php } elseif (App\Session::getUser() && (App\Session::isAdmin() || App\Session::isModerator())) { ?>
         <div class="deleteOrEdit">
 
-        <a href="index.php?ctrl=forum&action=deletePost&id=<?= $post->getId() ?>"> <img class="delete_img" src="./public/img/delete.svg" alt="delete"> </a>
+        <a class="delPost" href="#"> <img class="delete_img" src="./public/img/delete.svg" alt="delete"> </a>
         <a href="index.php?ctrl=forum&action=updatePost&id=<?= $post->getId() ?>"> <img class="delete_img" src="./public/img/edit.svg" alt="edit"> </a>
         
         </div>
@@ -218,6 +218,27 @@ foreach($posts as $post) { ?>
         </div>
 </section>
 </section>
+
+<div class="boxPopUp_delTopic">
+    <div class="popUp_delTopic">
+        <p> Delete Topic, Are you sure ? </p>
+            <div class="buttonPopup">
+                <button id="yes"><a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topics->getId() ?>"> YES </a></button>
+                <button id="no"> CANCEL </button>
+            </div>
+    </div>
+</div>
+
+<div class="boxPopUp_delPost">
+    <div class="popUp_delPost">
+        <p> Delete Post, Are you sure ? </p>
+            <div class="buttonPopupPost">
+                <button id="yesPost"><a href="index.php?ctrl=forum&action=deletePost&id=<?= $post->getId() ?>"> YES </a></button>
+                <button id="noPost"> CANCEL </button>
+            </div>
+    </div>
+</div>
+
 
 <?php
 

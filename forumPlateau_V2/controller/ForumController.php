@@ -177,7 +177,8 @@ class ForumController extends AbstractController implements ControllerInterface{
                         "title" => $title,
                         "closed" => 0,
                         "user_id" => $id,
-                        "category_id" => $category
+                        "category_id" => $category,
+                        "nbView" => 1
                     ];
 
                     $idNewTopic = $newTopic->add($informationTopic);

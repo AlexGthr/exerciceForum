@@ -15,7 +15,7 @@
 }
 
 .display_profil img {
-    width: 40%;
+    width: 20%;
     height: 60%;
     border-radius: 14px;
     object-fit: cover;
@@ -93,6 +93,26 @@ padding: 15px;
     font-weight: var(--Medium);
     margin: 15px 15px;
 }
+
+.delAccount {
+    margin: 20px 0;
+    padding: 10px 50px;
+    background-color: var(--first-color);
+    border: solid 1px var(--first-color);
+    border-radius: 12px;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.delAccount:hover {
+    box-shadow: inset 300px 0 0 0 rgb(187, 6, 6);
+    border: solid 1px var(--first-color);
+    color: var(--first-color);
+    transition: all 1s;
+}
+
+
 
 
 

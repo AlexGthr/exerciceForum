@@ -82,7 +82,7 @@ echo $session->getFlash("message");
 
     <p>Date creation account : <?= $user->getDateRegistration()->format("d/m/Y") ?><br>
 
-    <a href="#"> DELETE MY ACCOUNT </a>
+    <a class="delAccount" href="#"> DELETE MY ACCOUNT </a>
 
 
 </div>
