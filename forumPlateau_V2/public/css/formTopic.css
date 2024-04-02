@@ -1,0 +1,117 @@
+@media only screen and (min-width: 320px) {
+
+.form_Topic {
+    background-image: var(--bg-page);
+    background-size: cover;
+}
+
+.input-group{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.input-group label{
+    padding: 0 25px;
+    font-size: 16px;
+    color: var(--first-color);
+    pointer-events: none; 
+    transition: .5s;
+}
+
+.input-group i {
+    color: var(--first-color);
+    position: absolute;
+    right: 20px;
+    top: 30%;
+}
+
+.input-group input{
+    width: 80%;
+    height: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 0 5px;
+    background: var(--bg-border);
+    border-radius: 14px;
+    border: none;
+    outline: none;
+
+}
+
+.newTopic_post {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.newTopic_post label {
+    color: var(--first-color);
+}
+
+#post {
+    resize: none;
+    width: 80%;
+    height: 300px;
+    border-radius: 8px;
+    padding: 10px 10px;
+    background-color: var(--bg-border);
+    color: var(--first-color);
+}
+
+.listCategory {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.listCategory label {
+    color: var(--first-color);
+}
+
+
+.newTopic_submit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.newTopic_buttonSubmit {
+    width: 250px;
+    height: 50px;
+    color: var(--first-color);
+    background-color: transparent;
+    border: solid 1px var(--first-color);
+    border-radius: 5px;
+    font-size: 1.3em;
+    font-weight: var(--Medium);
+    cursor: pointer;
+}
+
+.newTopic_buttonSubmit:hover {
+    box-shadow: inset 250px 0 0 0 var(--second-color-yellow);
+    color: black;
+    border-color: var(--second-color-yellow);
+    transition: all 1.5s;
+}
+
+}
+
+
+@media only screen and (min-width: 1024px) {
+
+.input-group input {
+    width: 40%;
+}
+
+#post {
+    width: 40%;
+}
+
+}

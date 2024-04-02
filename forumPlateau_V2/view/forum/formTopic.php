@@ -4,6 +4,13 @@
     $categories = $result["data"]['category']; 
 ?>
 
+<section class="form_Topic">
+
+    <div class="title_popularTopic">
+        <h1> New Topic </h1>
+        <hr class="after_title" />
+    </div>
+
  <!-- Si l'utilisateur est connectés, alors affiche le formulaire, sinon direction la page de connexion. -->
 <?php if(App\Session::getUser()) { ?>
 
@@ -12,22 +19,26 @@
 $session = new Session();
 echo $session->getFlash("message");
 ?>
-    
-    <h1> New topic </h1>
 
 <div class="form_newTopic">
 
     <!-- Formulaire d'ajout d'un topic -->
     <form action="index.php?ctrl=forum&action=addTopic&id=<?= App\Session::getUser()->getId() ?>" method="POST">
         
-        <label for="title">Title</label>
-        <input type="text" name="title" id="title" required><br>
+        <div class="input-group">
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" required><br>
+        </div>
         
-        <label for="post">Post</label>
-        <textarea name="post" placeholder="Votre texte ici..." rows="5" required></textarea><br>
+        <div class="newTopic_post">
+            <label for="post">Post</label>
+            <textarea id="post" name="post" placeholder="Votre texte ici..." rows="5" required></textarea><br>
+        </div>
 
-        <label>Category</label>
-        <select name="category" required>
+        <div class="listCategory">
+            <label>Category</label>
+            <select name="category" required>
+        </div>
 
             <?php foreach($categories as $category) { ?>
 
@@ -41,7 +52,9 @@ echo $session->getFlash("message");
 
     
         
-        <input type="submit" name="submit" value="Add topic !">
+        <div class="newTopic_submit">
+            <input class="newTopic_buttonSubmit" type="submit" name="submit" value="Add Topic">
+        </div>
 
     </form>
 
@@ -54,3 +67,12 @@ header("Location: index.php?ctrl=security&action=login"); exit;
 
 } ?>
 
+
+</section>
+
+
+<?php 
+
+$css = "formTopic.css";
+
+?>

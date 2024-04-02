@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `post` (
   KEY `post_ibfk_1` (`topic_id`),
   CONSTRAINT `post_ibfk_1` FOREIGN KEY (`topic_id`) REFERENCES `topic` (`id_topic`) ON DELETE CASCADE,
   CONSTRAINT `post_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table forum.post : ~9 rows (environ)
 INSERT INTO `post` (`id_post`, `post`, `dateCreation`, `topic_id`, `user_id`) VALUES
@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `topic` (
   KEY `category_id` (`category_id`),
   CONSTRAINT `topic_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id_user`),
   CONSTRAINT `topic_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `category` (`id_category`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table forum.topic : ~7 rows (environ)
 INSERT INTO `topic` (`id_topic`, `title`, `closed`, `creationDate`, `user_id`, `category_id`, `nbView`) VALUES
@@ -87,9 +87,9 @@ INSERT INTO `topic` (`id_topic`, `title`, `closed`, `creationDate`, `user_id`, `
 	(13, 'New mmorpg !', 0, '2024-03-18 10:44:55', 1, 3, 6),
 	(14, 'Salut tout le monde !', 0, '2024-03-18 10:47:41', 1, 1, 7),
 	(17, 'Latest Topic', 0, '2024-03-22 10:51:39', 1, 6, 4),
-	(18, 'Testing', 0, '2024-03-22 13:44:29', 15, 2, 2),
-	(19, 'First topic Puzzle', 0, '2024-03-22 16:43:28', 15, 9, 8),
-	(20, 'Second topic Puzzle', 0, '2024-03-22 16:43:42', 15, 9, 15);
+	(18, 'Testing', 0, '2024-03-22 13:44:29', 15, 2, 3),
+	(19, 'First topic Puzzle', 0, '2024-03-22 16:43:28', 15, 9, 25),
+	(20, 'Second topic Puzzle', 0, '2024-03-22 16:43:42', 15, 9, 18);
 
 -- Listage de la structure de table forum. user
 CREATE TABLE IF NOT EXISTS `user` (
@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `ban` tinyint NOT NULL,
   `email` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table forum.user : ~4 rows (environ)
 INSERT INTO `user` (`id_user`, `nickName`, `avatar`, `password`, `role`, `dateRegistration`, `ban`, `email`) VALUES
