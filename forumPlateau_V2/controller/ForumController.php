@@ -71,6 +71,14 @@ class ForumController extends AbstractController implements ControllerInterface{
         $users = $userLastPost->findLastUserPost($id);
         $posts = $postManager->findPostsByTopic($id);
 
+        $viewTopic = $topics->getNbView();
+        $nbView = $viewTopic + 1;
+
+        
+        $information = ["nbView" => $nbView];
+
+        $topicManager->update($information, $id);
+
         if (!$topics) {
             $this->redirectTo("home", "index");
         } else {

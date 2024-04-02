@@ -108,7 +108,7 @@ echo $session->getFlash("message");
         </div>
 
         <div class="data_topic">
-            <p> 555 <br> <span class="rose_colorNoUnderligne"> VIEW </span> </p>
+            <p> <?= $topics->getNbView() ?> <br> <span class="rose_colorNoUnderligne"> VIEW </span> </p>
             <p> <?= $topics->getNbPosts() ?> <br> <span class="rose_colorNoUnderligne"> REPLIES </span> </p>
         </div>
     </div>
