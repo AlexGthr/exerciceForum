@@ -95,7 +95,12 @@
 .content_post {
     width: 90%;
     border-radius: 8px;
+    background-color: hsl(291, 18%, 45%);
+}
+
+.post_picture {
     background-color: var(--bg-border);
+    border-radius: 8px;
 }
 
 .yellow {
@@ -149,7 +154,7 @@
 
 .function_post {
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
     padding: 20px 10px;
 }

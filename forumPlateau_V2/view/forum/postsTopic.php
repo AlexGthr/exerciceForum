@@ -112,7 +112,7 @@ echo $session->getFlash("message");
 <section id="content_post">
 
     <div class="content_post">
-<?php  // Affichage des messages d'un topic
+    <?php  // Affichage des messages d'un topic
 foreach($posts as $post) { ?>
 
     <div class="post_picture">
@@ -140,7 +140,7 @@ foreach($posts as $post) { ?>
         <a href="index.php?ctrl=forum&action=updatePost&id=<?= $post->getId() ?>"> <img class="delete_img" src="./public/img/edit.svg" alt="edit"> </a>
 
         </div>
-
+    <!-- // Permet la modification de tout les messages / topic si admin/modérateur -->
     <?php } elseif (App\Session::getUser() && (App\Session::isAdmin() || App\Session::isModerator())) { ?>
         <div class="deleteOrEdit">
 

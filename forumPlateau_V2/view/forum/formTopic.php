@@ -37,7 +37,7 @@ echo $session->getFlash("message");
 
         <div class="listCategory">
             <label>Category</label>
-            <select name="category" required>
+            <select class="selectCategory" name="category" required>
         </div>
 
             <?php foreach($categories as $category) { ?>
