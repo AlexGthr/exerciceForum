@@ -17,6 +17,7 @@ use Services\Statistique;
                     <!-- LINK CSS -->
         <link rel="stylesheet" href="<?= PUBLIC_DIR ?>/css/style.css">
         <link rel="stylesheet" href="<?= PUBLIC_DIR ?>/css/<?= $css ?>">
+        <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css" />
         
         <script src="https://kit.fontawesome.com/a34c2ac31d.js" crossorigin="anonymous"></script>
         <title>FORUM</title>
@@ -86,10 +87,10 @@ use Services\Statistique;
 
                                     <!-- Si l'utilisateur est connecté, on affiche son avatar -->
                             <?php if(App\Session::getUser()) { ?>
-
                                 <a href="index.php?ctrl=home&action=profile">
                                     <img class="nav_avatar" src="<?= App\Session::getUser()->getAvatar(); ?>" title="avatar user">
                                 </a>
+                                <div class="Logout_avatar"><a href="#">Logout</a></div>
 
                                     <!-- Si l'utilisateur n'est pas connecté, on affiche un avatar par default -->                           
                             <?php } else { ?>
@@ -200,6 +201,11 @@ use Services\Statistique;
         </script>
         <script>
             $(document).ready(function(){
+
+                $(document).ready( function () {
+                    $('#myTable').DataTable();
+                } );
+
                 $(".message").each(function(){
                     if($(this).text().length > 0){
                         $(this).slideDown(500, function(){
@@ -227,5 +233,6 @@ use Services\Statistique;
             })
         </script>
         <script src="<?= PUBLIC_DIR ?>/js/script.js"></script>
+        <script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
     </body>
 </html>

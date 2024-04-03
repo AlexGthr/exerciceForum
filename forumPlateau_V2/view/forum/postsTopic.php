@@ -79,8 +79,8 @@ echo $session->getFlash("message");
 <?php if (App\Session::getUser() && (App\Session::isAdmin() || App\Session::isModerator())) { ?>
 
     <div class="deleteEditAdmin">
-        <a id="delTopic" href="#"> <img class="delete_img" src="./public/img/delete.svg" alt="delet"> </a>
-        <a href="index.php?ctrl=forum&action=updateTopic&id=<?= $topics->getId() ?>"><img class="delete_img" src="./public/img/edit.svg" alt="edit"></a>
+        <a id="delTopic" href="#" title="Delete Topic"> <img class="delete_img" src="./public/img/delete.svg" alt="delet"> </a>
+        <a href="index.php?ctrl=forum&action=updateTopic&id=<?= $topics->getId() ?>" title="Update Topic"><img class="delete_img" src="./public/img/edit.svg" alt="edit"></a>
     </div>
 
 <?php } ?>
@@ -91,18 +91,12 @@ echo $session->getFlash("message");
 
         <div class="created_By">
             <a href="index.php?ctrl=home&action=viewProfil&id=<?= $topics->getUser()->getId() ?>">
-                <figure>
-                    <img src="<?= $topics->getUser()->getAvatar() ?>" alt="avatar user created topic">
-                </figure>
                 <p> Created by <br> <span class="yellow"> <?= $topics->getUser() ?> </span></p>
             </a>
         </div>
 
         <div class="created_By Last_message">
             <a href="index.php?ctrl=home&action=viewProfil&id=<?= $users->getUser()->getId() ?>">
-                <figure>
-                    <img src="<?= $users->getUser()->getAvatar() ?>" alt="avatar user last post">
-                </figure>
                 <p> Last post <br> <span class="yellow"> <?= $users->getUser()->getNickName() ?> </span></p>
             </a>
         </div>
@@ -194,8 +188,11 @@ foreach($posts as $post) { ?>
 
     <div class="show_boxPost">
 
+    <?php if ($topics->getClosed()) { ?>
         <p><span class="addActive"> Locked </span></p>
-
+    <?php } else { ?> 
+        <p><span class="addActive"> Add post </span></p>
+    <?php } ?>
     </div>
 
     <div class="boxPost">

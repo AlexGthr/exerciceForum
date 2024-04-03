@@ -42,6 +42,7 @@ class ForumController extends AbstractController implements ControllerInterface{
 
 
         if (!$category) {
+            Session::addFlash("message", "Haha, nice try !");
             $this->redirectTo("home", "index");
         } else {
             
@@ -122,6 +123,7 @@ class ForumController extends AbstractController implements ControllerInterface{
 
         // Je vérifie que l'utilisateur est bien connecté, sinon, direction l'index
         if (!Session::getUser()) {
+            Session::addFlash("message", "Haha, nice try !");
             $this->redirectTo("home", "index");
         } else {
 
@@ -221,6 +223,7 @@ class ForumController extends AbstractController implements ControllerInterface{
 
             // Je vérifie que l'utilisateur soit connecté, si ce n'est pas le cas, direction l'INDEX
         if (!Session::getUser()) {
+            Session::addFlash("message", "Haha, nice try !");
             $this->redirectTo("home", "index");
         } else {
 
@@ -275,14 +278,16 @@ public function updatePost($id) {
     $post = $postManager->findOneById($id);
 
     if (!$post) {
+        Session::addFlash("message", "Haha, nice try !");
         $this->redirectTo("home", "index");
     } else {
 
     if ($post->getTopic()->getClosed()) {
+        Session::addFlash("message", "Haha, nice try !");
         $this->redirectTo("home", "index");
 
     } elseif (!$post) {
-
+        Session::addFlash("message", "Haha, nice try !");
         $this->redirectTo("home", "index");
 
     } else {
@@ -306,6 +311,7 @@ public function updatePost($id) {
 
             // Je vérifie que l'utilisateur soit connecté, si ce n'est pas le cas, direction l'INDEX
         if (!Session::getUser()) {
+            Session::addFlash("message", "Haha, nice try !");
             $this->redirectTo("home", "index");
         } else { 
 
@@ -353,15 +359,16 @@ public function updateTopic($id) {
     $topic = $topicManager->findOneById($id);
 
     if (!$topic) {
+        Session::addFlash("message", "Haha, nice try !");
         $this->redirectTo("home", "index");
     } else {
 
     if ($topic->getClosed()) {
-
+        Session::addFlash("message", "Haha, nice try !");
         $this->redirectTo("home", "index");
 
     } elseif (!$topic) {
-
+        Session::addFlash("message", "Haha, nice try !");
         $this->redirectTo("home", "index");
         
     } else {
@@ -384,6 +391,7 @@ public function updateTopic($id) {
 
             // Je vérifie que l'utilisateur soit connecté, si ce n'est pas le cas, direction l'INDEX
         if (!Session::getUser() && (!Session::isAdmin() || !Session::isModerator())) {
+            Session::addFlash("message", "Haha, nice try !");
             $this->redirectTo("home", "index");
         } else { 
 
@@ -426,6 +434,7 @@ public function updateTopic($id) {
     public function deletePost($id) {
          // Je vérifie que l'utilisateur soit connecté, si ce n'est pas le cas, direction l'INDEX
         if (!Session::getUser()) {
+            Session::addFlash("message", "Haha, nice try !");
             $this->redirectTo("home", "index");
         } else {
 
@@ -460,7 +469,7 @@ public function updateTopic($id) {
     public function deleteTopic($id) {
 
         if (!Session::getUser() && (!Session::isAdmin() || !Session::isModerator())) {
-
+            Session::addFlash("message", "Haha, nice try !");
             $this->redirectTo("home", "index");
 
         } else { 
@@ -470,7 +479,7 @@ public function updateTopic($id) {
             $topic = $topicManager->findOneById($id);
 
             if (!$topic) {
-
+                Session::addFlash("message", "Haha, nice try !");
                 $this->redirectTo("home", "index");
 
             } elseif (Session::isAdmin() || Session::isModerator()) {
@@ -490,9 +499,10 @@ public function updateTopic($id) {
 
     public function lockTopic($id) {
 
-        if (!Session::getUser() && (!Session::isAdmin() || !Session::isModerator())) {
+        if (!Session::getUser()) {
+            Session::addFlash("message", "Haha, nice try !");
             $this->redirectTo("home", "index");
-        } else { 
+        } else if (Session::isAdmin() || Session::isModerator()) { 
 
             $topicManager = new TopicManager();
 
@@ -519,14 +529,18 @@ public function updateTopic($id) {
 
             
 
+        } else {
+            Session::addFlash("message", "Haha, nice try ! :)");
+            $this->redirectTo("home", "index");
         }
     }
 
     public function unlockTopic($id) {
 
-        if (!Session::getUser() && (!Session::isAdmin() || !Session::isModerator())) {
+        if (!Session::getUser()) {
+            Session::addFlash("message", "Haha, nice try !");
             $this->redirectTo("home", "index");
-        } else { 
+        } else if (Session::isAdmin() || Session::isModerator()) { 
 
             $topicManager = new TopicManager();
 
@@ -552,6 +566,9 @@ public function updateTopic($id) {
                 $this->redirectTo("forum", "listTopicsByCategory", $idCategory);
             }
             
+        } else {
+            Session::addFlash("message", "Haha, nice try !");
+            $this->redirectTo("home", "index");
         }
     }
 }

@@ -21,7 +21,7 @@ function showReaction(type) {
     boxSession.classList.add(type);
     setTimeout(function () {
         boxSession.classList.remove(type);
-    }, 1800);
+    }, 8000);
 }
 
 if (msgSession) {

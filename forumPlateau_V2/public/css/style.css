@@ -472,5 +472,8 @@ nav h1 {
     font-size: 1.5em;
 }
 
+.Logout_avatar {
+    display: flex;
+}
 
 }

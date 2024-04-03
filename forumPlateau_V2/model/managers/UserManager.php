@@ -40,4 +40,17 @@ class UserManager extends Manager{
         $this->className
 );
     }
+
+    public function findAllWithoutAdmin() {
+
+        $sql = "SELECT * 
+        FROM ".$this->tableName." u 
+        WHERE NOT nickName = 'ADMIN'";
+
+        // la requête renvoie plusieurs enregistrements --> getMultipleResults
+        return $this->getMultipleResults(
+            DAO::select($sql), 
+            $this->className
+        );
+    }
 }

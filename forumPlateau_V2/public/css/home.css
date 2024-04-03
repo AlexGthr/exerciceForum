@@ -181,7 +181,6 @@
 .boxPopularTopic, .boxLastTopic {
     max-width: 1500px;
     height: 150px;
-    cursor: pointer;
 }
 .boxPopularTopic .img_avatarList img,
 .boxLastTopic .img_avatarList img  {
@@ -253,6 +252,19 @@
 .boxCateg:hover a {
     color: var(--first-color-yellow);
     transition: all 1s;
+}
+
+.titleTopicList {
+    margin-top: 5px;
+}
+
+.list_infoTopic {
+    margin-bottom: 5px;
+}
+
+.list_nbPost {
+    bottom: 15px;
+    right: 5px;
 }
 
 }

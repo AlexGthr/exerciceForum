@@ -41,7 +41,6 @@
 foreach($topics as $topic ){ ?>
 
     <div class="boxListTopic">
-
         <figure class="img_avatarList">
             <a href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $topic->getId() ?>">
                 <img src="<?= $topic->getUser()->getAvatar()?>" title="image top mobile">
@@ -116,7 +115,6 @@ foreach($topics as $topic ){ ?>
             
                 <?php }} ?>
         </div>
-
     </div>
 
             <?php } ?>

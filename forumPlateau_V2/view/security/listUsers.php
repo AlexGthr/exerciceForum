@@ -7,17 +7,18 @@
  <!-- Si l'utilisateur est connectés, alors affiche le profil, sinon direction la page de connexion. -->
 <?php if(App\Session::isAdmin() || Session::isModerator()) { ?>
 
+<section class="list_userWrapper">
 <!-- Message de session en cas de success/erreur -->
 <?php 
 $session = new Session();
 echo $session->getFlash("message");
 ?>
-
 <div class="tableau_listUser">
 
-<table class="cinereousTable">
+<table id="myTable" class="display">
     <thead>
         <tr>
+            <th>ID</th>
             <th>Name</th>
             <th>Role</th>
             <th>Banned</th>
@@ -31,8 +32,8 @@ echo $session->getFlash("message");
 
     <tr>
 
-    <?php if ($user->getNickName() !== "Admin") { ?>
 
+            <td> <?= $user->getId() ?> </td>
             <td> <?= $user->getNickName() ?> </td>
             
             <form id="editAdminUser" action="index.php?ctrl=security&action=editUserAdmin&id=<?= $user->getId() ?>" method="POST">
@@ -77,7 +78,7 @@ echo $session->getFlash("message");
                 </form>
             </td> </tr>
     
-    <?php }} ?>
+    <?php } ?>
 
     </tbody>
 </table>
@@ -87,6 +88,7 @@ echo $session->getFlash("message");
 } ?>
 
 </div>
+</section>
 
 <?php 
 

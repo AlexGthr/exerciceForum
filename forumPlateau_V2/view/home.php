@@ -10,6 +10,17 @@ $category = $result["data"]['category'];
 
 <section class="wrapper_list">
 
+<div class="session_info">
+    <div class="box_session">
+<!-- Message de session en cas d'erreur ou de success -->
+        <?php 
+            $session = new Session();
+
+            echo "<span class='value_session'>" . $session->getFlash("message") . "</span>";
+        ?>
+    </div>
+ </div>
+
     <div class="title_popularTopic">
         <h1> LATEST TOPICS </h1>
         <hr class="after_title" />

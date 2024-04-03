@@ -3,48 +3,24 @@
 /* ******************************
         list User
    ****************************** */
-
-   .tableau_listUser {
-    display: flex;
-    justify-content: center;
-    background-color: var(--bg-header-footer);
-    padding: 15px 0;
+.list_userWrapper {
+  background-color: var(--bg-border);
+  background-size: cover;
 }
 
-table.cinereousTable {
+
+   .tableau_listUser {
     color: var(--first-color);
-    background-color: var(--bg-border);
-    border-radius: 8px;
-    width: 98%;
-    height: 300px;
-    text-align: center;
-  }
-  table.cinereousTable td, table.cinereousTable th {
-    padding: 4px 4px;
-  }
-  table.cinereousTable tbody td {
-    font-size: 13px;
-  }
-  table.cinereousTable tr:nth-child(even) {
-    background: var(--bg-border);
-  }
-  table.cinereousTable thead {
-    background: #715576;
-    border-radius: 8px;
-  }
-  table.cinereousTable thead th {
-    font-size: 17px;
-    font-weight: bold;
-    color: #F0F0F0;
-    text-align: center;
-    border-radius: 8px;
-  }
-  table.cinereousTable thead th:first-child {
-    border-left: none;
-  }
-  
-  table.cinereousTable tfoot td {
-    font-size: 16px;
-  }
+    font-size: 1.5em;
+    display: flex;
+    justify-content: center;
+    padding: 15px 30px;
+}
+
+div.dt-container div.dt-layout-row.dt-layout-table {
+  display: block;
+  padding: 20px 50px;
+
+}
 
 }

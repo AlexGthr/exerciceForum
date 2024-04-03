@@ -200,7 +200,7 @@ class SecurityController extends AbstractController{
 
         $userManager = new UserManager();
 
-        $users = $userManager->findAll();
+        $users = $userManager->findAllWithoutAdmin();
 
         return [
             "title" => "Forum - list users",

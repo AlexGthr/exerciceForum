@@ -98,6 +98,7 @@
 .titleTopicList p {
     font-weight: var(--Bold);
     font-size: 1.3em;
+    margin-top: 10px;
 }
 
 .list_infoTopic p {
@@ -144,7 +145,6 @@
 .boxListTopic {
     max-width: 1500px;
     height: 150px;
-    cursor: pointer;
 }
 
 .boxListTopic img {
@@ -185,5 +185,14 @@
 .listTopic_returnCategory p, .listTopic_newTopic p {
     padding: 20px 80px;
     font-size: 1.3em;
+}
+
+.list_infoTopic  {
+    margin-bottom: 5px;
+}
+
+.list_nbPost {
+    bottom: 15px;
+    right: 5px;
 }
 }
