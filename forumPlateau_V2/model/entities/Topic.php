@@ -73,10 +73,7 @@ final class Topic extends Entity{
         return $this;
     }
 
-    public function __toString(){
-        return $this->title;
-    }
-
+    
     /**
      * Get the value of closed
      */ 
@@ -84,7 +81,7 @@ final class Topic extends Entity{
     {
         return $this->closed;
     }
-
+    
     /**
      * Set the value of closed
      *
@@ -93,10 +90,10 @@ final class Topic extends Entity{
     public function setClosed($closed)
     {
         $this->closed = $closed;
-
+        
         return $this;
     }
-
+    
     /**
      * Get the value of creationDate
      */ 
@@ -104,7 +101,7 @@ final class Topic extends Entity{
     {
         return $this->creationDate;
     }
-
+    
     /**
      * Set the value of creationDate
      *
@@ -113,10 +110,10 @@ final class Topic extends Entity{
     public function setCreationDate($creationDate)
     {
         $this->creationDate = new \Datetime($creationDate);
-
+        
         return $this;
     }
-
+    
     /**
      * Get the value of category
      */ 
@@ -124,7 +121,7 @@ final class Topic extends Entity{
     {
         return $this->category;
     }
-
+    
     /**
      * Set the value of category
      *
@@ -133,17 +130,17 @@ final class Topic extends Entity{
     public function setCategory($category)
     {
         $this->category = $category;
-
+        
         return $this;
     }
-        /**
+    /**
      * Get the value of category
      */ 
     public function getNbPosts()
     {
         return $this->nbPosts;
     }
-
+    
     /**
      * Set the value of category
      *
@@ -152,11 +149,11 @@ final class Topic extends Entity{
     public function setNbPosts($nbPosts)
     {
         $this->nbPosts = $nbPosts;
-
+        
         return $this;
     }
-
-
+    
+    
     /**
      * Get the value of nbView
      */ 
@@ -164,7 +161,7 @@ final class Topic extends Entity{
     {
         return $this->nbView;
     }
-
+    
     /**
      * Set the value of nbView
      *
@@ -173,7 +170,11 @@ final class Topic extends Entity{
     public function setNbView($nbView)
     {
         $this->nbView = $nbView;
-
+        
         return $this;
+    }
+    
+    public function __toString(){
+        return $this->title;
     }
 }

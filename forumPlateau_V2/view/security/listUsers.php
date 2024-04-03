@@ -34,7 +34,7 @@ echo $session->getFlash("message");
 
 
             <td> <?= $user->getId() ?> </td>
-            <td> <?= $user->getNickName() ?> </td>
+            <td> <?= $user ?> </td>
             
             <form id="editAdminUser" action="index.php?ctrl=security&action=editUserAdmin&id=<?= $user->getId() ?>" method="POST">
             

@@ -45,7 +45,7 @@ $category = $result["data"]['category'];
 
                         <p>
                             <a class="nameTopic" href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $topic->getId() ?>">
-                                <?= $topic->getTitle(); ?>
+                                <?= $topic; ?>
                             </a>
                         </p>
 
@@ -105,7 +105,7 @@ $category = $result["data"]['category'];
 
                         <p>
                             <a class="nameTopic" href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $popTopic->getId() ?>">
-                                <?= $popTopic->getTitle(); ?>
+                                <?= $popTopic; ?>
                             </a>
                         </p>
 
@@ -163,7 +163,7 @@ $category = $result["data"]['category'];
 
                         <p>
                             <a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $categ->getId() ?>">
-                                <?= $categ->getName(); ?>
+                                <?= $categ; ?>
                             </a>
                         </p>
 

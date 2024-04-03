@@ -43,7 +43,7 @@ echo $session->getFlash("message");
             <?php foreach($categories as $category) { ?>
 
                 <option value="<?= $category->getId() ?>">
-                        <?= $category->getName() ?>
+                        <?= $category ?>
                 </option>
 
             <?php } ?>

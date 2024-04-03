@@ -25,6 +25,7 @@ use Services\Statistique;
     <body>
         <div id="wrapper"> 
             <div id="mainpage">
+
                 <!-- c'est ici que les messages (erreur ou succès) s'affichent-->
                 <h3 class="message" style="color: red"><?= App\Session::getFlash("error") ?></h3>
                 <h3 class="message" style="color: green"><?= App\Session::getFlash("success") ?></h3>
@@ -71,11 +72,13 @@ use Services\Statistique;
                                 
                                 <?php } ?>
 
+                                        <!-- Logo dans la navBar -->
                                 <li><img class="nav_logo" src="./public/img/gamepad.svg" title="logo menu"></li>
                             </ul>                        
                             <div id="icons"></div>
                         </div>
 
+                                        <!-- Icone forum + texte Forum -->
                             <div class="nav_title">
                                 <a href="index.php">
                                     <img src="./public/img/gamepad.svg" title="gamepad title">
@@ -83,23 +86,43 @@ use Services\Statistique;
                                 </a>
                             </div>
 
-                            <div class="avatar_user">
 
-                                    <!-- Si l'utilisateur est connecté, on affiche son avatar -->
+                                    <!-- Si l'utilisateur est connecté, on affiche son avatar, son pseudo et un lien de logout -->
                             <?php if(App\Session::getUser()) { ?>
-                                <a href="index.php?ctrl=home&action=profile">
-                                    <img class="nav_avatar" src="<?= App\Session::getUser()->getAvatar(); ?>" title="avatar user">
-                                </a>
-                                <div class="Logout_avatar"><a href="#">Logout</a></div>
 
-                                    <!-- Si l'utilisateur n'est pas connecté, on affiche un avatar par default -->                           
+                                <div class="User_Content">
+
+                                        <!-- Pseudo + lien logout -->
+                                    <div class="logout_avatar">
+
+                                        <p> <?= App\Session::getUser() ?> </p>
+                                        <p><a href="index.php?ctrl=security&action=logout">Logout</a></p>
+
+                                    </div>
+
+                                            <!-- Avatar de l'utilisateur -->
+                                    <div class="avatar_user">
+
+                                        <a href="index.php?ctrl=home&action=profile">
+                                            <img class="nav_avatar" src="<?= App\Session::getUser()->getAvatar(); ?>" title="avatar user">
+                                        </a>
+
+
+                                    <!-- Si l'utilisateur n'est pas connecté, on affiche un avatar par default et un texte "Visitor" -->                           
                             <?php } else { ?>
+
+                                <div class="User_Content">
+                                    <div class="logout_avatar">
+                                        <p> Visitor </p>
+                                    </div>
+                                    <div class="avatar_user">
                                 
                                 <a href="index.php?ctrl=security&action=login">
                                     <img class="nav_avatar" src="./public/img/avatar/default.webp" title="avatar visitor">
                                 </a>
                                 
                             <?php } ?>
+                            </div>
                             </div>
                         </div>
                     </nav>
@@ -115,7 +138,7 @@ use Services\Statistique;
                 
                 <main id="forum">
 
-                                    <!-- Image en dessous de la nav -->
+                                <!-- Section statistique et barre de recherche -->
                     <?php if (!isset($noFireStat)) {?>
                         <section class="fire_stat">
 
@@ -132,6 +155,7 @@ use Services\Statistique;
 
                         </div>
 
+                          <!-- Statistique -->
                         <div class="boxBestStat">
                             <div class="best_stat">
                                 <i class="fa-solid fa-fire"></i>
@@ -154,6 +178,8 @@ use Services\Statistique;
 
                         <?= $page ?>
 
+
+                        <!-- Partie "contact" -->
                     <?php if (!isset($noContact)) {?>
                         <section id="contact" class="contact">
 

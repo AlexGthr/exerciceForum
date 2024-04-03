@@ -16,7 +16,7 @@ echo $session->getFlash("message");
 
 
 <div class="title_popularTopic">
-    <h1> <?= $user->getNickName() ?> </h1>
+    <h1> <?= $user ?> </h1>
     <hr class="after_titlePink" />
 </div>
 
@@ -31,7 +31,7 @@ echo $session->getFlash("message");
     <?php foreach($posts as $post) { ?>
 
         <p> <?= $post->getTopic()->getTitle() ?> </p>
-        <p> <span class="profilPost"> <?= $post->getPost() ?> </span> </p>
+        <p> <span class="profilPost"> <?= $post ?> </span> </p>
         <p> <a href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $post->getTopic()->getId() ?>">
                 See topic
             </a> </p>

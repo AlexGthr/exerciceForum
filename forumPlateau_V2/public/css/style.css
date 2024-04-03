@@ -147,6 +147,25 @@ nav h1 {
     object-fit: cover;
 }
 
+.User_Content {
+    display: flex;
+    align-items: center;
+}
+
+.logout_avatar {
+    padding: 0 5px;
+}
+
+.logout_avatar a,
+.logout_avatar p {
+    text-align: center;
+    color: var(--first-color);
+}
+
+.logout_avatar a:hover {
+    color: var(--first-color-yellow);
+}
+
 /* ******************************
         SESSION MESSAGE
    ****************************** */
@@ -470,10 +489,6 @@ nav h1 {
 
 .info_contact p {
     font-size: 1.5em;
-}
-
-.Logout_avatar {
-    display: flex;
 }
 
 }

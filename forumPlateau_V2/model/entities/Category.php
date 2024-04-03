@@ -57,10 +57,7 @@ final class Category extends Entity{
         return $this;
     }
 
-    public function __toString(){
-        return $this->name;
-    }
-
+    
     /**
      * Get the value of picture
      */ 
@@ -68,7 +65,7 @@ final class Category extends Entity{
     {
         return $this->picture;
     }
-
+    
     /**
      * Set the value of picture
      *
@@ -77,18 +74,18 @@ final class Category extends Entity{
     public function setPicture($picture)
     {
         $this->picture = $picture;
-
+        
         return $this;
     }
-
-        /**
+    
+    /**
      * Get the value of id
      */ 
     public function getNbTopics()
     {
         return $this->nbTopics;
     }
-
+    
     /**
      * Set the value of id
      *
@@ -97,18 +94,18 @@ final class Category extends Entity{
     public function setNbTopics($nbTopics) 
     {
         $this->nbTopics = $nbTopics;
-
+        
         return $this;
     }
 
-            /**
+    /**
      * Get the value of id
      */ 
     public function getNbPosts()
     {
         return $this->nbPosts;
     }
-
+    
     /**
      * Set the value of id
      *
@@ -117,7 +114,11 @@ final class Category extends Entity{
     public function setNbPosts($nbPosts) 
     {
         $this->nbPosts = $nbPosts;
-
+        
         return $this;
+    }
+    
+    public function __toString(){
+        return $this->name;
     }
 }

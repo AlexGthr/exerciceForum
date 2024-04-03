@@ -28,7 +28,7 @@
 </div>
 
 <div class="title_popularTopic">
-        <h1> Topic of <?= $category->getName() ?> </h1>
+        <h1> Topic of <?= $category ?> </h1>
         <hr class="after_titlePink" />
 </div>
 
@@ -53,7 +53,7 @@ foreach($topics as $topic ){ ?>
 
                 <p>
                     <a class="nameTopic" href="index.php?ctrl=forum&action=findPostsByTopic&id=<?= $topic->getId() ?>">
-                        <?= $topic->getTitle(); ?>
+                        <?= $topic; ?>
                     </a>
                 </p>
 

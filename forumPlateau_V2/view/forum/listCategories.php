@@ -39,7 +39,7 @@ foreach($categories as $categ ){?>
 
                 <p>
                     <a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $categ->getId() ?>">
-                    <?= $categ->getName(); ?>
+                    <?= $categ; ?>
                     </a>
                 </p>
 

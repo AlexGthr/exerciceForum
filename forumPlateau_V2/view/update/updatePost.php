@@ -32,7 +32,7 @@ echo $session->getFlash("message");
     <div class="middle_beforeUpdate">
 
         <div class="post_beforeUpdate">
-            <p> <?= $post->getPost(); ?></p>
+            <p> <?= $post; ?></p>
             <p> By <span class="yellow"> <?= $post->getUser(); ?></span></p>
         </div>
 
@@ -44,7 +44,7 @@ echo $session->getFlash("message");
         <form action="index.php?ctrl=forum&action=addUpdatePost&id=<?= $post->getId() ?>" method="POST">
         
 
-        <br><textarea id="post" name="post" placeholder="Votre texte ici..." rows="5" required><?= $post->getPost(); ?></textarea><br>
+        <br><textarea id="post" name="post" placeholder="Votre texte ici..." rows="5" required><?= $post; ?></textarea><br>
 
     
         

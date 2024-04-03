@@ -32,7 +32,7 @@ echo $session->getFlash("message");
     <div class="middle_beforeUpdate">
 
     <div class="topic_beforeUpdate">
-        <p> <?= $topic->getTitle(); ?></p>
+        <p> <?= $topic; ?></p>
         <p>By <span class="yellow"> <?= $topic->getUser(); ?> </span></p><br>
     </div>
 
@@ -45,7 +45,7 @@ echo $session->getFlash("message");
 
         <div class="input-group">
             <label> Title </label>
-            <input type="text" name="title" id="title" value="<?= $topic->getTitle() ?>" required><br>
+            <input type="text" name="title" id="title" value="<?= $topic ?>" required><br>
         </div>
     
         

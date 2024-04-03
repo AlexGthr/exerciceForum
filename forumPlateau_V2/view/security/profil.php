@@ -14,7 +14,7 @@ echo $session->getFlash("message");
 ?>
 
 <div class="title_popularTopic">
-        <h1> <?= $user->getNickName() ?> Profil </h1>
+        <h1> <?= $user ?> Profil </h1>
         <hr class="after_titlePink" />
 </div>
 

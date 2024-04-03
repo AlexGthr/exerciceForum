@@ -39,7 +39,7 @@ echo $session->getFlash("message");
 
     <div class="lockTopic">
 
-        <h1> <?= $topics->getTitle() ?> </h1>
+        <h1> <?= $topics ?> </h1>
         <?php if (!$topics->getClosed()) {
 
             if (App\Session::isAdmin() || App\Session::isModerator()) { ?> 
@@ -97,7 +97,7 @@ echo $session->getFlash("message");
 
         <div class="created_By Last_message">
             <a href="index.php?ctrl=home&action=viewProfil&id=<?= $users->getUser()->getId() ?>">
-                <p> Last post <br> <span class="yellow"> <?= $users->getUser()->getNickName() ?> </span></p>
+                <p> Last post <br> <span class="yellow"> <?= $users->getUser() ?> </span></p>
             </a>
         </div>
 
@@ -122,14 +122,14 @@ foreach($posts as $post) { ?>
 
     <div class="post_NameHours">
         <a href="index.php?ctrl=home&action=viewProfil&id=<?= $post->getUser()->getId() ?>">
-            <h2 class="yellow"> <?= $post->getUser()->getNickName() ?> </h2>
+            <h2 class="yellow"> <?= $post->getUser() ?> </h2>
         </a>
         <p> <span class="timePost"> <?= $post->getDateCreation()->format("d/m/y - G:i") ?> </span></p>
 
     </div>
 </div>
 
-<h4> <?= $post->getPost() ?> </h4>
+<h4> <?= $post ?> </h4>
 
 <div class="function_post">
     <!-- // Permet la modification de son propre message ou de tout les messages en fonction du role -->
